@@ -1,0 +1,21 @@
+2025-08-01 04:20:41.922 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 04:20:41.959 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 04:20:41.988 +03:00 [INF] Creating key {2690dd25-059c-40fd-922b-a74646a252ca} with creation date 2025-08-01 01:20:41Z, activation date 2025-08-01 01:20:41Z, and expiration date 2025-10-30 01:20:41Z.
+2025-08-01 04:20:41.994 +03:00 [INF] Writing data to file 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys\key-2690dd25-059c-40fd-922b-a74646a252ca.xml'.
+2025-08-01 04:20:42.062 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-01 04:20:42.062 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 04:20:42.063 +03:00 [INF] Hosting environment: Development
+2025-08-01 04:20:42.063 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-01 16:39:50.274 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 16:39:50.330 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 16:39:50.416 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-01 16:39:50.429 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 16:39:50.430 +03:00 [INF] Hosting environment: Development
+2025-08-01 16:39:50.431 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-01 16:39:55.732 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/ - null null
+2025-08-01 16:39:55.792 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-08-01 16:39:55.849 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/ - 404 0 null 119.3603ms
+2025-08-01 16:39:55.867 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5270/, Response status code: 404
+2025-08-01 16:40:20.701 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/ - null null
+2025-08-01 16:40:20.707 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/ - 404 0 null 6.6938ms
+2025-08-01 16:40:20.710 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5270/, Response status code: 404

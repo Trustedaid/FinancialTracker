@@ -1,0 +1,225 @@
+2025-08-01 16:53:47.363 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 16:53:47.422 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 16:53:47.491 +03:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5270: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+ ---> System.Net.Sockets.SocketException (10048): Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-08-01 16:53:47.504 +03:00 [FTL] Application terminated unexpectedly
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5270: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+ ---> System.Net.Sockets.SocketException (10048): Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.<Main>$(String[] args) in C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API\Program.cs:line 151
+2025-08-01 16:54:02.123 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 16:54:02.181 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 16:54:02.244 +03:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5270: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+ ---> System.Net.Sockets.SocketException (10048): Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-08-01 16:54:02.254 +03:00 [FTL] Application terminated unexpectedly
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5270: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+ ---> System.Net.Sockets.SocketException (10048): Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.<Main>$(String[] args) in C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API\Program.cs:line 151
+2025-08-01 16:55:21.572 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 16:55:21.610 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 16:55:21.659 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-01 16:55:21.660 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 16:55:21.660 +03:00 [INF] Hosting environment: Development
+2025-08-01 16:55:21.660 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-01 16:55:36.100 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger - null null
+2025-08-01 16:55:36.123 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger - 301 0 null 23.931ms
+2025-08-01 16:55:51.141 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger - null null
+2025-08-01 16:55:51.142 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger - 301 0 null 1.3164ms
+2025-08-01 16:55:51.156 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/index.html - null null
+2025-08-01 16:55:51.196 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/index.html - 200 null text/html;charset=utf-8 39.8622ms
+2025-08-01 16:55:51.214 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/swagger-ui.css - null null
+2025-08-01 16:55:51.217 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/index.css - null null
+2025-08-01 16:55:51.219 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/index.js - null null
+2025-08-01 16:55:51.219 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/index.js - 200 null application/javascript;charset=utf-8 0.5174ms
+2025-08-01 16:55:51.219 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/swagger-ui-standalone-preset.js - null null
+2025-08-01 16:55:51.220 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/swagger-ui-bundle.js - null null
+2025-08-01 16:55:51.234 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/swagger-ui-standalone-preset.js - 200 229223 text/javascript 14.4209ms
+2025-08-01 16:55:51.234 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/swagger-ui.css - 200 155175 text/css 20.3788ms
+2025-08-01 16:55:51.238 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/index.css - 200 202 text/css 20.2932ms
+2025-08-01 16:55:51.240 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/swagger-ui-bundle.js - 200 1485750 text/javascript 20.1034ms
+2025-08-01 16:55:51.775 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/v1/swagger.json - null null
+2025-08-01 16:55:51.809 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/favicon-32x32.png - null null
+2025-08-01 16:55:51.810 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/favicon-32x32.png - 200 628 image/png 1.0472ms
+2025-08-01 16:55:51.857 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 81.4022ms
+2025-08-01 16:56:47.843 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/ - null null
+2025-08-01 16:56:47.846 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-08-01 16:56:47.866 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/ - 404 0 null 23.0148ms
+2025-08-01 16:56:47.867 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5270/, Response status code: 404
+2025-08-01 18:00:10.031 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 18:00:10.095 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 18:00:10.165 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-01 18:00:10.168 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 18:00:10.170 +03:00 [INF] Hosting environment: Development
+2025-08-01 18:00:10.171 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-01 18:00:13.301 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/index.html - null null
+2025-08-01 18:00:13.418 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/index.html - 200 null text/html;charset=utf-8 118.198ms
+2025-08-01 18:00:13.998 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/v1/swagger.json - null null
+2025-08-01 18:00:14.143 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 144.7995ms
+2025-08-01 18:43:49.398 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/ - null null
+2025-08-01 18:43:49.455 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-08-01 18:43:49.542 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/ - 404 0 null 145.4447ms
+2025-08-01 18:43:49.550 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5270/, Response status code: 404
+2025-08-01 18:43:54.322 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/swagger/v1/swagger.json - null null
+2025-08-01 18:43:54.357 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.3167ms
+2025-08-01 18:44:30.515 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/Auth/register - application/json 103
+2025-08-01 18:44:30.529 +03:00 [INF] CORS policy execution failed.
+2025-08-01 18:44:30.529 +03:00 [INF] Request origin http://localhost:5270 does not have permission to access the resource.
+2025-08-01 18:44:30.534 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 18:44:30.582 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Register(FinanceTracker.Application.Features.Auth.DTOs.RegisterUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-01 18:44:30.588 +03:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-01 18:44:30.696 +03:00 [INF] Executing action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) - Validation state: "Valid"
+2025-08-01 18:44:31.959 +03:00 [INF] Executed action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 1258.41ms.
+2025-08-01 18:44:31.968 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-01 18:44:31.983 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) in 1395.9584ms
+2025-08-01 18:44:31.984 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 18:44:31.992 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/Auth/register - 400 null application/json; charset=utf-8 1476.8326ms
+2025-08-01 18:44:43.560 +03:00 [INF] Application is shutting down...
+2025-08-01 20:22:32.513 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 20:22:32.570 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 20:22:32.675 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-01 20:22:32.677 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 20:22:32.678 +03:00 [INF] Hosting environment: Development
+2025-08-01 20:22:32.678 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-01 20:23:11.100 +03:00 [INF] Application is shutting down...
+2025-08-01 20:23:23.180 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 20:23:23.234 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 20:23:23.298 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-01 20:23:23.300 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 20:23:23.300 +03:00 [INF] Hosting environment: Development
+2025-08-01 20:23:23.301 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-01 20:23:28.240 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/Auth/register - application/json 103
+2025-08-01 20:23:28.283 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-08-01 20:23:28.284 +03:00 [INF] No CORS policy found for the specified request.
+2025-08-01 20:23:28.350 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 20:23:28.367 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Register(FinanceTracker.Application.Features.Auth.DTOs.RegisterUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-01 20:23:28.373 +03:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-01 20:23:28.498 +03:00 [INF] Executing action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) - Validation state: "Valid"
+2025-08-01 20:23:29.854 +03:00 [INF] Executed action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 1351.565ms.
+2025-08-01 20:23:29.868 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-01 20:23:29.884 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) in 1512.039ms
+2025-08-01 20:23:29.885 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 20:23:29.892 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/Auth/register - 400 null application/json; charset=utf-8 1653.5314ms
+2025-08-01 20:24:15.617 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/Auth/register - application/json 105
+2025-08-01 20:24:15.621 +03:00 [INF] No CORS policy found for the specified request.
+2025-08-01 20:24:15.625 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 20:24:15.626 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Register(FinanceTracker.Application.Features.Auth.DTOs.RegisterUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-01 20:24:15.633 +03:00 [INF] Executing action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) - Validation state: "Valid"
+2025-08-01 20:24:15.662 +03:00 [INF] Executed action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 28.1684ms.
+2025-08-01 20:24:15.663 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-01 20:24:15.665 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) in 37.3559ms
+2025-08-01 20:24:15.665 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 20:24:15.666 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/Auth/register - 400 null application/json; charset=utf-8 50.4741ms
+2025-08-01 20:24:25.954 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/Auth/register - application/json 105
+2025-08-01 20:24:25.957 +03:00 [INF] No CORS policy found for the specified request.
+2025-08-01 20:24:25.960 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 20:24:25.962 +03:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Register(FinanceTracker.Application.Features.Auth.DTOs.RegisterUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-01 20:24:25.966 +03:00 [INF] Executing action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) - Validation state: "Valid"
+2025-08-01 20:24:26.015 +03:00 [INF] Executed action method FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API), returned result Microsoft.AspNetCore.Mvc.BadRequestObjectResult in 48.9833ms.
+2025-08-01 20:24:26.017 +03:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-08-01 20:24:26.018 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API) in 54.6936ms
+2025-08-01 20:24:26.020 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Register (FinanceTracker.API)'
+2025-08-01 20:24:26.021 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/Auth/register - 400 null application/json; charset=utf-8 66.3971ms
+2025-08-01 20:27:10.283 +03:00 [INF] Application is shutting down...
+2025-08-01 20:42:54.594 +03:00 [INF] Starting Financial Tracker API
+2025-08-01 20:42:54.650 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-01 20:42:54.718 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-01 20:42:54.719 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-01 20:42:54.719 +03:00 [INF] Hosting environment: Development
+2025-08-01 20:42:54.719 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API

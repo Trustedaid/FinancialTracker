@@ -1,0 +1,1434 @@
+2025-08-02 02:01:59.149 +03:00 [INF] Starting Financial Tracker API
+2025-08-02 02:01:59.212 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-02 02:01:59.303 +03:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5270: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+ ---> System.Net.Sockets.SocketException (10048): Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-08-02 02:01:59.317 +03:00 [FTL] Application terminated unexpectedly
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5270: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+ ---> System.Net.Sockets.SocketException (10048): Normal olarak her yuva adresi (iletişim kuralı/ağ adresi/bağlantı noktası) için yalnızca bir kullanıma izin veriliyor.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.<Main>$(String[] args) in C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API\Program.cs:line 151
+2025-08-02 02:02:48.770 +03:00 [INF] Starting Financial Tracker API
+2025-08-02 02:02:48.814 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-02 02:02:48.874 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-02 02:02:48.875 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-02 02:02:48.875 +03:00 [INF] Hosting environment: Development
+2025-08-02 02:02:48.875 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-02 02:02:59.986 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/auth/login - application/json 49
+2025-08-02 02:03:00.022 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-08-02 02:03:00.023 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:00.051 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:03:00.068 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Login(FinanceTracker.Application.Features.Auth.DTOs.LoginUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-02 02:03:00.072 +03:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-02 02:03:01.232 +03:00 [INF] Executed DbCommand (77ms) [Parameters=[@__normalizedEmail_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[UpdatedAt]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+2025-08-02 02:03:01.754 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto'.
+2025-08-02 02:03:01.767 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API) in 1695.8382ms
+2025-08-02 02:03:01.771 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:03:01.777 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/auth/login - 200 null application/json; charset=utf-8 1792.4076ms
+2025-08-02 02:03:20.311 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - null null
+2025-08-02 02:03:20.313 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:20.314 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - 204 null null 3.1443ms
+2025-08-02 02:03:20.327 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/auth/login - application/json 49
+2025-08-02 02:03:20.328 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:20.329 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:03:20.330 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Login(FinanceTracker.Application.Features.Auth.DTOs.LoginUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-02 02:03:20.353 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[UpdatedAt]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+2025-08-02 02:03:20.700 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto'.
+2025-08-02 02:03:20.700 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API) in 370.4507ms
+2025-08-02 02:03:20.700 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:03:20.701 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/auth/login - 200 null application/json; charset=utf-8 373.5454ms
+2025-08-02 02:03:20.793 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:03:20.794 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:20.794 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.4046ms
+2025-08-02 02:03:20.800 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:03:20.803 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:20.829 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:20.837 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:03:20.973 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:03:21.027 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:03:21.029 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:03:21.046 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 209.5278ms
+2025-08-02 02:03:21.047 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:21.047 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 246.3208ms
+2025-08-02 02:03:21.054 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:03:21.055 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.056 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:21.056 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:03:21.056 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:03:21.056 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.057 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.2613ms
+2025-08-02 02:03:21.061 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:03:21.063 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:03:21.063 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.064 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:03:21.064 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:03:21.064 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 7.5498ms
+2025-08-02 02:03:21.064 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:21.064 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:21.064 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:03:21.066 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 11.4521ms
+2025-08-02 02:03:21.076 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:03:21.083 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:03:21.083 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:03:21.083 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 18.9801ms
+2025-08-02 02:03:21.084 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:21.084 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 20.9687ms
+2025-08-02 02:03:21.092 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:03:21.092 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.092 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:21.092 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:03:21.093 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:03:21.093 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.093 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.2213ms
+2025-08-02 02:03:21.094 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:03:21.095 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:03:21.095 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:03:21.095 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 3.0026ms
+2025-08-02 02:03:21.095 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:03:21.095 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 3.888ms
+2025-08-02 02:03:21.100 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:03:21.100 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.101 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:03:21.105 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:03:21.142 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:03:21.143 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:03:21.144 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 38.5548ms
+2025-08-02 02:03:21.144 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:03:21.144 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 43.6572ms
+2025-08-02 02:03:21.151 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:03:21.152 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.152 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:03:21.152 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:03:21.152 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:03:21.152 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.152 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.2101ms
+2025-08-02 02:03:21.157 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:03:21.157 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:03:21.158 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 5.5412ms
+2025-08-02 02:03:21.158 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:03:21.158 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 6.4129ms
+2025-08-02 02:03:21.159 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:03:21.159 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.159 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:03:21.162 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:03:21.170 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:03:21.171 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:03:21.173 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 11.7602ms
+2025-08-02 02:03:21.174 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:03:21.174 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 15.0003ms
+2025-08-02 02:03:21.182 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:03:21.182 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:03:21.182 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:03:21.182 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:03:21.185 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:03:21.186 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:03:21.186 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 3.3656ms
+2025-08-02 02:03:21.186 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:03:21.186 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 4.2458ms
+2025-08-02 02:04:06.220 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:04:06.220 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:04:06.220 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.220 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.220 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.631ms
+2025-08-02 02:04:06.220 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.6338ms
+2025-08-02 02:04:06.227 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:04:06.228 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.228 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.228 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:04:06.240 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:04:06.254 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:04:06.254 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:04:06.254 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 25.8247ms
+2025-08-02 02:04:06.254 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.255 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 27.1176ms
+2025-08-02 02:04:06.266 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:04:06.266 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.267 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.267 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:04:06.267 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:04:06.267 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.267 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.2041ms
+2025-08-02 02:04:06.269 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:04:06.270 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:04:06.270 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:04:06.270 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 3.2929ms
+2025-08-02 02:04:06.270 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.270 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 4.2702ms
+2025-08-02 02:04:06.274 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:04:06.274 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.274 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.274 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:04:06.277 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:04:06.281 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:04:06.281 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:04:06.282 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 7.2102ms
+2025-08-02 02:04:06.282 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.282 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 8.0586ms
+2025-08-02 02:04:06.289 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:04:06.290 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.290 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.290 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:04:06.291 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:04:06.291 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.291 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.2058ms
+2025-08-02 02:04:06.292 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:04:06.293 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:04:06.293 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:04:06.293 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 3.0794ms
+2025-08-02 02:04:06.293 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:04:06.293 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 4.4933ms
+2025-08-02 02:04:06.296 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:04:06.296 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.296 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:04:06.296 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:04:06.303 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:04:06.303 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:04:06.303 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 6.654ms
+2025-08-02 02:04:06.303 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:04:06.303 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 7.4592ms
+2025-08-02 02:04:06.308 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:04:06.308 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.308 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:04:06.309 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:04:06.309 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:04:06.309 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.309 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.1776ms
+2025-08-02 02:04:06.311 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:04:06.311 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:04:06.311 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 2.2767ms
+2025-08-02 02:04:06.311 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:04:06.311 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 3.1115ms
+2025-08-02 02:04:06.314 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:04:06.314 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.314 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:04:06.314 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:04:06.318 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:04:06.318 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:04:06.319 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 4.2331ms
+2025-08-02 02:04:06.319 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:04:06.319 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 4.9154ms
+2025-08-02 02:04:06.325 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:04:06.325 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:04:06.325 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:04:06.325 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:04:06.328 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:04:06.328 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:04:06.328 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 2.8023ms
+2025-08-02 02:04:06.328 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:04:06.328 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 3.6584ms
+2025-08-02 02:11:29.696 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - null null
+2025-08-02 02:11:29.704 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:29.709 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - 204 null null 11.7595ms
+2025-08-02 02:11:29.718 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/auth/login - application/json 49
+2025-08-02 02:11:29.719 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:29.722 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:11:29.726 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Login(FinanceTracker.Application.Features.Auth.DTOs.LoginUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-02 02:11:29.843 +03:00 [INF] Executed DbCommand (47ms) [Parameters=[@__normalizedEmail_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[UpdatedAt]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+2025-08-02 02:11:29.980 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto'.
+2025-08-02 02:11:29.981 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API) in 254.6091ms
+2025-08-02 02:11:29.981 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:11:29.982 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/auth/login - 200 null application/json; charset=utf-8 263.8784ms
+2025-08-02 02:11:30.030 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:11:30.030 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.031 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.6074ms
+2025-08-02 02:11:30.035 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:11:30.035 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.036 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.4168ms
+2025-08-02 02:11:30.038 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:11:30.041 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.043 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.043 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:11:30.056 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:11:30.072 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:11:30.072 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:11:30.073 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 30.6355ms
+2025-08-02 02:11:30.074 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.074 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 35.5397ms
+2025-08-02 02:11:30.081 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:11:30.081 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.081 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.082 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:11:30.083 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:11:30.083 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.083 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.2108ms
+2025-08-02 02:11:30.085 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:11:30.088 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:11:30.089 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:11:30.089 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 7.1381ms
+2025-08-02 02:11:30.089 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.089 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 8.0922ms
+2025-08-02 02:11:30.090 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:11:30.090 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.090 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.090 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:11:30.093 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:11:30.096 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:11:30.096 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:11:30.096 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 5.7ms
+2025-08-02 02:11:30.096 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.096 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 6.5927ms
+2025-08-02 02:11:30.104 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:11:30.104 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.105 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.105 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:11:30.105 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:11:30.105 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.105 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.1343ms
+2025-08-02 02:11:30.107 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:11:30.112 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:11:30.112 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:11:30.113 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 7.7965ms
+2025-08-02 02:11:30.113 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:11:30.113 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 8.6189ms
+2025-08-02 02:11:30.115 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:11:30.115 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.115 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:11:30.115 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:11:30.123 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:11:30.123 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:11:30.124 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 8.2222ms
+2025-08-02 02:11:30.124 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:11:30.124 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 9.0332ms
+2025-08-02 02:11:30.135 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:11:30.135 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.136 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:11:30.136 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:11:30.136 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.136 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.1803ms
+2025-08-02 02:11:30.136 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:11:30.138 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:11:30.138 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:11:30.138 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 2.1126ms
+2025-08-02 02:11:30.138 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:11:30.138 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 3.0079ms
+2025-08-02 02:11:30.146 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:11:30.146 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.147 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:11:30.147 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:11:30.150 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:11:30.150 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:11:30.151 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 3.6572ms
+2025-08-02 02:11:30.151 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:11:30.151 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 4.6323ms
+2025-08-02 02:11:30.158 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:11:30.159 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:11:30.159 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:11:30.159 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:11:30.160 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:11:30.160 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:11:30.161 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 1.5004ms
+2025-08-02 02:11:30.161 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:11:30.161 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 2.31ms
+2025-08-02 02:20:53.231 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:20:53.231 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:20:53.239 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.239 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.243 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 11.8165ms
+2025-08-02 02:20:53.243 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 12.7604ms
+2025-08-02 02:20:53.248 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:20:53.251 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.262 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.265 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:20:53.384 +03:00 [INF] Executed DbCommand (41ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:20:53.405 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:20:53.407 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:20:53.411 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 145.4423ms
+2025-08-02 02:20:53.411 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.411 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 162.9158ms
+2025-08-02 02:20:53.416 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:20:53.417 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.417 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.417 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:20:53.418 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:20:53.418 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.418 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.1275ms
+2025-08-02 02:20:53.419 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:20:53.422 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:20:53.422 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:20:53.423 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 5.6397ms
+2025-08-02 02:20:53.423 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.423 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 6.4639ms
+2025-08-02 02:20:53.424 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:20:53.424 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.425 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.425 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:20:53.429 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:20:53.432 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:20:53.432 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:20:53.432 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 6.4763ms
+2025-08-02 02:20:53.432 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.432 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 7.7498ms
+2025-08-02 02:20:53.438 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:20:53.438 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.439 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.439 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:20:53.439 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.439 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.1188ms
+2025-08-02 02:20:53.439 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:20:53.441 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:20:53.442 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:20:53.443 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:20:53.443 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 4.6927ms
+2025-08-02 02:20:53.444 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:20:53.444 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 5.8781ms
+2025-08-02 02:20:53.444 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:20:53.444 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.445 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:20:53.445 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:20:53.454 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:20:53.454 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:20:53.454 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 9.5484ms
+2025-08-02 02:20:53.454 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:20:53.455 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 10.8349ms
+2025-08-02 02:20:53.460 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:20:53.460 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.461 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:20:53.461 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:20:53.461 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:20:53.461 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.461 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.1234ms
+2025-08-02 02:20:53.465 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:20:53.465 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:20:53.465 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 4.464ms
+2025-08-02 02:20:53.466 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:20:53.466 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 5.4832ms
+2025-08-02 02:20:53.467 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:20:53.467 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.467 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:20:53.467 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:20:53.470 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:20:53.471 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:20:53.471 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 4.0399ms
+2025-08-02 02:20:53.471 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:20:53.471 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 4.7148ms
+2025-08-02 02:20:53.477 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:20:53.477 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:20:53.477 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:20:53.478 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:20:53.480 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:20:53.480 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:20:53.480 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 2.7624ms
+2025-08-02 02:20:53.480 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:20:53.481 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 3.5266ms
+2025-08-02 02:21:35.612 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - null null
+2025-08-02 02:21:35.613 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.613 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - 204 null null 0.941ms
+2025-08-02 02:21:35.624 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/auth/login - application/json 49
+2025-08-02 02:21:35.624 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.626 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:21:35.626 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Login(FinanceTracker.Application.Features.Auth.DTOs.LoginUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-02 02:21:35.654 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[UpdatedAt]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+2025-08-02 02:21:35.783 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto'.
+2025-08-02 02:21:35.783 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API) in 156.4382ms
+2025-08-02 02:21:35.783 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:21:35.783 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/auth/login - 200 null application/json; charset=utf-8 158.9377ms
+2025-08-02 02:21:35.799 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:35.799 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.800 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.1618ms
+2025-08-02 02:21:35.800 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:35.800 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.800 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.1011ms
+2025-08-02 02:21:35.806 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:35.807 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.807 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.807 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:35.810 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:21:35.813 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:35.813 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:35.813 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 6.252ms
+2025-08-02 02:21:35.813 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.813 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 7.3319ms
+2025-08-02 02:21:35.822 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:35.823 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.823 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.823 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:35.824 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:35.824 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.824 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.1145ms
+2025-08-02 02:21:35.824 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:21:35.825 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:35.826 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:35.826 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 2.6868ms
+2025-08-02 02:21:35.826 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.826 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 3.3709ms
+2025-08-02 02:21:35.831 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:35.831 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.831 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.831 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:35.833 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:21:35.836 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:35.836 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:35.836 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 4.9335ms
+2025-08-02 02:21:35.836 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.836 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 5.4634ms
+2025-08-02 02:21:35.888 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:35.888 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.888 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.888 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:35.888 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:35.889 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.889 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.13ms
+2025-08-02 02:21:35.890 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:21:35.890 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:35.891 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:35.891 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 2.3215ms
+2025-08-02 02:21:35.891 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:35.891 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 3.0441ms
+2025-08-02 02:21:35.930 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:35.930 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.930 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:35.930 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:21:35.934 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:21:35.934 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:35.935 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 4.4372ms
+2025-08-02 02:21:35.935 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:35.935 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 5.0912ms
+2025-08-02 02:21:35.943 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:35.945 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:21:35.945 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.946 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.946 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.1752ms
+2025-08-02 02:21:35.946 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:35.946 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:21:35.949 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:21:35.949 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:35.949 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 3.1186ms
+2025-08-02 02:21:35.949 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:35.949 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 6.5092ms
+2025-08-02 02:21:35.956 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:21:35.956 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.956 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:35.956 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:21:35.959 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:21:35.959 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:35.959 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 2.9494ms
+2025-08-02 02:21:35.959 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:35.959 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 3.6724ms
+2025-08-02 02:21:35.970 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:21:35.970 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:35.970 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:35.970 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:21:35.972 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:21:35.972 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:35.973 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 2.439ms
+2025-08-02 02:21:35.973 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:35.973 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 3.0544ms
+2025-08-02 02:21:52.306 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:52.306 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.306 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:52.306 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.307 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.6673ms
+2025-08-02 02:21:52.307 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.9934ms
+2025-08-02 02:21:52.312 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:52.312 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.313 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.313 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:52.317 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:21:52.320 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:52.320 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:52.320 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 6.7197ms
+2025-08-02 02:21:52.320 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.320 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 8.3068ms
+2025-08-02 02:21:52.326 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:52.326 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.327 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.327 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:52.327 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:52.327 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.327 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.0963ms
+2025-08-02 02:21:52.330 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:21:52.332 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:52.333 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:52.333 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:52.333 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 5.9415ms
+2025-08-02 02:21:52.333 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.333 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.333 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 6.686ms
+2025-08-02 02:21:52.333 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.333 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:52.335 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:21:52.340 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:52.341 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:52.341 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 7.5621ms
+2025-08-02 02:21:52.341 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.341 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 8.0589ms
+2025-08-02 02:21:52.347 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:52.347 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.347 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.347 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:52.347 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:52.347 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.347 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.1191ms
+2025-08-02 02:21:52.349 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:21:52.351 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:52.351 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:52.351 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 4.4064ms
+2025-08-02 02:21:52.351 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:52.352 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 4.8806ms
+2025-08-02 02:21:52.353 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:52.353 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.353 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:52.353 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:21:52.357 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:21:52.357 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:52.357 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 3.9164ms
+2025-08-02 02:21:52.357 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:52.357 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 4.3716ms
+2025-08-02 02:21:52.363 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:52.363 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.363 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:52.363 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:21:52.364 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:21:52.364 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.364 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.1109ms
+2025-08-02 02:21:52.368 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:21:52.368 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:52.369 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 5.0629ms
+2025-08-02 02:21:52.369 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:52.369 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 5.6309ms
+2025-08-02 02:21:52.371 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:21:52.371 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.371 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:52.371 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:21:52.373 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:21:52.373 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:52.373 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 2.5621ms
+2025-08-02 02:21:52.374 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:52.374 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 3.0409ms
+2025-08-02 02:21:52.380 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:21:52.380 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:52.380 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:52.380 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:21:52.383 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:21:52.383 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:52.383 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 2.7052ms
+2025-08-02 02:21:52.383 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:52.383 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 3.2588ms
+2025-08-02 02:21:58.951 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:58.952 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:58.952 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.7843ms
+2025-08-02 02:21:58.957 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:58.957 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:58.957 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.1658ms
+2025-08-02 02:21:58.973 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:58.973 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:58.973 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:58.973 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:58.980 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:21:58.982 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:58.982 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:58.982 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 9.1102ms
+2025-08-02 02:21:58.982 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:58.983 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 9.9936ms
+2025-08-02 02:21:58.990 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:21:58.990 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:58.990 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:58.990 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:58.992 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:21:58.992 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:58.992 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:58.992 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.1057ms
+2025-08-02 02:21:58.992 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:58.993 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:58.993 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 2.5117ms
+2025-08-02 02:21:58.993 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:58.993 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 3.0519ms
+2025-08-02 02:21:58.998 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:58.998 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:58.998 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:58.998 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:59.001 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:21:59.004 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:59.004 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:59.004 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 5.4469ms
+2025-08-02 02:21:59.004 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:59.004 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 5.9657ms
+2025-08-02 02:21:59.010 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:21:59.010 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:59.010 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:59.010 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:21:59.012 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:59.012 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:59.012 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.1002ms
+2025-08-02 02:21:59.012 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:21:59.012 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:21:59.012 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:21:59.012 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 2.0873ms
+2025-08-02 02:21:59.013 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:21:59.013 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 2.7226ms
+2025-08-02 02:21:59.020 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:59.020 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:59.020 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:59.020 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:21:59.024 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:21:59.024 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:59.024 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 4.1368ms
+2025-08-02 02:21:59.024 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:59.024 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 4.6401ms
+2025-08-02 02:21:59.030 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:21:59.030 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:59.030 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:59.030 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:21:59.031 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:21:59.031 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:59.031 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.1106ms
+2025-08-02 02:21:59.032 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:21:59.032 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:59.033 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 2.6043ms
+2025-08-02 02:21:59.033 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:21:59.033 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 3.115ms
+2025-08-02 02:21:59.037 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:21:59.038 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:59.038 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:59.038 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:21:59.041 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:21:59.041 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:59.042 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 3.5141ms
+2025-08-02 02:21:59.042 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:59.042 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 4.2183ms
+2025-08-02 02:21:59.047 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:21:59.047 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:21:59.047 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:59.047 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:21:59.048 +03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:21:59.048 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:21:59.048 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 1.1337ms
+2025-08-02 02:21:59.048 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:21:59.049 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 1.5747ms
+2025-08-02 02:26:59.912 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - null null
+2025-08-02 02:26:59.924 +03:00 [INF] CORS policy execution failed.
+2025-08-02 02:26:59.929 +03:00 [INF] Request origin http://localhost:5179 does not have permission to access the resource.
+2025-08-02 02:26:59.931 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - 204 null null 18.8104ms
+2025-08-02 02:31:09.043 +03:00 [INF] Starting Financial Tracker API
+2025-08-02 02:31:09.087 +03:00 [INF] User profile is available. Using 'C:\Users\ereno\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-02 02:31:09.152 +03:00 [INF] Now listening on: http://localhost:5270
+2025-08-02 02:31:09.153 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-02 02:31:09.153 +03:00 [INF] Hosting environment: Development
+2025-08-02 02:31:09.153 +03:00 [INF] Content root path: C:\Users\ereno\RiderProjects\Financial Tracker\FinanceTracker.API
+2025-08-02 02:33:31.683 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - null null
+2025-08-02 02:33:31.771 +03:00 [WRN] Failed to determine the https port for redirect.
+2025-08-02 02:33:31.775 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:31.781 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/auth/login - 204 null null 102.4302ms
+2025-08-02 02:33:31.793 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:5270/api/auth/login - application/json 49
+2025-08-02 02:33:31.797 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:31.833 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:33:31.862 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto]] Login(FinanceTracker.Application.Features.Auth.DTOs.LoginUserDto) on controller FinanceTracker.API.Controllers.AuthController (FinanceTracker.API).
+2025-08-02 02:33:31.866 +03:00 [WRN] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-02 02:33:33.135 +03:00 [INF] Executed DbCommand (75ms) [Parameters=[@__normalizedEmail_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHash], [u].[UpdatedAt]
+FROM [Users] AS [u]
+WHERE LOWER([u].[Email]) = @__normalizedEmail_0
+2025-08-02 02:33:33.677 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Auth.DTOs.AuthResponseDto'.
+2025-08-02 02:33:33.690 +03:00 [INF] Executed action FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API) in 1824.4688ms
+2025-08-02 02:33:33.690 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.AuthController.Login (FinanceTracker.API)'
+2025-08-02 02:33:33.696 +03:00 [INF] Request finished HTTP/1.1 POST http://localhost:5270/api/auth/login - 200 null application/json; charset=utf-8 1902.4953ms
+2025-08-02 02:33:33.747 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:33:33.749 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:33.749 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 1.6169ms
+2025-08-02 02:33:33.753 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:33:33.754 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:33.754 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 204 null null 0.4722ms
+2025-08-02 02:33:33.757 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:33:33.761 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:33.799 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:33.808 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:33:33.898 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:33:33.947 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:33:33.950 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:33:33.969 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 160.6763ms
+2025-08-02 02:33:33.969 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:33.969 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 212.4005ms
+2025-08-02 02:33:33.977 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - null null
+2025-08-02 02:33:33.978 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:33.979 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:33:33.979 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:33.979 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/transactions?page=1&pageSize=5 - 204 null null 0.2507ms
+2025-08-02 02:33:33.981 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:33.981 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:33:33.986 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:33:33.986 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:33.988 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:33.988 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:33:34.033 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+2025-08-02 02:33:34.036 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_StartDate_Value_1='?' (DbType = DateTime2), @__request_Filter_EndDate_Value_2='?' (DbType = DateTime2), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0 AND [t].[Date] >= @__request_Filter_StartDate_Value_1 AND [t].[Date] <= @__request_Filter_EndDate_Value_2
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:33:34.037 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:33:34.037 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 55.9695ms
+2025-08-02 02:33:34.037 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:34.037 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?startDate=2025-07-31&endDate=2025-08-30&pageSize=1000 - 200 null application/json; charset=utf-8 59.7669ms
+2025-08-02 02:33:34.040 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:33:34.048 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:33:34.049 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:33:34.049 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 60.9289ms
+2025-08-02 02:33:34.049 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:34.049 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 63.4918ms
+2025-08-02 02:33:34.056 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - null null
+2025-08-02 02:33:34.056 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:34.057 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:34.057 +03:00 [INF] Route matched with {action = "GetTransactions", controller = "Transactions"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto]] GetTransactions(FinanceTracker.Application.Features.Transactions.DTOs.TransactionFilterDto) on controller FinanceTracker.API.Controllers.TransactionsController (FinanceTracker.API).
+2025-08-02 02:33:34.058 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:33:34.058 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:34.058 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/budgets?month=8&year=2025 - 204 null null 0.2503ms
+2025-08-02 02:33:34.059 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[UserId] = @__request_UserId_0
+2025-08-02 02:33:34.061 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[Description], [t0].[Date], [t0].[Type], [t0].[CategoryId], [c].[Name] AS [CategoryName], [c].[Color] AS [CategoryColor], [t0].[CreatedAt], [t0].[UpdatedAt]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[Description], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[UserId] = @__request_UserId_0
+    ORDER BY [t].[Date] DESC, [t].[CreatedAt] DESC
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC, [t0].[CreatedAt] DESC
+2025-08-02 02:33:34.061 +03:00 [INF] Executing OkObjectResult, writing value of type 'FinanceTracker.Application.Features.Transactions.DTOs.PaginatedTransactionsDto'.
+2025-08-02 02:33:34.062 +03:00 [INF] Executed action FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API) in 4.4624ms
+2025-08-02 02:33:34.062 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.TransactionsController.GetTransactions (FinanceTracker.API)'
+2025-08-02 02:33:34.062 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/transactions?page=1&pageSize=5 - 200 null application/json; charset=utf-8 5.5585ms
+2025-08-02 02:33:34.065 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:33:34.065 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:34.065 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:33:34.068 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:33:34.108 +03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:33:34.109 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:33:34.110 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 41.6787ms
+2025-08-02 02:33:34.110 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:33:34.110 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 45.5824ms
+2025-08-02 02:33:34.117 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - null null
+2025-08-02 02:33:34.117 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:34.117 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:33:34.117 +03:00 [INF] Route matched with {action = "GetBudgets", controller = "Budgets"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto]]] GetBudgets(FinanceTracker.Application.Features.Budgets.DTOs.BudgetFilterDto) on controller FinanceTracker.API.Controllers.BudgetsController (FinanceTracker.API).
+2025-08-02 02:33:34.118 +03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5270/api/categories - null null
+2025-08-02 02:33:34.118 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:34.119 +03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5270/api/categories - 204 null null 0.339ms
+2025-08-02 02:33:34.122 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32), @__request_Filter_Month_Value_1='?' (DbType = Int32), @__request_Filter_Year_Value_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Amount], [b].[SpentAmount], [b].[CategoryId], [b].[CreatedAt], [b].[Month], [b].[UpdatedAt], [b].[UserId], [b].[Year], [c].[Id], [c].[Color], [c].[CreatedAt], [c].[Description], [c].[IsDefault], [c].[Name], [c].[UpdatedAt], [c].[UserId]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[UserId] = @__request_UserId_0 AND [b].[Month] = @__request_Filter_Month_Value_1 AND [b].[Year] = @__request_Filter_Year_Value_2
+ORDER BY [b].[Year] DESC, [b].[Month] DESC, [c].[Name]
+2025-08-02 02:33:34.122 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Budgets.DTOs.BudgetDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:33:34.122 +03:00 [INF] Executed action FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API) in 4.7014ms
+2025-08-02 02:33:34.122 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.BudgetsController.GetBudgets (FinanceTracker.API)'
+2025-08-02 02:33:34.122 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/budgets?month=8&year=2025 - 200 null application/json; charset=utf-8 5.7567ms
+2025-08-02 02:33:34.129 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:33:34.129 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:34.130 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:33:34.132 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:33:34.143 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:33:34.144 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:33:34.146 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 13.8886ms
+2025-08-02 02:33:34.146 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:33:34.147 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 17.4654ms
+2025-08-02 02:33:34.155 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5270/api/categories - null null
+2025-08-02 02:33:34.155 +03:00 [INF] CORS policy execution successful.
+2025-08-02 02:33:34.156 +03:00 [INF] Executing endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:33:34.156 +03:00 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto]]] GetCategories() on controller FinanceTracker.API.Controllers.CategoriesController (FinanceTracker.API).
+2025-08-02 02:33:34.159 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name], [c].[Description], [c].[Color], [c].[IsDefault], [c].[CreatedAt], [c].[UpdatedAt]
+FROM [Categories] AS [c]
+WHERE [c].[UserId] = @__request_UserId_0
+ORDER BY [c].[Name]
+2025-08-02 02:33:34.160 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FinanceTracker.Application.Features.Categories.DTOs.CategoryDto, FinanceTracker.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-02 02:33:34.160 +03:00 [INF] Executed action FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API) in 3.9507ms
+2025-08-02 02:33:34.160 +03:00 [INF] Executed endpoint 'FinanceTracker.API.Controllers.CategoriesController.GetCategories (FinanceTracker.API)'
+2025-08-02 02:33:34.160 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5270/api/categories - 200 null application/json; charset=utf-8 4.9416ms
