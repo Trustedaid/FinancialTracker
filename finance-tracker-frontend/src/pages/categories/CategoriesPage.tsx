@@ -7,11 +7,12 @@ import {
   X,
   Check
 } from 'lucide-react';
+import { Button } from '@mui/material';
 import { 
-  Button, 
   Input,
   Badge
 } from '../../components/ui';
+import { getContrastTextColor } from '../../utils';
 import { categoryService } from '../../services';
 import type { CategoryDto, CreateCategoryDto, UpdateCategoryDto } from '../../types/api';
 
@@ -104,7 +105,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
             </h3>
             <button
               onClick={onClose}
-              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-200"
+              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-300 hover:scale-110"
             >
               <X size={20} />
             </button>
@@ -181,20 +182,19 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
             <div className="flex justify-end space-x-3 p-6 border-t border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 rounded-b-lg">
               <Button
                 type="button"
-                variant="outline"
+                variant="outlined"
                 onClick={onClose}
                 disabled={loading}
-                className="border-gray-300 hover:border-gray-400 hover:bg-gray-100 transition-all duration-200"
               >
                 İptal
               </Button>
               <Button
                 type="submit"
-                isLoading={loading}
-                leftIcon={<Check size={16} />}
-                className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 shadow-md hover:shadow-lg transition-all duration-200"
+                variant="contained"
+                disabled={loading}
+                startIcon={loading ? undefined : <Check size={16} />}
               >
-                {category ? 'Güncelle' : 'Ekle'}
+                {loading ? 'Yükleniyor...' : (category ? 'Güncelle' : 'Ekle')}
               </Button>
             </div>
           </form>
@@ -204,7 +204,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
   );
 };
 
-export const CategoriesPage: React.FC = () => {
+const CategoriesPage: React.FC = () => {
   const [categories, setCategories] = useState<CategoryDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [modalLoading, setModalLoading] = useState(false);
@@ -335,9 +335,9 @@ export const CategoriesPage: React.FC = () => {
             </div>
             <div className="mt-4 sm:mt-0">
               <Button 
+                variant="contained"
                 onClick={handleAddNewCategory}
-                leftIcon={<Plus size={20} />}
-                className="quick-action-btn bg-primary-600 hover:bg-primary-700 text-white"
+                startIcon={<Plus size={20} />}
               >
                 Yeni Kategori Ekle
               </Button>
@@ -360,9 +360,10 @@ export const CategoriesPage: React.FC = () => {
                 <FolderOpen size={40} className="empty-state-icon" />
                 <p className="empty-state-text">Henüz kategori bulunmuyor</p>
                 <Button 
+                  variant="contained"
                   onClick={handleAddNewCategory}
-                  leftIcon={<Plus size={16} />}
-                  className="mt-4"
+                  startIcon={<Plus size={16} />}
+                  sx={{ mt: 2 }}
                 >
                   İlk Kategorinizi Oluşturun
                 </Button>
@@ -371,47 +372,50 @@ export const CategoriesPage: React.FC = () => {
           </div>
         ) : (
           <div className="dashboard-cards-grid">
-            {categories.map((category) => (
-              <div key={category.id} className="enhanced-dashboard-card">
-                {/* Category Header with Color */}
-                <div 
-                  className="h-1 w-full"
-                  style={{ backgroundColor: category.color }}
-                />
-                
-                <div className="enhanced-card-header">
-                  <div className="enhanced-card-title">
-                    <div className="flex items-center space-x-3">
-                      <div
-                        className="w-4 h-4 rounded-full"
-                        style={{ backgroundColor: category.color }}
-                      />
-                      <span>{category.name}</span>
+            {categories.map((category) => {
+              const textColor = getContrastTextColor(category.color);
+              
+              return (
+                <div key={category.id} className="enhanced-dashboard-card overflow-hidden">
+                  {/* Category Header with Selected Color Background */}
+                  <div 
+                    className="enhanced-card-header border-b border-gray-100 dark:border-gray-600"
+                    style={{ 
+                      backgroundColor: category.color,
+                      color: textColor
+                    }}
+                  >
+                    <div className="enhanced-card-title">
+                      <div className="flex items-center">
+                        <span>{category.name}</span>
+                      </div>
                     </div>
+                    {category.isDefault && (
+                      <Badge 
+                        variant="default"
+                        className="bg-white/20 text-current border-white/30"
+                      >
+                        Varsayılan
+                      </Badge>
+                    )}
                   </div>
-                  {category.isDefault && (
-                    <Badge variant="default">
-                      Varsayılan
-                    </Badge>
-                  )}
-                </div>
-                
-                <div className="enhanced-card-content">
+                  
+                  <div className="enhanced-card-content bg-white dark:bg-gray-800">
                     {/* Description */}
                     <div className="mb-4">
                       {category.description ? (
-                        <p className="text-gray-600 text-sm leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                           {category.description}
                         </p>
                       ) : (
-                        <p className="text-gray-400 text-sm italic">
+                        <p className="text-gray-400 dark:text-gray-500 text-sm italic">
                           Açıklama eklenmemiş
                         </p>
                       )}
                     </div>
                     
                     {/* Dates */}
-                    <div className="text-xs text-gray-500 mb-4 p-3 bg-gray-50 rounded-lg">
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-medium">Oluşturulma:</span>
                         <span>{formatDate(category.createdAt)}</span>
@@ -425,30 +429,31 @@ export const CategoriesPage: React.FC = () => {
                     </div>
                     
                     {/* Action Buttons */}
-                    <div className="flex justify-end space-x-2 pt-3 border-t border-gray-100">
+                    <div className="flex justify-end space-x-3 pt-3 border-t border-gray-100 dark:border-gray-600">
                       <Button
-                        variant="outline"
-                        size="sm"
+                        variant="outlined"
+                        size="small"
                         onClick={() => handleEditCategory(category)}
-                        leftIcon={<Edit size={14} />}
+                        startIcon={<Edit size={14} />}
                       >
                         Düzenle
                       </Button>
                       {!category.isDefault && (
                         <Button
-                          variant="outline"
-                          size="sm"
+                          variant="outlined"
+                          size="small"
+                          color="error"
                           onClick={() => handleDeleteCategory(category.id, category.name)}
-                          leftIcon={<Trash2 size={14} />}
-                          className="text-danger-600 hover:text-danger-700 hover:border-danger-300 hover:bg-danger-50"
+                          startIcon={<Trash2 size={14} />}
                         >
                           Sil
                         </Button>
                       )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

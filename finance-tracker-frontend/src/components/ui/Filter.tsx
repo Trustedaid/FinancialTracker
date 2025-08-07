@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { clsx } from 'clsx';
 import { Filter as FilterIcon, X, ChevronDown, Calendar, DollarSign } from 'lucide-react';
-import { Button } from './Button';
+import { Button, IconButton } from '@mui/material';
 import { Input } from './Input';
 import { Card, CardContent, CardHeader, CardTitle } from './Card';
 import { Badge } from './Badge';
@@ -63,10 +63,11 @@ const FilterBar: React.FC<FilterBarProps> = ({
               <label className="block text-sm font-bold text-gray-800 mb-3">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
-                    {filter.icon && React.cloneElement(filter.icon as React.ReactElement, { 
-                      size: 16, 
-                      className: "text-white" 
-                    })}
+                    {filter.icon && (
+                      <div className="w-4 h-4 text-white">
+                        {filter.icon}
+                      </div>
+                    )}
                   </div>
                   <span className="bg-gradient-to-r from-gray-800 to-blue-800 bg-clip-text text-transparent">
                     {filter.label}
@@ -156,13 +157,13 @@ const FilterBar: React.FC<FilterBarProps> = ({
               <label className="block text-sm font-bold text-gray-800 mb-3">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
-                    {filter.icon ? 
-                      React.cloneElement(filter.icon as React.ReactElement, { 
-                        size: 16, 
-                        className: "text-white" 
-                      }) : 
-                      <Calendar size={16} className="text-white" />
-                    }
+                    {filter.icon ? (
+                      <div className="w-4 h-4 text-white">
+                        {filter.icon}
+                      </div>
+                    ) : (
+                      <Calendar className="w-4 h-4 text-white" />
+                    )}
                   </div>
                   <span className="bg-gradient-to-r from-gray-800 to-blue-800 bg-clip-text text-transparent">
                     {filter.label}
@@ -267,16 +268,16 @@ const FilterBar: React.FC<FilterBarProps> = ({
               </CardTitle>
               {collapsible && (
                 <Button
-                  variant="ghost"
-                  size="sm"
+                  variant="text"
+                  size="small"
                   onClick={() => setIsExpanded(!isExpanded)}
-                  rightIcon={
+                  endIcon={
                     <ChevronDown 
                       size={16} 
                       className={clsx('transition-transform duration-300', isExpanded && 'rotate-180')} 
                     />
                   }
-                  className="hover:bg-blue-50/50 hover:text-blue-700 transition-all duration-200 rounded-xl"
+                  sx={{ textTransform: 'none' }}
                 >
                   {isExpanded ? 'Gizle' : 'Göster'}
                 </Button>
@@ -306,23 +307,35 @@ const FilterBar: React.FC<FilterBarProps> = ({
                               >
                                 <span className="font-medium">{filter?.label}:</span>
                                 <span className="text-blue-700">{Array.isArray(value) ? value.join(', ') : String(value)}</span>
-                                <button
+                                <IconButton
                                   onClick={() => onChange(key, undefined)}
-                                  className="absolute right-2 top-1/2 transform -translate-y-1/2 hover:text-red-600 hover:bg-red-50 rounded-full p-1 transition-all duration-200"
+                                  size="small"
+                                  sx={{
+                                    position: 'absolute',
+                                    right: 4,
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    color: 'text.secondary',
+                                    '&:hover': {
+                                      color: 'error.main',
+                                      backgroundColor: 'error.light'
+                                    }
+                                  }}
                                 >
                                   <X size={12} />
-                                </button>
+                                </IconButton>
                               </Badge>
                             </div>
                           );
                         })}
                     </div>
                     <Button
-                      variant="outline"
-                      size="sm"
+                      variant="outlined"
+                      size="small"
+                      color="warning"
                       onClick={onClear}
-                      leftIcon={<X size={14} />}
-                      className="bg-gradient-to-r from-red-50 to-orange-50 border-red-200 text-red-700 hover:bg-gradient-to-r hover:from-red-100 hover:to-orange-100 hover:border-red-300 transition-all duration-200 rounded-xl shadow-sm hover:shadow-md"
+                      startIcon={<X size={14} />}
+                      sx={{ textTransform: 'none' }}
                     >
                       Tümünü Temizle
                     </Button>
@@ -350,15 +363,16 @@ const FilterBar: React.FC<FilterBarProps> = ({
         </h3>
         {collapsible && (
           <Button
-            variant="ghost"
-            size="sm"
+            variant="text"
+            size="small"
             onClick={() => setIsExpanded(!isExpanded)}
-            rightIcon={
+            endIcon={
               <ChevronDown 
                 size={16} 
                 className={clsx('transition-transform duration-200', isExpanded && 'rotate-180')} 
               />
             }
+            sx={{ textTransform: 'none' }}
           >
             {isExpanded ? 'Hide' : 'Show'}
           </Button>
@@ -374,10 +388,12 @@ const FilterBar: React.FC<FilterBarProps> = ({
           {activeFiltersCount > 0 && (
             <div className="flex justify-end">
               <Button
-                variant="outline"
-                size="sm"
+                variant="outlined"
+                size="small"
+                color="warning"
                 onClick={onClear}
-                leftIcon={<X size={14} />}
+                startIcon={<X size={14} />}
+                sx={{ textTransform: 'none' }}
               >
                 Clear All Filters
               </Button>

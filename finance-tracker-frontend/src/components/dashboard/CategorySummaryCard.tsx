@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FolderOpen, Plus } from 'lucide-react';
+import { Button } from '@mui/material';
 import { Card, CardContent, CardHeader, CardTitle, Badge } from '../ui';
+import { getContrastTextColor } from '../../utils';
 import type { CategoryDto } from '../../types/api';
 
 interface CategorySummaryCardProps {
@@ -41,7 +43,7 @@ export const CategorySummaryCard: React.FC<CategorySummaryCardProps> = ({
   }
 
   return (
-    <Card className="dashboard-card h-80 overflow-hidden">
+    <Card className="dashboard-card h-80 overflow-hidden w-full">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
@@ -49,9 +51,9 @@ export const CategorySummaryCard: React.FC<CategorySummaryCardProps> = ({
             Kategoriler
           </CardTitle>
           <Link to="/categories">
-            <button className="text-primary-600 text-sm font-semibold hover:text-primary-700 transition-colors">
+            <Button variant="text" size="small" sx={{ textTransform: 'none' }}>
               Tümünü Gör
-            </button>
+            </Button>
           </Link>
         </div>
       </CardHeader>
@@ -61,48 +63,69 @@ export const CategorySummaryCard: React.FC<CategorySummaryCardProps> = ({
           <div className="text-center py-8">
             <FolderOpen size={40} className="mx-auto text-gray-400 mb-3" />
             <p className="text-gray-500 text-sm mb-4">Henüz kategori bulunmuyor</p>
-            <button
+            <Button
               onClick={onAddCategory}
-              className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-primary-600 hover:text-primary-700 hover:bg-primary-50 rounded-md transition-colors"
+              variant="text"
+              size="small"
+              startIcon={<Plus size={16} />}
+              sx={{ textTransform: 'none' }}
             >
-              <Plus size={16} />
               İlk Kategoriyi Oluştur
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="space-y-3 max-h-48 overflow-y-auto">
-            {categories.slice(0, 6).map((category) => (
-              <div key={category.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-4 h-4 rounded-full shadow-sm"
-                    style={{ backgroundColor: category.color }}
-                  />
-                  <div>
-                    <span className="text-sm font-medium text-gray-900">
-                      {category.name}
-                    </span>
+            {categories.slice(0, 6).map((category) => {
+              const textColor = getContrastTextColor(category.color);
+              
+              return (
+                <div key={category.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-200 dark:border-gray-700">
+                  {/* Category Header with Selected Color Background */}
+                  <div 
+                    className="p-3 border-b border-gray-100 dark:border-gray-600"
+                    style={{ 
+                      backgroundColor: category.color,
+                      color: textColor
+                    }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div>
+                          <span className="text-sm font-medium">
+                            {category.name}
+                          </span>
+                        </div>
+                      </div>
+                      {category.isDefault && (
+                        <Badge 
+                          variant="default" 
+                          size="sm"
+                          className="bg-white/20 text-current border-white/30"
+                        >
+                          Varsayılan
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* Card Content */}
+                  <div className="p-3 bg-white dark:bg-gray-800">
                     {category.description && (
-                      <p className="text-xs text-gray-500 truncate max-w-32">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
                         {category.description}
                       </p>
                     )}
                   </div>
                 </div>
-                {category.isDefault && (
-                  <Badge variant="default" size="sm">
-                    Varsayılan
-                  </Badge>
-                )}
-              </div>
-            ))}
+              );
+            })}
             
             {categories.length > 6 && (
               <div className="text-center pt-3 border-t border-gray-200">
                 <Link to="/categories">
-                  <button className="text-primary-600 text-sm font-medium hover:text-primary-700 transition-colors">
+                  <Button variant="text" size="small" sx={{ textTransform: 'none' }}>
                     +{categories.length - 6} kategori daha
-                  </button>
+                  </Button>
                 </Link>
               </div>
             )}

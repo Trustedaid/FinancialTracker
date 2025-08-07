@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Plus, AlertTriangle } from 'lucide-react';
+import { Button } from '@mui/material';
 import { Card, CardContent, CardHeader, CardTitle, Progress, Badge } from '../ui';
 import { CurrencyDisplay } from '../ui/CurrencyDisplay';
 import type { BudgetDto } from '../../types/api';
@@ -43,7 +44,7 @@ export const BudgetOverviewCard: React.FC<BudgetOverviewCardProps> = ({
     );
   }
 
-  const activeBudgets = budgets.filter(budget => budget.percentageUsed > 0);
+  // const activeBudgets = budgets.filter(budget => budget.percentageUsed > 0);
   const overBudgetCount = budgets.filter(budget => budget.percentageUsed >= 100).length;
   const nearLimitCount = budgets.filter(budget => budget.percentageUsed >= 80 && budget.percentageUsed < 100).length;
 
@@ -56,9 +57,9 @@ export const BudgetOverviewCard: React.FC<BudgetOverviewCardProps> = ({
             Bütçe Durumu
           </CardTitle>
           <Link to="/budgets">
-            <button className="text-primary-600 text-sm font-semibold hover:text-primary-700 transition-colors">
+            <Button variant="text" size="small" sx={{ textTransform: 'none' }}>
               Tümünü Gör
-            </button>
+            </Button>
           </Link>
         </div>
       </CardHeader>
@@ -68,13 +69,15 @@ export const BudgetOverviewCard: React.FC<BudgetOverviewCardProps> = ({
           <div className="text-center py-8">
             <Target size={40} className="mx-auto text-gray-400 mb-3" />
             <p className="text-gray-500 text-sm mb-4">Bu ay için bütçe bulunmuyor</p>
-            <button
+            <Button
               onClick={onAddBudget}
-              className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-primary-600 hover:text-primary-700 hover:bg-primary-50 rounded-md transition-colors"
+              variant="text"
+              size="small"
+              startIcon={<Plus size={16} />}
+              sx={{ textTransform: 'none' }}
             >
-              <Plus size={16} />
               İlk Bütçeyi Oluştur
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="space-y-4">
@@ -134,10 +137,10 @@ export const BudgetOverviewCard: React.FC<BudgetOverviewCardProps> = ({
                   
                   <div className="flex justify-between items-center mt-1">
                     <span className="text-xs text-gray-500">
-                      <CurrencyDisplay amount={budget.spentAmount} fromCurrency={'TRY' as const} size="xs" />
+                      <CurrencyDisplay amount={budget.spentAmount} fromCurrency={'TRY' as const} size="sm" />
                     </span>
                     <span className="text-xs text-gray-500">
-                      <CurrencyDisplay amount={budget.amount} fromCurrency={'TRY' as const} size="xs" />
+                      <CurrencyDisplay amount={budget.amount} fromCurrency={'TRY' as const} size="sm" />
                     </span>
                   </div>
                 </div>
@@ -147,9 +150,9 @@ export const BudgetOverviewCard: React.FC<BudgetOverviewCardProps> = ({
             {budgets.length > 4 && (
               <div className="text-center pt-2 border-t border-gray-200">
                 <Link to="/budgets">
-                  <button className="text-primary-600 text-sm font-medium hover:text-primary-700 transition-colors">
+                  <Button variant="text" size="small" sx={{ textTransform: 'none' }}>
                     +{budgets.length - 4} bütçe daha
-                  </button>
+                  </Button>
                 </Link>
               </div>
             )}

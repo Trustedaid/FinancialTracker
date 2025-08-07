@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check, TrendingUp, TrendingDown } from 'lucide-react';
-import { Button, Input } from '../ui';
+import { Button, IconButton, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Input } from '../ui';
 import type { TransactionDto, CreateTransactionDto, UpdateTransactionDto, CategoryDto, TransactionType } from '../../types/api';
 
 interface TransactionModalProps {
@@ -130,12 +131,12 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             <h3 className="text-lg font-semibold text-gray-900">
               {transaction ? 'İşlem Düzenle' : 'Yeni İşlem Ekle'}
             </h3>
-            <button
+            <IconButton
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-500 p-1"
+              sx={{ color: 'text.secondary' }}
             >
               <X size={20} />
-            </button>
+            </IconButton>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -145,36 +146,50 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   İşlem Türü *
                 </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => handleTypeChange(1)}
-                    className={`
-                      flex items-center justify-center p-3 rounded-md border transition-colors
-                      ${formData.type === 1
-                        ? 'border-success-300 bg-success-50 text-success-700'
-                        : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600'
+                <ToggleButtonGroup
+                  value={formData.type}
+                  exclusive
+                  onChange={(_, value) => value && handleTypeChange(value)}
+                  fullWidth
+                  sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}
+                >
+                  <ToggleButton 
+                    value={1}
+                    sx={{ 
+                      textTransform: 'none',
+                      borderRadius: '8px',
+                      '&.Mui-selected': {
+                        backgroundColor: 'success.50',
+                        color: 'success.700',
+                        borderColor: 'success.300',
+                        '&:hover': {
+                          backgroundColor: 'success.100'
+                        }
                       }
-                    `}
+                    }}
                   >
-                    <TrendingUp size={16} className="mr-2" />
+                    <TrendingUp size={16} style={{ marginRight: 8 }} />
                     Gelir
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleTypeChange(2)}
-                    className={`
-                      flex items-center justify-center p-3 rounded-md border transition-colors
-                      ${formData.type === 2
-                        ? 'border-danger-300 bg-danger-50 text-danger-700'
-                        : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600'
+                  </ToggleButton>
+                  <ToggleButton 
+                    value={2}
+                    sx={{ 
+                      textTransform: 'none',
+                      borderRadius: '8px',
+                      '&.Mui-selected': {
+                        backgroundColor: 'error.50',
+                        color: 'error.700',
+                        borderColor: 'error.300',
+                        '&:hover': {
+                          backgroundColor: 'error.100'
+                        }
                       }
-                    `}
+                    }}
                   >
-                    <TrendingDown size={16} className="mr-2" />
+                    <TrendingDown size={16} style={{ marginRight: 8 }} />
                     Gider
-                  </button>
-                </div>
+                  </ToggleButton>
+                </ToggleButtonGroup>
               </div>
 
               {/* Amount */}
@@ -290,18 +305,21 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             <div className="flex justify-end space-x-3 p-6 border-t bg-gray-50 rounded-b-lg">
               <Button
                 type="button"
-                variant="outline"
+                variant="outlined"
                 onClick={onClose}
                 disabled={loading}
+                sx={{ textTransform: 'none' }}
               >
                 İptal
               </Button>
               <Button
                 type="submit"
-                isLoading={loading}
-                leftIcon={<Check size={16} />}
+                variant="contained"
+                disabled={loading}
+                startIcon={loading ? undefined : <Check size={16} />}
+                sx={{ textTransform: 'none' }}
               >
-                {transaction ? 'Güncelle' : 'Ekle'}
+                {loading ? 'Yükleniyor...' : (transaction ? 'Güncelle' : 'Ekle')}
               </Button>
             </div>
           </form>

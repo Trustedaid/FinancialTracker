@@ -1,6 +1,7 @@
 using FinanceTracker.Application.Features.Budgets.Commands;
 using FinanceTracker.Application.Features.Budgets.DTOs;
 using FinanceTracker.Application.Features.Budgets.Queries;
+using FinanceTracker.Application.Features.Transactions.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -151,6 +152,30 @@ public class BudgetsController : ControllerBase
         catch (UnauthorizedAccessException ex)
         {
             return Unauthorized(new { message = ex.Message });
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
+        }
+    }
+
+    [HttpGet("progress")]
+    public async Task<ActionResult<List<BudgetProgressDto>>> GetBudgetProgress([FromQuery] int year, [FromQuery] int month)
+    {
+        try
+        {
+            var userId = GetCurrentUserId();
+            var query = new GetBudgetProgressQuery(year, month, userId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Unauthorized(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
         }
         catch (Exception)
         {

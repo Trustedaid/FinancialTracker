@@ -1,0 +1,75 @@
+﻿/* Dashboard spacing styles - Kartlar arasında eşit mesafeler */
+.dashboard-container .dashboard-welcome,
+.dashboard-container .grid-cols-1.md\:grid-cols-3.gap-8,
+.dashboard-container .enhanced-dashboard-card,
+.dashboard-container .dashboard-side-by-side-grid {
+  margin-bottom: 3rem !important; /* Tüm kartlar için eşit mesafe */
+}
+
+/* Son kart için alt boşluğu kaldırma */
+.dashboard-container .last-item {
+  margin-bottom: 0 !important;
+}
+
+/* Görsel ayırıcı */
+.card-divider {
+  height: 1px;
+  width: 100%;
+  background-color: #e5e7eb;
+  margin: 3rem 0;
+}
+
+/* Dark mode için ayırıcı çizgi */
+:root.dark .dashboard-spacer::after {
+  background-color: #4b5563;
+}
+
+/* Charts Section Styles */
+.charts-section {
+  margin-top: 2rem;
+}
+
+.charts-section .enhanced-dashboard-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.dark .charts-section .enhanced-dashboard-card {
+  background: #1F2937;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chart container responsive design */
+.charts-section .grid {
+  width: 100%;
+}
+
+/* Ensure proper spacing between chart rows */
+.charts-section > div:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+/* Chart card hover effects */
+.charts-section .enhanced-dashboard-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+:root.dark .charts-section .enhanced-dashboard-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile responsiveness for charts */
+@media (max-width: 768px) {
+  .charts-section .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .charts-section .enhanced-dashboard-card {
+    padding: 1rem;
+  }
+}

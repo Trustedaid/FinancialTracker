@@ -1,2 +1,2 @@
 // Export all transaction pages from a single entry point
-export * from './TransactionsPage';
+export { default as TransactionsPage } from './TransactionsPage';

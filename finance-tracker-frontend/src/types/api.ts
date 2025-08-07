@@ -145,3 +145,42 @@ export interface BudgetFilterDto {
   month?: number;
   year?: number;
 }
+
+// Chart Data Types
+export interface MonthlyTrendDto {
+  month: number;
+  year: number;
+  income: number;
+  expense: number;
+  balance: number;
+}
+
+export interface CategorySpendingDto {
+  categoryId: number;
+  categoryName: string;
+  categoryColor: string;
+  totalAmount: number;
+  transactionCount: number;
+  percentage: number;
+}
+
+export interface BudgetProgressDto {
+  budgetId: number;
+  categoryId: number;
+  categoryName: string;
+  categoryColor: string;
+  budgetAmount: number;
+  spentAmount: number;
+  remainingAmount: number;
+  progressPercentage: number;
+  isOverBudget: boolean;
+  month: number;
+  year: number;
+}
+
+export interface ChartDataRequestDto {
+  monthsBack?: number;
+  startDate?: string;
+  endDate?: string;
+  categoryId?: number;
+}

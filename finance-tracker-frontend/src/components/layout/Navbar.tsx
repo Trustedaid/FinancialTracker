@@ -14,6 +14,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth, useLanguage } from '../../contexts';
 import { UserMenu } from './UserMenu';
+import { Button, IconButton } from '@mui/material';
 import { 
   TrendingUp, 
   Menu, 
@@ -111,14 +112,19 @@ export const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 if (item.href.startsWith('#')) {
                   const sectionId = item.href.substring(1);
                   return (
-                    <button
+                    <Button
                       key={item.nameKey}
                       onClick={() => handleScrollToSection(sectionId)}
                       className={`navbar-link ${isActive ? 'active' : ''}`}
+                      variant="text"
+                      startIcon={<Icon size={18} />}
+                      sx={{
+                        textTransform: 'none',
+                        color: isActive ? 'primary.main' : 'text.primary'
+                      }}
                     >
-                      <Icon size={18} className="navbar-link-icon" />
                       {name}
-                    </button>
+                    </Button>
                   );
                 }
 
@@ -152,13 +158,14 @@ export const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
+            <IconButton 
               className="navbar-mobile-toggle"
               onClick={handleMobileMenuToggle}
               aria-label={t('navbar.toggle_menu')}
+              sx={{ color: 'text.primary' }}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </IconButton>
           </div>
         </div>
 
@@ -176,14 +183,21 @@ export const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   if (item.href.startsWith('#')) {
                     const sectionId = item.href.substring(1);
                     return (
-                      <button
+                      <Button
                         key={item.nameKey}
                         onClick={() => handleScrollToSection(sectionId)}
                         className={`navbar-mobile-link ${isActive ? 'active' : ''}`}
+                        variant="text"
+                        fullWidth
+                        startIcon={<Icon size={20} />}
+                        sx={{
+                          textTransform: 'none',
+                          justifyContent: 'flex-start',
+                          color: isActive ? 'primary.main' : 'text.primary'
+                        }}
                       >
-                        <Icon size={20} className="navbar-mobile-link-icon" />
                         {name}
-                      </button>
+                      </Button>
                     );
                   }
 
@@ -209,13 +223,20 @@ export const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                       <User size={20} />
                       <span>{user?.firstName} {user?.lastName}</span>
                     </div>
-                    <button 
+                    <Button 
                       onClick={handleLogout}
                       className="navbar-mobile-action-btn logout"
+                      variant="text"
+                      fullWidth
+                      startIcon={<LogOut size={20} />}
+                      sx={{
+                        textTransform: 'none',
+                        justifyContent: 'flex-start',
+                        color: 'error.main'
+                      }}
                     >
-                      <LogOut size={20} />
                       {t('nav.logout')}
-                    </button>
+                    </Button>
                   </>
                 ) : (
                   <>

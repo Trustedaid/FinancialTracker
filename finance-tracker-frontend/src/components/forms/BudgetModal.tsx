@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check, Target, Calendar } from 'lucide-react';
-import { Button, Input } from '../ui';
+import { Button, IconButton } from '@mui/material';
+import { Input } from '../ui';
 import type { BudgetDto, CreateBudgetDto, UpdateBudgetDto, CategoryDto } from '../../types/api';
 
 interface BudgetModalProps {
@@ -146,12 +147,12 @@ export const BudgetModal: React.FC<BudgetModalProps> = ({
             <h3 className="text-lg font-semibold text-gray-900">
               {budget ? 'Bütçe Düzenle' : 'Yeni Bütçe Oluştur'}
             </h3>
-            <button
+            <IconButton
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-500 p-1"
+              sx={{ color: 'text.secondary' }}
             >
               <X size={20} />
-            </button>
+            </IconButton>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -287,18 +288,21 @@ export const BudgetModal: React.FC<BudgetModalProps> = ({
             <div className="flex justify-end space-x-3 p-6 border-t bg-gray-50 rounded-b-lg">
               <Button
                 type="button"
-                variant="outline"
+                variant="outlined"
                 onClick={onClose}
                 disabled={loading}
+                sx={{ textTransform: 'none' }}
               >
                 İptal
               </Button>
               <Button
                 type="submit"
-                isLoading={loading}
-                leftIcon={<Check size={16} />}
+                variant="contained"
+                disabled={loading}
+                startIcon={loading ? undefined : <Check size={16} />}
+                sx={{ textTransform: 'none' }}
               >
-                {budget ? 'Güncelle' : 'Oluştur'}
+                {loading ? 'Yükleniyor...' : (budget ? 'Güncelle' : 'Oluştur')}
               </Button>
             </div>
           </form>

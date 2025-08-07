@@ -8,18 +8,15 @@ import {
   Check,
   AlertTriangle
 } from 'lucide-react';
+import { Button, IconButton } from '@mui/material';
 import { 
-  Button, 
   Card, 
   CardContent, 
   CardHeader, 
   CardTitle, 
   Input,
   Progress,
-  CircularProgress,
-  Badge,
-  Skeleton,
-  SkeletonCard
+  Badge
 } from '../../components/ui';
 import { budgetService, categoryService } from '../../services';
 import type { BudgetDto, CreateBudgetDto, UpdateBudgetDto, CategoryDto } from '../../types';
@@ -129,12 +126,17 @@ const BudgetModal: React.FC<BudgetModalProps> = ({
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
               {budget ? 'Bütçe Düzenle' : 'Yeni Bütçe Oluştur'}
             </h3>
-            <button
+            <IconButton
               onClick={onClose}
-              className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-200"
+              sx={{ 
+                color: 'text.secondary',
+                '&:hover': {
+                  backgroundColor: 'action.hover'
+                }
+              }}
             >
               <X size={20} />
-            </button>
+            </IconButton>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -228,20 +230,21 @@ const BudgetModal: React.FC<BudgetModalProps> = ({
             <div className="flex justify-end space-x-3 p-6 border-t border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 rounded-b-lg">
               <Button
                 type="button"
-                variant="outline"
+                variant="outlined"
                 onClick={onClose}
                 disabled={loading}
-                className="border-gray-300 hover:border-gray-400 hover:bg-gray-100 transition-all duration-200"
+                sx={{ textTransform: 'none' }}
               >
                 İptal
               </Button>
               <Button
                 type="submit"
-                isLoading={loading}
-                leftIcon={<Check size={16} />}
-                className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 shadow-md hover:shadow-lg transition-all duration-200"
+                variant="contained"
+                disabled={loading}
+                startIcon={loading ? undefined : <Check size={16} />}
+                sx={{ textTransform: 'none' }}
               >
-                {budget ? 'Güncelle' : 'Oluştur'}
+                {loading ? 'Yükleniyor...' : (budget ? 'Güncelle' : 'Oluştur')}
               </Button>
             </div>
           </form>
@@ -251,7 +254,7 @@ const BudgetModal: React.FC<BudgetModalProps> = ({
   );
 };
 
-export const BudgetsPage: React.FC = () => {
+const BudgetsPage: React.FC = () => {
   const [budgets, setBudgets] = useState<BudgetDto[]>([]);
   const [categories, setCategories] = useState<CategoryDto[]>([]);
   const [loading, setLoading] = useState(true);
@@ -406,9 +409,15 @@ export const BudgetsPage: React.FC = () => {
             </div>
             <div className="mt-4 sm:mt-0">
               <Button 
+                variant="contained"
                 onClick={handleAddNewBudget}
-                leftIcon={<Plus size={20} />}
-                className="quick-action-btn bg-primary-600 hover:bg-primary-700 text-white"
+                startIcon={<Plus size={20} />}
+                sx={{ 
+                  textTransform: 'none',
+                  borderRadius: '12px',
+                  px: 3,
+                  py: 1.5
+                }}
               >
                 Yeni Bütçe Ekle
               </Button>
@@ -483,9 +492,14 @@ export const BudgetsPage: React.FC = () => {
                   <strong>{monthNames[selectedMonth - 1]} {selectedYear}</strong> dönemi için ilk bütçenizi oluşturun.
                 </p>
                 <Button 
+                  variant="contained"
                   onClick={handleAddNewBudget}
-                  leftIcon={<Plus size={16} />}
-                  className="mt-4"
+                  startIcon={<Plus size={16} />}
+                  sx={{ 
+                    mt: 2,
+                    textTransform: 'none',
+                    borderRadius: '12px'
+                  }}
                 >
                   İlk Bütçenizi Oluşturun
                 </Button>
@@ -545,21 +559,9 @@ export const BudgetsPage: React.FC = () => {
                         animated
                         striped
                         label="Harcama Durumu"
-                        formatValue={() => (
-                          <div className="flex items-center justify-between text-xs">
-                            <CurrencyDisplay 
-                              amount={budget.spentAmount} 
-                              fromCurrency={'TRY' as const} 
-                              size="xs"
-                            />
-                            <span>/</span>
-                            <CurrencyDisplay 
-                              amount={budget.amount} 
-                              fromCurrency={'TRY' as const} 
-                              size="xs"
-                            />
-                          </div>
-                        )}
+                        formatValue={() => 
+                          `${budget.spentAmount.toFixed(0)} / ${budget.amount.toFixed(0)} TL`
+                        }
                         size="lg"
                         className="mb-2"
                       />
@@ -606,7 +608,7 @@ export const BudgetsPage: React.FC = () => {
                             <CurrencyDisplay 
                               amount={budget.spentAmount - budget.amount} 
                               fromCurrency={'TRY' as const} 
-                              size="xs"
+                              size="sm"
                             /> fazla harcama yapıldı
                           </p>
                         </div>
@@ -623,7 +625,7 @@ export const BudgetsPage: React.FC = () => {
                             Kalan: <CurrencyDisplay 
                               amount={budget.remainingAmount} 
                               fromCurrency={'TRY' as const} 
-                              size="xs"
+                              size="sm"
                             />
                           </p>
                         </div>
@@ -633,19 +635,21 @@ export const BudgetsPage: React.FC = () => {
                     {/* Action Buttons */}
                     <div className="flex justify-end space-x-2 pt-3 border-t border-gray-100">
                       <Button
-                        variant="outline"
-                        size="sm"
+                        variant="outlined"
+                        size="small"
                         onClick={() => handleEditBudget(budget)}
-                        leftIcon={<Edit size={14} />}
+                        startIcon={<Edit size={14} />}
+                        sx={{ textTransform: 'none' }}
                       >
                         Düzenle
                       </Button>
                       <Button
-                        variant="outline"
-                        size="sm"
+                        variant="outlined"
+                        size="small"
+                        color="error"
                         onClick={() => handleDeleteBudget(budget.id, budget.categoryName)}
-                        leftIcon={<Trash2 size={14} />}
-                        className="text-danger-600 hover:text-danger-700 hover:border-danger-300 hover:bg-danger-50"
+                        startIcon={<Trash2 size={14} />}
+                        sx={{ textTransform: 'none' }}
                       >
                         Sil
                       </Button>

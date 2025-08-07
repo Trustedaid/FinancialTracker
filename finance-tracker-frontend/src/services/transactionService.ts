@@ -5,7 +5,9 @@ import type {
   CreateTransactionDto, 
   UpdateTransactionDto, 
   TransactionFilterDto,
-  PaginatedTransactionsDto
+  PaginatedTransactionsDto,
+  MonthlyTrendDto,
+  CategorySpendingDto
 } from '../types/api';
 import type { ApiResponse } from '../types/api';
 
@@ -52,29 +54,23 @@ export const transactionService = {
     totalExpense: number;
     balance: number;
   }>> => {
-    const startDate = new Date(year, month - 1, 1).toISOString().split('T')[0];
-    const endDate = new Date(year, month, 0).toISOString().split('T')[0];
-    
-    return apiCall(async () => {
-      const response = await api.get<PaginatedTransactionsDto>(`/transactions?startDate=${startDate}&endDate=${endDate}&pageSize=1000`);
-      
-      const totalIncome = response.data.transactions
-        .filter(t => t.type === 1) // Income
-        .reduce((sum, t) => sum + t.amount, 0);
-        
-      const totalExpense = response.data.transactions
-        .filter(t => t.type === 2) // Expense
-        .reduce((sum, t) => sum + t.amount, 0);
-        
-      return {
-        ...response,
-        data: {
-          totalIncome,
-          totalExpense,
-          balance: totalIncome - totalExpense
-        }
-      };
-    });
+    return apiCall(() => api.get<{
+      totalIncome: number;
+      totalExpense: number;
+      balance: number;
+      month: number;
+      year: number;
+    }>(`/transactions/monthly-summary?year=${year}&month=${month}`));
+  },
+
+  // Get monthly trends for charts
+  getMonthlyTrends: async (monthsBack: number = 6): Promise<ApiResponse<MonthlyTrendDto[]>> => {
+    return apiCall(() => api.get<MonthlyTrendDto[]>(`/transactions/monthly-trends?monthsBack=${monthsBack}`));
+  },
+
+  // Get category spending for charts
+  getCategorySpending: async (year: number, month: number): Promise<ApiResponse<CategorySpendingDto[]>> => {
+    return apiCall(() => api.get<CategorySpendingDto[]>(`/transactions/category-spending?year=${year}&month=${month}`));
   }
 };
 

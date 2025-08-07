@@ -1,3 +1,3 @@
 // Export all auth pages from a single entry point
-export * from './LoginPage';
-export * from './RegisterPage';
+export { default as LoginPage } from './LoginPage';
+export { default as RegisterPage } from './RegisterPage';

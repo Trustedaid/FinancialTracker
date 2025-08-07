@@ -1,2 +1,2 @@
 // Export all category pages from a single entry point
-export * from './CategoriesPage';
+export { default as CategoriesPage } from './CategoriesPage';

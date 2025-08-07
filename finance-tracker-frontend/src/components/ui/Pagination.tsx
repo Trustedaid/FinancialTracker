@@ -1,7 +1,7 @@
 import React from 'react';
 import { clsx } from 'clsx';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
-import { Button } from './Button';
+import { Button, IconButton } from '@mui/material';
 
 export interface PaginationProps {
   currentPage: number;
@@ -105,12 +105,20 @@ const Pagination: React.FC<PaginationProps> = ({
         <div className="flex items-center gap-1">
           {/* Previous Button */}
           <Button
-            variant="outline"
-            size="sm"
+            variant="outlined"
+            size="small"
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            leftIcon={<ChevronLeft size={16} />}
-            className="border-gray-200 hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700"
+            startIcon={<ChevronLeft size={16} />}
+            sx={{ 
+              textTransform: 'none',
+              borderColor: 'grey.200',
+              '&:hover': {
+                borderColor: 'primary.300',
+                backgroundColor: 'primary.50',
+                color: 'primary.700'
+              }
+            }}
           >
             <span className="hidden sm:inline">Previous</span>
           </Button>
@@ -130,18 +138,27 @@ const Pagination: React.FC<PaginationProps> = ({
               const isActive = page === currentPage;
 
               return (
-                <button
+                <IconButton
                   key={page}
                   onClick={() => onPageChange(page)}
-                  className={clsx(
-                    'w-10 h-10 flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200',
-                    isActive
-                      ? 'bg-primary-600 text-white shadow-md'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                  )}
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '8px',
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    backgroundColor: isActive ? 'primary.600' : 'transparent',
+                    color: isActive ? 'white' : 'text.primary',
+                    boxShadow: isActive ? 2 : 0,
+                    '&:hover': {
+                      backgroundColor: isActive ? 'primary.700' : 'grey.100',
+                      color: isActive ? 'white' : 'text.primary'
+                    },
+                    transition: 'all 0.2s'
+                  }}
                 >
                   {page}
-                </button>
+                </IconButton>
               );
             })}
           </div>
@@ -153,12 +170,20 @@ const Pagination: React.FC<PaginationProps> = ({
 
           {/* Next Button */}
           <Button
-            variant="outline"
-            size="sm"
+            variant="outlined"
+            size="small"
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            rightIcon={<ChevronRight size={16} />}
-            className="border-gray-200 hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700"
+            endIcon={<ChevronRight size={16} />}
+            sx={{ 
+              textTransform: 'none',
+              borderColor: 'grey.200',
+              '&:hover': {
+                borderColor: 'primary.300',
+                backgroundColor: 'primary.50',
+                color: 'primary.700'
+              }
+            }}
           >
             <span className="hidden sm:inline">Next</span>
           </Button>

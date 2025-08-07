@@ -1,2 +1,2 @@
 // Export all budget pages from a single entry point
-export * from './BudgetsPage';
+export { default as BudgetsPage } from './BudgetsPage';

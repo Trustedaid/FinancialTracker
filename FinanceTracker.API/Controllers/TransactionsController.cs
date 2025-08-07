@@ -157,4 +157,72 @@ public class TransactionsController : ControllerBase
             return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
         }
     }
+
+    [HttpGet("monthly-summary")]
+    public async Task<ActionResult<MonthlySummaryDto>> GetMonthlySummary([FromQuery] int year, [FromQuery] int month)
+    {
+        try
+        {
+            var userId = GetCurrentUserId();
+            var query = new GetMonthlySummaryQuery(year, month, userId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Unauthorized(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
+        }
+    }
+
+    [HttpGet("monthly-trends")]
+    public async Task<ActionResult<List<MonthlyTrendDto>>> GetMonthlyTrends([FromQuery] int monthsBack = 6)
+    {
+        try
+        {
+            var userId = GetCurrentUserId();
+            var query = new GetMonthlyTrendsQuery(monthsBack, userId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Unauthorized(new { message = ex.Message });
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
+        }
+    }
+
+    [HttpGet("category-spending")]
+    public async Task<ActionResult<List<CategorySpendingDto>>> GetCategorySpending([FromQuery] int year, [FromQuery] int month)
+    {
+        try
+        {
+            var userId = GetCurrentUserId();
+            var query = new GetCategorySpendingQuery(year, month, userId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return Unauthorized(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
+        }
+    }
 }

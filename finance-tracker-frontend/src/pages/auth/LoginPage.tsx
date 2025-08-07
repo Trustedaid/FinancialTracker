@@ -33,7 +33,7 @@ import { useAuth, useLanguage } from '../../contexts';
 import { TrendingUp, Shield, BarChart3 } from 'lucide-react';
 import type { LoginRequest } from '../../types/auth';
 
-export const LoginPage: React.FC = () => {
+const LoginPage: React.FC = () => {
   const { login, isLoading } = useAuth();
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -102,3 +102,5 @@ export const LoginPage: React.FC = () => {
     </div>
   );
 };
+
+export default LoginPage;

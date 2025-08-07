@@ -4,7 +4,8 @@ import type {
   BudgetDto, 
   CreateBudgetDto, 
   UpdateBudgetDto, 
-  BudgetFilterDto
+  BudgetFilterDto,
+  BudgetProgressDto
 } from '../types/api';
 import type { ApiResponse } from '../types/api';
 
@@ -48,6 +49,11 @@ export const budgetService = {
     const currentYear = now.getFullYear();
     
     return budgetService.getBudgets({ month: currentMonth, year: currentYear });
+  },
+
+  // Get budget progress for charts
+  getBudgetProgress: async (year: number, month: number): Promise<ApiResponse<BudgetProgressDto[]>> => {
+    return apiCall(() => api.get<BudgetProgressDto[]>(`/budgets/progress?year=${year}&month=${month}`));
   }
 };
 

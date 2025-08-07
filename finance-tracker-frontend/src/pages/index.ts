@@ -1,7 +1,8 @@
 // Export all pages from a single entry point
-export * from './auth';
-export * from './dashboard';
-export * from './transactions';
-export * from './categories';
-export * from './budgets';
-export { HomePage } from './HomePage';
+export { default as LoginPage } from './auth/LoginPage';
+export { default as RegisterPage } from './auth/RegisterPage';
+export { default as DashboardPage } from './dashboard/DashboardPage';
+export { default as TransactionsPage } from './transactions/TransactionsPage';
+export { default as CategoriesPage } from './categories/CategoriesPage';
+export { default as BudgetsPage } from './budgets/BudgetsPage';
+export { default as HomePage } from './HomePage';

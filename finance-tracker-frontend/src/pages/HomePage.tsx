@@ -30,7 +30,7 @@ import {
   Smartphone
 } from 'lucide-react';
 
-export const HomePage: React.FC = () => {
+const HomePage: React.FC = () => {
   const { t } = useLanguage();
 
   return (
@@ -252,3 +252,5 @@ export const HomePage: React.FC = () => {
     </div>
   );
 };
+
+export default HomePage;

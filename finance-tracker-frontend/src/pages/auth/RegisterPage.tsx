@@ -31,7 +31,7 @@ import { useAuth, useLanguage } from '../../contexts';
 import { TrendingUp, Shield, BarChart3 } from 'lucide-react';
 import type { RegisterRequest } from '../../types';
 
-export const RegisterPage: React.FC = () => {
+const RegisterPage: React.FC = () => {
   const { register, isLoading } = useAuth();
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -96,3 +96,5 @@ export const RegisterPage: React.FC = () => {
     </div>
   );
 };
+
+export default RegisterPage;

@@ -23,7 +23,8 @@ import {
   Check,
   Palette
 } from 'lucide-react';
-import { useAuth, useLanguage, useCurrency, useTheme } from '../../contexts';
+import { Button } from '@mui/material';
+import { useAuth, useLanguage, useCurrency } from '../../contexts';
 import { ThemeToggle } from '../ui';
 import type { Language } from '../../contexts/LanguageContext';
 import type { Currency } from '../../contexts/CurrencyContext';
@@ -36,7 +37,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ className = '' }) => {
   const { user, logout } = useAuth();
   const { language, setLanguage, t } = useLanguage();
   const { currency, setCurrency, getCurrencyInfo } = useCurrency();
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
@@ -131,28 +132,37 @@ export const UserMenu: React.FC<UserMenuProps> = ({ className = '' }) => {
   return (
     <div className={`user-menu ${className}`}>
       {/* User Avatar Button */}
-      <button
+      <Button
         ref={buttonRef}
         onClick={handleMenuToggle}
         className="user-menu-trigger"
         aria-label={t('userMenu.profile')}
         aria-expanded={isOpen}
         aria-haspopup="menu"
+        variant="text"
+        startIcon={<User size={20} />}
+        endIcon={
+          <ChevronDown 
+            size={16} 
+            className={`chevron-icon ${isOpen ? 'rotated' : ''}`}
+          />
+        }
+        sx={{
+          textTransform: 'none',
+          justifyContent: 'flex-start',
+          color: 'inherit',
+          '&:hover': {
+            backgroundColor: 'action.hover'
+          }
+        }}
       >
-        <div className="user-avatar">
-          <User size={20} />
-        </div>
         <div className="user-info">
           <span className="user-name">
             {user.firstName} {user.lastName}
           </span>
           <span className="user-email">{user.email}</span>
         </div>
-        <ChevronDown 
-          size={16} 
-          className={`chevron-icon ${isOpen ? 'rotated' : ''}`}
-        />
-      </button>
+      </Button>
 
       {/* Dropdown Menu */}
       {isOpen && (
@@ -185,32 +195,48 @@ export const UserMenu: React.FC<UserMenuProps> = ({ className = '' }) => {
 
             {/* Language Selection */}
             <div className="menu-item">
-              <button
+              <Button
                 onClick={() => toggleSubmenu('language')}
                 className="menu-item-button"
                 aria-expanded={activeSubmenu === 'language'}
+                fullWidth
+                variant="text"
+                startIcon={<Globe size={16} />}
+                endIcon={
+                  <ChevronDown 
+                    size={14} 
+                    className={`submenu-chevron ${activeSubmenu === 'language' ? 'rotated' : ''}`}
+                  />
+                }
+                sx={{
+                  textTransform: 'none',
+                  justifyContent: 'flex-start',
+                  color: 'text.primary'
+                }}
               >
-                <Globe size={16} />
                 <span>{t('userMenu.language')}</span>
-                <ChevronDown 
-                  size={14} 
-                  className={`submenu-chevron ${activeSubmenu === 'language' ? 'rotated' : ''}`}
-                />
-              </button>
+              </Button>
               
               {activeSubmenu === 'language' && (
                 <div className="submenu" role="menu">
                   {languages.map((lang) => (
-                    <button
+                    <Button
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
                       className={`submenu-item ${language === lang.code ? 'active' : ''}`}
                       role="menuitem"
+                      fullWidth
+                      variant="text"
+                      startIcon={<span className="flag">{lang.flag}</span>}
+                      endIcon={language === lang.code ? <Check size={14} /> : undefined}
+                      sx={{
+                        textTransform: 'none',
+                        justifyContent: 'flex-start',
+                        color: language === lang.code ? 'primary.main' : 'text.primary'
+                      }}
                     >
-                      <span className="flag">{lang.flag}</span>
                       <span>{lang.name}</span>
-                      {language === lang.code && <Check size={14} />}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               )}
@@ -218,34 +244,50 @@ export const UserMenu: React.FC<UserMenuProps> = ({ className = '' }) => {
 
             {/* Currency Selection */}
             <div className="menu-item">
-              <button
+              <Button
                 onClick={() => toggleSubmenu('currency')}
                 className="menu-item-button"
                 aria-expanded={activeSubmenu === 'currency'}
+                fullWidth
+                variant="text"
+                startIcon={<DollarSign size={16} />}
+                endIcon={
+                  <ChevronDown 
+                    size={14} 
+                    className={`submenu-chevron ${activeSubmenu === 'currency' ? 'rotated' : ''}`}
+                  />
+                }
+                sx={{
+                  textTransform: 'none',
+                  justifyContent: 'flex-start',
+                  color: 'text.primary'
+                }}
               >
-                <DollarSign size={16} />
                 <span>{t('userMenu.currency')}</span>
-                <ChevronDown 
-                  size={14} 
-                  className={`submenu-chevron ${activeSubmenu === 'currency' ? 'rotated' : ''}`}
-                />
-              </button>
+              </Button>
               
               {activeSubmenu === 'currency' && (
                 <div className="submenu" role="menu">
                   {currencies.map((curr) => {
                     const currInfo = getCurrencyInfo(curr);
                     return (
-                      <button
+                      <Button
                         key={curr}
                         onClick={() => handleCurrencyChange(curr)}
                         className={`submenu-item ${currency === curr ? 'active' : ''}`}
                         role="menuitem"
+                        fullWidth
+                        variant="text"
+                        startIcon={<span className="flag">{currInfo.flag}</span>}
+                        endIcon={currency === curr ? <Check size={14} /> : undefined}
+                        sx={{
+                          textTransform: 'none',
+                          justifyContent: 'flex-start',
+                          color: currency === curr ? 'primary.main' : 'text.primary'
+                        }}
                       >
-                        <span className="flag">{currInfo.flag}</span>
                         <span>{currInfo.name} ({currInfo.symbol})</span>
-                        {currency === curr && <Check size={14} />}
-                      </button>
+                      </Button>
                     );
                   })}
                 </div>
@@ -266,14 +308,25 @@ export const UserMenu: React.FC<UserMenuProps> = ({ className = '' }) => {
 
           {/* Logout Section */}
           <div className="menu-section menu-section-logout">
-            <button
+            <Button
               onClick={handleLogout}
               className="menu-item-button logout-button"
               role="menuitem"
+              fullWidth
+              variant="text"
+              startIcon={<LogOut size={16} />}
+              sx={{
+                textTransform: 'none',
+                justifyContent: 'flex-start',
+                color: 'error.main',
+                '&:hover': {
+                  backgroundColor: 'error.light',
+                  color: 'error.dark'
+                }
+              }}
             >
-              <LogOut size={16} />
               <span>{t('userMenu.logout')}</span>
-            </button>
+            </Button>
           </div>
         </div>
       )}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check } from 'lucide-react';
-import { Button, Input } from '../ui';
+import { Button, IconButton } from '@mui/material';
+import { Input } from '../ui';
 import type { CategoryDto, CreateCategoryDto, UpdateCategoryDto } from '../../types/api';
 
 interface CategoryModalProps {
@@ -122,12 +123,19 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
             <h3 className="text-lg font-semibold text-gray-900">
               {category ? 'Kategori Düzenle' : 'Yeni Kategori Ekle'}
             </h3>
-            <button
+            <IconButton
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-500 p-1"
+              sx={{ 
+                color: 'text.secondary',
+                '&:hover': {
+                  backgroundColor: 'action.hover',
+                  transform: 'scale(1.1)'
+                },
+                transition: 'all 0.3s'
+              }}
             >
               <X size={20} />
-            </button>
+            </IconButton>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -184,10 +192,10 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
                       type="button"
                       onClick={() => handleInputChange('color', color)}
                       className={`
-                        w-8 h-8 rounded-full border-2 transition-all
+                        w-8 h-8 rounded-full border-2 transition-all duration-300 hover:scale-110
                         ${formData.color === color
-                          ? 'border-gray-800 scale-110'
-                          : 'border-gray-300 hover:border-gray-500'
+                          ? 'border-gray-800 scale-110 shadow-lg'
+                          : 'border-gray-300 hover:border-gray-500 hover:shadow-md'
                         }
                       `}
                       style={{ backgroundColor: color }}
@@ -206,7 +214,7 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
                       type="color"
                       value={formData.color}
                       onChange={(e) => handleInputChange('color', e.target.value)}
-                      className="w-8 h-8 rounded border border-gray-300"
+                      className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer hover:border-gray-500 transition-all duration-300"
                     />
                     <Input
                       value={formData.color.toUpperCase()}
@@ -248,18 +256,34 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
             <div className="flex justify-end space-x-3 p-6 border-t bg-gray-50 rounded-b-lg">
               <Button
                 type="button"
-                variant="outline"
+                variant="outlined"
                 onClick={onClose}
                 disabled={loading}
+                sx={{ 
+                  textTransform: 'none',
+                  borderRadius: '12px',
+                  transition: 'all 0.3s'
+                }}
               >
                 İptal
               </Button>
               <Button
                 type="submit"
-                isLoading={loading}
-                leftIcon={<Check size={16} />}
+                variant="contained"
+                disabled={loading}
+                startIcon={loading ? undefined : <Check size={16} />}
+                sx={{ 
+                  textTransform: 'none',
+                  borderRadius: '12px',
+                  boxShadow: 2,
+                  '&:hover': {
+                    boxShadow: 4,
+                    transform: 'scale(1.05)'
+                  },
+                  transition: 'all 0.3s'
+                }}
               >
-                {category ? 'Güncelle' : 'Ekle'}
+                {loading ? 'Yükleniyor...' : (category ? 'Güncelle' : 'Ekle')}
               </Button>
             </div>
           </form>

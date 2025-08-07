@@ -12,6 +12,7 @@
 
 import React from 'react';
 import { Sun, Moon } from 'lucide-react';
+import { IconButton, Tooltip } from '@mui/material';
 import { useTheme } from '../../contexts';
 
 interface ThemeToggleProps {
@@ -64,33 +65,41 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
 
   return (
     <div className={`theme-toggle-container ${showLabel ? 'with-label' : ''} ${className}`}>
-      <button
-        onClick={handleToggle}
-        onKeyDown={handleKeyDown}
-        className={`theme-toggle ${sizeClasses[size]} ${theme}`}
-        aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        aria-pressed={theme === 'dark'}
-        title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        type="button"
-      >
-        <div className="theme-toggle-track">
-          <div className={`theme-toggle-thumb ${theme}`}>
-            <div className="theme-toggle-icon-container">
-              {theme === 'light' ? (
-                <Sun 
-                  size={iconSizes[size]} 
-                  className="theme-toggle-icon sun-icon"
-                />
-              ) : (
-                <Moon 
-                  size={iconSizes[size]} 
-                  className="theme-toggle-icon moon-icon"
-                />
-              )}
+      <Tooltip title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
+        <IconButton
+          onClick={handleToggle}
+          onKeyDown={handleKeyDown}
+          className={`theme-toggle ${sizeClasses[size]} ${theme}`}
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          aria-pressed={theme === 'dark'}
+          size={size === 'sm' ? 'small' : size === 'lg' ? 'large' : 'medium'}
+          sx={{
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            '&:hover': {
+              backgroundColor: theme === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.08)',
+              transform: 'scale(1.1)'
+            }
+          }}
+        >
+          <div className="theme-toggle-track">
+            <div className={`theme-toggle-thumb ${theme}`}>
+              <div className="theme-toggle-icon-container">
+                {theme === 'light' ? (
+                  <Sun 
+                    size={iconSizes[size]} 
+                    className="theme-toggle-icon sun-icon"
+                  />
+                ) : (
+                  <Moon 
+                    size={iconSizes[size]} 
+                    className="theme-toggle-icon moon-icon"
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </button>
+        </IconButton>
+      </Tooltip>
       
       {showLabel && (
         <span className="theme-toggle-label">

@@ -2,13 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { useAuth, useLanguage } from '../../contexts';
 import { TransactionModal, CategoryModal, BudgetModal } from '../../components/forms';
 import { CurrencyDisplay } from '../../components/ui/CurrencyDisplay';
+import { Button } from '@mui/material';
 import { CategorySummaryCard, BudgetOverviewCard } from '../../components/dashboard';
-import { PlusCircle, TrendingUp, TrendingDown, DollarSign, CreditCard, AlertTriangle } from 'lucide-react';
+import { LazyChart } from '../../components/charts/LazyChart';
+
+// Lazy load chart components for better performance
+const IncomeExpenseTrendChart = React.lazy(() => 
+  import('../../components/charts/IncomeExpenseTrendChart').then(module => ({ default: module.IncomeExpenseTrendChart }))
+);
+
+const CategorySpendingChart = React.lazy(() => 
+  import('../../components/charts/CategorySpendingChart').then(module => ({ default: module.CategorySpendingChart }))
+);
+
+const BudgetProgressChart = React.lazy(() => 
+  import('../../components/charts/BudgetProgressChart').then(module => ({ default: module.BudgetProgressChart }))
+);
+
+const MonthlyComparisonChart = React.lazy(() => 
+  import('../../components/charts/MonthlyComparisonChart').then(module => ({ default: module.MonthlyComparisonChart }))
+);
+import { PlusCircle, TrendingUp, TrendingDown, DollarSign, CreditCard, BarChart3 } from 'lucide-react';
 import { transactionService, budgetService, categoryService } from '../../services';
 import type { TransactionDto, BudgetDto, CategoryDto, CreateTransactionDto, CreateCategoryDto, CreateBudgetDto } from '../../types/api';
 import { Link } from 'react-router-dom';
+import './dashboard.css';
 
-export const DashboardPage: React.FC = () => {
+const DashboardPage: React.FC = () => {
   const { user } = useAuth();
   const { t } = useLanguage();
   // Currency formatting handled by CurrencyDisplay component
@@ -174,13 +194,13 @@ export const DashboardPage: React.FC = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-md">
+          <div className="mb-12 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-md">
             {error}
           </div>
         )}
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="enhanced-stats-card">
             <div className="stats-card-header">
               <div className="stats-card-title">{t('dashboard.balance')}</div>
@@ -229,8 +249,11 @@ export const DashboardPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Görsel ayırıcı - Stats ve Hızlı İşlemler arası */}
+        <div className="w-full h-10 mb-10"></div>
+
         {/* Quick Actions */}
-        <div className="mb-8">
+        <div>
           <div className="enhanced-dashboard-card">
             <div className="enhanced-card-header">
               <div className="enhanced-card-title">
@@ -240,98 +263,214 @@ export const DashboardPage: React.FC = () => {
             </div>
             <div className="enhanced-card-content">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <button 
-                  className="quick-action-btn flex-col h-20 justify-center" 
+                <Button 
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<PlusCircle size={20} />}
                   onClick={() => setIsTransactionModalOpen(true)}
+                  sx={{ 
+                    height: '80px', 
+                    flexDirection: 'column',
+                    gap: 1,
+                    textTransform: 'none',
+                    borderRadius: '12px',
+                    '&:hover': {
+                      backgroundColor: 'primary.50',
+                      borderColor: 'primary.500'
+                    }
+                  }}
                 >
-                  <PlusCircle className="quick-action-icon" />
-                  <span className="text-xs mt-1">{t('dashboard.add_transaction')}</span>
-                </button>
-                <button 
-                  className="quick-action-btn flex-col h-20 justify-center" 
+                  <span className="text-xs font-medium">{t('dashboard.add_transaction')}</span>
+                </Button>
+                <Button 
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<PlusCircle size={20} />}
                   onClick={() => setIsCategoryModalOpen(true)}
+                  sx={{ 
+                    height: '80px', 
+                    flexDirection: 'column',
+                    gap: 1,
+                    textTransform: 'none',
+                    borderRadius: '12px',
+                    '&:hover': {
+                      backgroundColor: 'primary.50',
+                      borderColor: 'primary.500'
+                    }
+                  }}
                 >
-                  <PlusCircle className="quick-action-icon" />
-                  <span className="text-xs mt-1">{t('dashboard.add_category')}</span>
-                </button>
-                <button 
-                  className="quick-action-btn flex-col h-20 justify-center" 
+                  <span className="text-xs font-medium">{t('dashboard.add_category')}</span>
+                </Button>
+                <Button 
+                  variant="outlined"
+                  fullWidth
+                  startIcon={<PlusCircle size={20} />}
                   onClick={() => setIsBudgetModalOpen(true)}
+                  sx={{ 
+                    height: '80px', 
+                    flexDirection: 'column',
+                    gap: 1,
+                    textTransform: 'none',
+                    borderRadius: '12px',
+                    '&:hover': {
+                      backgroundColor: 'primary.50',
+                      borderColor: 'primary.500'
+                    }
+                  }}
                 >
-                  <PlusCircle className="quick-action-icon" />
-                  <span className="text-xs mt-1">{t('dashboard.create_budget')}</span>
-                </button>
+                  <span className="text-xs font-medium">{t('dashboard.create_budget')}</span>
+                </Button>
               </div>
             </div>
           </div>
         </div>
 
         {/* Dashboard Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
-          {/* Recent Transactions */}
-          <div className="enhanced-dashboard-card">
-            <div className="enhanced-card-header">
-              <div className="enhanced-card-title">
-                <CreditCard size={20} className="text-primary-600" />
-                {t('dashboard.recent_transactions')}
+        <div>
+          {/* Recent Transactions and Categories Side by Side */}
+          <div className="dashboard-side-by-side-grid w-full min-h-0">
+            {/* Recent Transactions */}
+            <div className="enhanced-dashboard-card w-full h-80 overflow-hidden">
+              <div className="enhanced-card-header">
+                <div className="enhanced-card-title">
+                  <CreditCard size={20} className="text-primary-600" />
+                  {t('dashboard.recent_transactions')}
+                </div>
+                <Link to="/transactions">
+                  <Button 
+                    variant="text" 
+                    size="small"
+                    sx={{ textTransform: 'none' }}
+                  >
+                    {t('common.view_all')}
+                  </Button>
+                </Link>
               </div>
-              <Link to="/transactions">
-                <button className="text-primary-600 text-sm font-semibold hover:text-primary-700 transition-colors">
-                  {t('common.view_all')}
-                </button>
-              </Link>
-            </div>
-            <div className="enhanced-card-content">
-              {recentTransactions.length === 0 ? (
-                <div className="empty-state">
-                  <CreditCard size={40} className="empty-state-icon" />
-                  <p className="empty-state-text">{t('dashboard.no_transactions')}</p>
-                </div>
-              ) : (
-                <div className="space-y-3 max-h-64 overflow-y-auto">
-                  {recentTransactions.map((transaction) => (
-                    <div key={transaction.id} className="transaction-item p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          {getTransactionTypeIcon(transaction.type)}
-                          <div className="min-w-0 flex-1">
-                            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
-                              {transaction.description}
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              {formatDate(transaction.date)}
-                            </p>
+              <div className="enhanced-card-content">
+                {recentTransactions.length === 0 ? (
+                  <div className="empty-state">
+                    <CreditCard size={40} className="empty-state-icon" />
+                    <p className="empty-state-text">{t('dashboard.no_transactions')}</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3 max-h-64 overflow-y-auto">
+                    {recentTransactions.map((transaction) => (
+                      <div key={transaction.id} className="transaction-item p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            {getTransactionTypeIcon(transaction.type)}
+                            <div className="min-w-0 flex-1">
+                              <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">
+                                {transaction.description}
+                              </p>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                {formatDate(transaction.date)}
+                              </p>
+                            </div>
                           </div>
+                          <span className={`text-sm font-bold whitespace-nowrap ${getTransactionAmountClass(transaction.type)}`}>
+                            <CurrencyDisplay 
+                              amount={transaction.type === 1 ? transaction.amount : -transaction.amount} 
+                              fromCurrency={'TRY' as const} 
+                              size="sm"
+                              showPositiveSign={transaction.type === 1}
+                            />
+                          </span>
                         </div>
-                        <span className={`text-sm font-bold whitespace-nowrap ${getTransactionAmountClass(transaction.type)}`}>
-                          <CurrencyDisplay 
-                            amount={transaction.type === 1 ? transaction.amount : -transaction.amount} 
-                            fromCurrency={'TRY' as const} 
-                            size="sm"
-                            showPositiveSign={transaction.type === 1}
-                          />
-                        </span>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Categories Summary */}
+            <div className="w-full">
+              <CategorySummaryCard
+                categories={categories}
+                loading={loading}
+                onAddCategory={() => setIsCategoryModalOpen(true)}
+              />
             </div>
           </div>
 
-          {/* Categories Summary */}
-          <CategorySummaryCard
-            categories={categories}
-            loading={loading}
-            onAddCategory={() => setIsCategoryModalOpen(true)}
-          />
+          {/* Görsel ayırıcı - Kartlar arasında net bir boşluk oluşturur */}
+          <div className="w-full h-20 flex items-center justify-center">
+            <div className="w-1/3 border-t-2 border-gray-300 dark:border-gray-600"></div>
+          </div>
 
-          {/* Budget Overview */}
-          <BudgetOverviewCard
-            budgets={budgets}
-            loading={loading}
-            onAddBudget={() => setIsBudgetModalOpen(true)}
-          />
+          {/* Budget Overview - Full Width */}
+          <div className="grid grid-cols-1 last-item">
+            <BudgetOverviewCard
+              budgets={budgets}
+              loading={loading}
+              onAddBudget={() => setIsBudgetModalOpen(true)}
+            />
+          </div>
+
+          {/* Visual separator for Charts section */}
+          <div className="w-full h-20 flex items-center justify-center">
+            <div className="w-1/3 border-t-2 border-gray-300 dark:border-gray-600"></div>
+          </div>
+
+          {/* Charts Section */}
+          <div className="charts-section">
+            <div className="enhanced-dashboard-card mb-6">
+              <div className="enhanced-card-header">
+                <div className="enhanced-card-title">
+                  <BarChart3 size={20} className="text-primary-600" />
+                  Financial Analytics
+                </div>
+              </div>
+            </div>
+
+            {/* Charts Grid */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+              {/* Income vs Expense Trends */}
+              <LazyChart height={350} threshold={0.1} rootMargin="100px">
+                <IncomeExpenseTrendChart 
+                  monthsBack={6}
+                  height={350}
+                  className="w-full"
+                />
+              </LazyChart>
+              
+              {/* Category Spending Distribution */}
+              <LazyChart height={350} threshold={0.1} rootMargin="100px">
+                <CategorySpendingChart 
+                  height={350}
+                  className="w-full"
+                  onCategoryClick={(categoryId) => {
+                    // TODO: Navigate to transactions filtered by category
+                    console.log('Category clicked:', categoryId);
+                  }}
+                />
+              </LazyChart>
+            </div>
+
+            {/* Second row of charts */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+              {/* Budget Progress */}
+              <LazyChart height={350} threshold={0.1} rootMargin="100px">
+                <BudgetProgressChart 
+                  height={350}
+                  className="w-full"
+                  onBudgetClick={(budgetId) => {
+                    // TODO: Navigate to budget details
+                    console.log('Budget clicked:', budgetId);
+                  }}
+                />
+              </LazyChart>
+              
+              {/* Monthly Comparison */}
+              <LazyChart height={350} threshold={0.1} rootMargin="100px">
+                <MonthlyComparisonChart 
+                  height={350}
+                  className="w-full"
+                />
+              </LazyChart>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -361,3 +500,5 @@ export const DashboardPage: React.FC = () => {
     </div>
   );
 };
+
+export default DashboardPage;

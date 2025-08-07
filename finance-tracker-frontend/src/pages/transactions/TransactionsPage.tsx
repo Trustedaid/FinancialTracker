@@ -9,8 +9,8 @@ import {
   Calendar,
   CreditCard
 } from 'lucide-react';
+import { Button } from '@mui/material';
 import { 
-  Button, 
   Table,
   TableHeader,
   TableBody,
@@ -272,9 +272,15 @@ export const TransactionsPage: React.FC = () => {
             </div>
             <div className="mt-4 sm:mt-0">
               <Button 
+                variant="contained"
                 onClick={handleAddNewTransaction}
-                leftIcon={<Plus size={20} />}
-                className="quick-action-btn bg-primary-600 hover:bg-primary-700 text-white"
+                startIcon={<Plus size={20} />}
+                sx={{ 
+                  textTransform: 'none',
+                  borderRadius: '12px',
+                  px: 3,
+                  py: 1.5
+                }}
               >
                 Yeni İşlem Ekle
               </Button>
@@ -319,9 +325,14 @@ export const TransactionsPage: React.FC = () => {
                 <CreditCard size={40} className="empty-state-icon" />
                 <p className="empty-state-text">Henüz işlem bulunmuyor</p>
                 <Button 
+                  variant="contained"
                   onClick={handleAddNewTransaction}
-                  leftIcon={<Plus size={16} />}
-                  className="mt-4"
+                  startIcon={<Plus size={16} />}
+                  sx={{ 
+                    mt: 2,
+                    textTransform: 'none',
+                    borderRadius: '12px'
+                  }}
                 >
                   İlk İşleminizi Ekleyin
                 </Button>
@@ -416,19 +427,21 @@ export const TransactionsPage: React.FC = () => {
                           <TableCell align="right" variant="action">
                             <div className="flex justify-end space-x-2">
                               <Button
-                                variant="outline"
-                                size="sm"
+                                variant="outlined"
+                                size="small"
                                 onClick={() => handleEditTransaction(transaction)}
-                                leftIcon={<Edit size={14} />}
+                                startIcon={<Edit size={14} />}
+                                sx={{ textTransform: 'none' }}
                               >
                                 Düzenle
                               </Button>
                               <Button
-                                variant="outline"
-                                size="sm"
+                                variant="outlined"
+                                size="small"
+                                color="error"
                                 onClick={() => handleDeleteTransaction(transaction.id)}
-                                leftIcon={<Trash2 size={14} />}
-                                className="text-danger-600 hover:text-danger-700 hover:border-danger-300 hover:bg-danger-50"
+                                startIcon={<Trash2 size={14} />}
+                                sx={{ textTransform: 'none' }}
                               >
                                 Sil
                               </Button>
@@ -488,19 +501,21 @@ export const TransactionsPage: React.FC = () => {
                       {/* Action Buttons */}
                       <div className="flex justify-end space-x-2 pt-3 border-t border-gray-100">
                         <Button
-                          variant="outline"
-                          size="sm"
+                          variant="outlined"
+                          size="small"
                           onClick={() => handleEditTransaction(transaction)}
-                          leftIcon={<Edit size={14} />}
+                          startIcon={<Edit size={14} />}
+                          sx={{ textTransform: 'none' }}
                         >
                           Düzenle
                         </Button>
                         <Button
-                          variant="outline"
-                          size="sm"
+                          variant="outlined"
+                          size="small"
+                          color="error"
                           onClick={() => handleDeleteTransaction(transaction.id)}
-                          leftIcon={<Trash2 size={14} />}
-                          className="text-danger-600 hover:text-danger-700 hover:border-danger-300 hover:bg-danger-50"
+                          startIcon={<Trash2 size={14} />}
+                          sx={{ textTransform: 'none' }}
                         >
                           Sil
                         </Button>

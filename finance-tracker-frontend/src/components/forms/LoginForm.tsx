@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Mail, Lock, Eye, EyeOff, AlertCircle, Loader2 } from 'lucide-react';
+import { Button, IconButton } from '@mui/material';
 import { useLanguage } from '../../contexts';
 import type { LoginRequest } from '../../types/auth';
 import type { ApiError } from '../../types/api';
@@ -137,14 +138,14 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = fals
         />
         <Lock className="input-icon" size={20} />
         {watchedPassword && (
-          <button
-            type="button"
+          <IconButton
             onClick={() => setShowPassword(!showPassword)}
-            className="password-toggle"
             aria-label={showPassword ? t('auth.password_hide') : t('auth.password_show')}
+            sx={{ position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)' }}
+            size="small"
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-          </button>
+          </IconButton>
         )}
         {errors.password && (
           <div id="password-error" className="field-error">
@@ -172,21 +173,26 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = fals
       </div>
 
       {/* Submit Button */}
-      <button
+      <Button
         type="submit"
-        className="enhanced-login-btn"
+        variant="contained"
+        fullWidth
         disabled={isLoading}
-        aria-label={isLoading ? t('auth.signing_in') : t('auth.sign_in')}
+        startIcon={isLoading ? <Loader2 className="animate-spin" size={20} /> : undefined}
+        sx={{ 
+          py: 1.5, 
+          fontSize: '1rem',
+          fontWeight: 600,
+          borderRadius: '12px',
+          textTransform: 'none',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          '&:hover': {
+            background: 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)',
+          }
+        }}
       >
-        {isLoading ? (
-          <>
-            <Loader2 className="loading-spinner" size={20} />
-            {t('auth.signing_in')}
-          </>
-        ) : (
-          t('auth.sign_in')
-        )}
-      </button>
+        {isLoading ? t('auth.signing_in') : t('auth.sign_in')}
+      </Button>
     </form>
   );
 };
