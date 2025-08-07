@@ -1,4 +1,5 @@
 using FinanceTracker.Application.Features.Transactions.DTOs;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +39,7 @@ public class GetTransactionByIdQueryHandler : IRequestHandler<GetTransactionById
 
         if (transaction == null)
         {
-            throw new KeyNotFoundException("İşlem bulunamadı.");
+            throw new NotFoundException("Transaction", request.Id);
         }
 
         return transaction;

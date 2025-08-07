@@ -1,5 +1,6 @@
 using FinanceTracker.Application.Features.Transactions.DTOs;
 using FinanceTracker.Domain.Entities;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ public class UpdateTransactionCommandHandler : IRequestHandler<UpdateTransaction
 
         if (transaction == null)
         {
-            throw new KeyNotFoundException("İşlem bulunamadı.");
+            throw new NotFoundException("Transaction", request.Id);
         }
 
         // Verify that the new category belongs to the user
@@ -35,7 +36,7 @@ public class UpdateTransactionCommandHandler : IRequestHandler<UpdateTransaction
 
         if (newCategory == null)
         {
-            throw new KeyNotFoundException("Belirtilen kategori bulunamadı.");
+            throw new NotFoundException("Category", request.TransactionDto.CategoryId);
         }
 
         // Store old values for budget update

@@ -173,6 +173,7 @@ else
 }
 
 // Custom middleware
+app.UseMiddleware<CircuitBreakerMiddleware>();
 app.UseMiddleware<ValidationExceptionMiddleware>();
 
 app.UseAuthentication();

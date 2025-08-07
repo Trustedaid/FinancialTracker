@@ -1,4 +1,5 @@
 using FinanceTracker.Domain.Entities;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ public class DeleteTransactionCommandHandler : IRequestHandler<DeleteTransaction
 
         if (transaction == null)
         {
-            throw new KeyNotFoundException("İşlem bulunamadı.");
+            throw new NotFoundException("Transaction", request.Id);
         }
 
         // Store values for budget update before deletion

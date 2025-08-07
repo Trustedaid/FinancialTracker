@@ -34,152 +34,54 @@ public class BudgetsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<BudgetDto>>> GetBudgets([FromQuery] BudgetFilterDto filter)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetBudgetsQuery(filter, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetBudgetsQuery(filter, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<BudgetDto>> GetBudget(int id)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetBudgetByIdQuery(id, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetBudgetByIdQuery(id, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpPost]
     public async Task<ActionResult<BudgetDto>> CreateBudget([FromBody] CreateBudgetDto createBudgetDto)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new CreateBudgetCommand(createBudgetDto, userId);
-            var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetBudget), new { id = result.Id }, result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new CreateBudgetCommand(createBudgetDto, userId);
+        var result = await _mediator.Send(command);
+        return CreatedAtAction(nameof(GetBudget), new { id = result.Id }, result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<BudgetDto>> UpdateBudget(int id, [FromBody] UpdateBudgetDto updateBudgetDto)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new UpdateBudgetCommand(id, updateBudgetDto, userId);
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new UpdateBudgetCommand(id, updateBudgetDto, userId);
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteBudget(int id)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new DeleteBudgetCommand(id, userId);
-            await _mediator.Send(command);
-            return NoContent();
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new DeleteBudgetCommand(id, userId);
+        await _mediator.Send(command);
+        return NoContent();
     }
 
     [HttpGet("progress")]
     public async Task<ActionResult<List<BudgetProgressDto>>> GetBudgetProgress([FromQuery] int year, [FromQuery] int month)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetBudgetProgressQuery(year, month, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetBudgetProgressQuery(year, month, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 }

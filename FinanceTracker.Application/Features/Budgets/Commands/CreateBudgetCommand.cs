@@ -1,5 +1,6 @@
 using FinanceTracker.Application.Features.Budgets.DTOs;
 using FinanceTracker.Domain.Entities;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,7 @@ public class CreateBudgetCommandHandler : IRequestHandler<CreateBudgetCommand, B
 
         if (category == null)
         {
-            throw new KeyNotFoundException("Belirtilen kategori bulunamadı.");
+            throw new NotFoundException("Category", request.BudgetDto.CategoryId);
         }
 
         // Check if budget already exists for this category/month/year combination
@@ -39,7 +40,7 @@ public class CreateBudgetCommandHandler : IRequestHandler<CreateBudgetCommand, B
 
         if (existingBudget != null)
         {
-            throw new InvalidOperationException("Bu kategori ve dönem için zaten bir bütçe tanımlanmış.");
+            throw new ConflictException("Budget", "category and period combination already exists");
         }
 
         // Calculate spent amount for the specified month/year

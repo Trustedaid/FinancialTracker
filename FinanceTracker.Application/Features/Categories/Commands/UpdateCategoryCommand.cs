@@ -1,4 +1,5 @@
 using FinanceTracker.Application.Features.Categories.DTOs;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
 
         if (category == null)
         {
-            throw new KeyNotFoundException("Kategori bulunamadı.");
+            throw new NotFoundException("Category", request.Id);
         }
 
         // Check if another category with same name already exists for this user
@@ -35,7 +36,7 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
 
         if (existingCategory != null)
         {
-            throw new InvalidOperationException("Bu isimde bir kategori zaten mevcut.");
+            throw new ConflictException("Category", "name already exists");
         }
 
         // Update category properties

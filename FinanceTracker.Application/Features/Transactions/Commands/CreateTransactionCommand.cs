@@ -1,5 +1,6 @@
 using FinanceTracker.Application.Features.Transactions.DTOs;
 using FinanceTracker.Domain.Entities;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,7 @@ public class CreateTransactionCommandHandler : IRequestHandler<CreateTransaction
 
         if (category == null)
         {
-            throw new KeyNotFoundException("Belirtilen kategori bulunamadı.");
+            throw new NotFoundException("Category", request.TransactionDto.CategoryId);
         }
 
         var transaction = new Transaction

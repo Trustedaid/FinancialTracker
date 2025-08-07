@@ -1,3 +1,4 @@
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -24,24 +25,24 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
 
         if (category == null)
         {
-            throw new KeyNotFoundException("Kategori bulunamadı.");
+            throw new NotFoundException("Category", request.Id);
         }
 
         // Check if category has associated transactions or budgets
         if (category.Transactions.Any())
         {
-            throw new InvalidOperationException("Bu kategoriye ait işlemler bulunduğu için silinemez.");
+            throw new BusinessRuleViolationException("CATEGORY_HAS_TRANSACTIONS", "Category cannot be deleted because it has associated transactions");
         }
 
         if (category.Budgets.Any())
         {
-            throw new InvalidOperationException("Bu kategoriye ait bütçeler bulunduğu için silinemez.");
+            throw new BusinessRuleViolationException("CATEGORY_HAS_BUDGETS", "Category cannot be deleted because it has associated budgets");
         }
 
         // Cannot delete default categories
         if (category.IsDefault)
         {
-            throw new InvalidOperationException("Varsayılan kategoriler silinemez.");
+            throw new BusinessRuleViolationException("DEFAULT_CATEGORY_READONLY", "Default categories cannot be deleted");
         }
 
         // Use Entity Framework's change tracking to mark for deletion

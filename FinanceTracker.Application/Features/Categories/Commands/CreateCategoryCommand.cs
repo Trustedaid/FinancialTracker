@@ -1,5 +1,6 @@
 using FinanceTracker.Application.Features.Categories.DTOs;
 using FinanceTracker.Domain.Entities;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
 
         if (existingCategory != null)
         {
-            throw new InvalidOperationException("Bu isimde bir kategori zaten mevcut.");
+            throw new ConflictException("Category", "name already exists");
         }
 
         var category = new Category

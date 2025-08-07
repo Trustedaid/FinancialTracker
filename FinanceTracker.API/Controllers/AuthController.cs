@@ -20,38 +20,16 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<AuthResponseDto>> Register([FromBody] RegisterUserDto registerDto)
     {
-        try
-        {
-            var command = new RegisterUserCommand(registerDto);
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var command = new RegisterUserCommand(registerDto);
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 
     [HttpPost("login")]
     public async Task<ActionResult<AuthResponseDto>> Login([FromBody] LoginUserDto loginDto)
     {
-        try
-        {
-            var query = new LoginUserQuery(loginDto);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var query = new LoginUserQuery(loginDto);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 }

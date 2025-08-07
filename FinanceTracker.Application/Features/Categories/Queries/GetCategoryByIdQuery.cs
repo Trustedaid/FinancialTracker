@@ -1,4 +1,5 @@
 using FinanceTracker.Application.Features.Categories.DTOs;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +35,7 @@ public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery,
 
         if (category == null)
         {
-            throw new KeyNotFoundException("Kategori bulunamadı.");
+            throw new NotFoundException("Category", request.Id);
         }
 
         return category;

@@ -1,5 +1,6 @@
 using FinanceTracker.Application.Features.Auth.DTOs;
 using FinanceTracker.Domain.Entities;
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, A
 
         if (existingUser != null)
         {
-            throw new InvalidOperationException("User with this email already exists.");
+            throw new ConflictException("User", "email already exists");
         }
 
         // Create new user

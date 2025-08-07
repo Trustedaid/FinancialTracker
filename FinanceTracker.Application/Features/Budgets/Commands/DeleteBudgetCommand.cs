@@ -1,3 +1,4 @@
+using FinanceTracker.Domain.Exceptions;
 using FinanceTracker.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ public class DeleteBudgetCommandHandler : IRequestHandler<DeleteBudgetCommand, b
 
         if (budget == null)
         {
-            throw new KeyNotFoundException("Bütçe bulunamadı.");
+            throw new NotFoundException("Budget", request.Id);
         }
 
         // Use Entity Framework's change tracking to mark for deletion

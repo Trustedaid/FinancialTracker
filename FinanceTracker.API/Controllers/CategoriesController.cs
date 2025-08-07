@@ -33,124 +33,45 @@ public class CategoriesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<CategoryDto>>> GetCategories()
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetCategoriesQuery(userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetCategoriesQuery(userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<CategoryDto>> GetCategory(int id)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetCategoryByIdQuery(id, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetCategoryByIdQuery(id, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpPost]
     public async Task<ActionResult<CategoryDto>> CreateCategory([FromBody] CreateCategoryDto createCategoryDto)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new CreateCategoryCommand(createCategoryDto, userId);
-            var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetCategory), new { id = result.Id }, result);
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new CreateCategoryCommand(createCategoryDto, userId);
+        var result = await _mediator.Send(command);
+        return CreatedAtAction(nameof(GetCategory), new { id = result.Id }, result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<CategoryDto>> UpdateCategory(int id, [FromBody] UpdateCategoryDto updateCategoryDto)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new UpdateCategoryCommand(id, updateCategoryDto, userId);
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new UpdateCategoryCommand(id, updateCategoryDto, userId);
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteCategory(int id)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new DeleteCategoryCommand(id, userId);
-            await _mediator.Send(command);
-            return NoContent();
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new DeleteCategoryCommand(id, userId);
+        await _mediator.Send(command);
+        return NoContent();
     }
 }

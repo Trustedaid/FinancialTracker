@@ -33,196 +33,72 @@ public class TransactionsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<PaginatedTransactionsDto>> GetTransactions([FromQuery] TransactionFilterDto filter)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetTransactionsQuery(filter, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetTransactionsQuery(filter, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<TransactionDto>> GetTransaction(int id)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetTransactionByIdQuery(id, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetTransactionByIdQuery(id, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpPost]
     public async Task<ActionResult<TransactionDto>> CreateTransaction([FromBody] CreateTransactionDto createTransactionDto)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new CreateTransactionCommand(createTransactionDto, userId);
-            var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetTransaction), new { id = result.Id }, result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new CreateTransactionCommand(createTransactionDto, userId);
+        var result = await _mediator.Send(command);
+        return CreatedAtAction(nameof(GetTransaction), new { id = result.Id }, result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<TransactionDto>> UpdateTransaction(int id, [FromBody] UpdateTransactionDto updateTransactionDto)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new UpdateTransactionCommand(id, updateTransactionDto, userId);
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new UpdateTransactionCommand(id, updateTransactionDto, userId);
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteTransaction(int id)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var command = new DeleteTransactionCommand(id, userId);
-            await _mediator.Send(command);
-            return NoContent();
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var command = new DeleteTransactionCommand(id, userId);
+        await _mediator.Send(command);
+        return NoContent();
     }
 
     [HttpGet("monthly-summary")]
     public async Task<ActionResult<MonthlySummaryDto>> GetMonthlySummary([FromQuery] int year, [FromQuery] int month)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetMonthlySummaryQuery(year, month, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetMonthlySummaryQuery(year, month, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpGet("monthly-trends")]
     public async Task<ActionResult<List<MonthlyTrendDto>>> GetMonthlyTrends([FromQuery] int monthsBack = 6)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetMonthlyTrendsQuery(monthsBack, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetMonthlyTrendsQuery(monthsBack, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     [HttpGet("category-spending")]
     public async Task<ActionResult<List<CategorySpendingDto>>> GetCategorySpending([FromQuery] int year, [FromQuery] int month)
     {
-        try
-        {
-            var userId = GetCurrentUserId();
-            var query = new GetCategorySpendingQuery(year, month, userId);
-            var result = await _mediator.Send(query);
-            return Ok(result);
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            return Unauthorized(new { message = ex.Message });
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (Exception)
-        {
-            return StatusCode(500, new { message = "Bir hata oluştu. Lütfen tekrar deneyiniz." });
-        }
+        var userId = GetCurrentUserId();
+        var query = new GetCategorySpendingQuery(year, month, userId);
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 }
