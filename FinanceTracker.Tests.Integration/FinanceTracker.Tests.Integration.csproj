@@ -26,4 +26,15 @@
     <ProjectReference Include="..\FinanceTracker.Infrastructure\FinanceTracker.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="obj\Debug\net9.0\FinanceT.19832E52.Up2Date" />
+    <Content Include="obj\Debug\net9.0\FinanceTracker.Tests.Integration.assets.cache" />
+    <Content Include="obj\Debug\net9.0\FinanceTracker.Tests.Integration.pdb" />
+    <Content Include="obj\Debug\net9.0\FinanceTracker.Tests.Integration.sourcelink.json" />
+    <Content Include="obj\Debug\net9.0\MvcTestingAppManifest.json" />
+    <Content Include="obj\FinanceTracker.Tests.Integration.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.packagespec.json" />
+    <Content Include="obj\rider.project.model.nuget.info" />
+  </ItemGroup>
+
 </Project>

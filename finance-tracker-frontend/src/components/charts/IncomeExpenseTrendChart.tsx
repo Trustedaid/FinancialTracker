@@ -10,11 +10,10 @@
  * - Currency formatting
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS } from 'chart.js';
 import { BaseChart } from './BaseChart';
-import { getBaseChartOptions, formatCurrencyForChart } from '../../utils/chartConfig';
+import { getEnhancedChartOptions, formatCurrencyForChart } from '../../utils/chartConfig';
 import { transactionService } from '../../services';
 import type { ChartOptions } from 'chart.js';
 import type { ChartThemeConfig } from '../../utils/chartConfig';
@@ -36,7 +35,6 @@ export const IncomeExpenseTrendChart: React.FC<IncomeExpenseTrendChartProps> = (
   const [data, setData] = useState<MonthlyTrendDto[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const chartRef = useRef<ChartJS<'line', any, any> | null>(null);
 
   const loadData = async () => {
     try {
@@ -88,15 +86,16 @@ export const IncomeExpenseTrendChart: React.FC<IncomeExpenseTrendChartProps> = (
           borderColor: theme.colors.success,
           backgroundColor: `${theme.colors.success}20`,
           fill: false,
-          tension: 0.4,
+          tension: 0.3,
+          borderWidth: 4, // Thicker lines for better visibility in light mode
           pointBackgroundColor: theme.colors.success,
           pointBorderColor: theme.colors.background,
-          pointBorderWidth: 2,
-          pointRadius: 5,
-          pointHoverRadius: 7,
+          pointBorderWidth: 3, // Thicker point borders
+          pointRadius: 6, // Slightly larger points
+          pointHoverRadius: 9,
           pointHoverBackgroundColor: theme.colors.success,
           pointHoverBorderColor: theme.colors.background,
-          pointHoverBorderWidth: 3
+          pointHoverBorderWidth: 4
         },
         {
           label: 'Expense',
@@ -104,25 +103,40 @@ export const IncomeExpenseTrendChart: React.FC<IncomeExpenseTrendChartProps> = (
           borderColor: theme.colors.error,
           backgroundColor: `${theme.colors.error}20`,
           fill: false,
-          tension: 0.4,
+          tension: 0.3,
+          borderWidth: 4, // Thicker lines for better visibility in light mode
           pointBackgroundColor: theme.colors.error,
           pointBorderColor: theme.colors.background,
-          pointBorderWidth: 2,
-          pointRadius: 5,
-          pointHoverRadius: 7,
+          pointBorderWidth: 3, // Thicker point borders
+          pointRadius: 6, // Slightly larger points
+          pointHoverRadius: 9,
           pointHoverBackgroundColor: theme.colors.error,
           pointHoverBorderColor: theme.colors.background,
-          pointHoverBorderWidth: 3
+          pointHoverBorderWidth: 4
         }
       ]
     };
 
     const options: ChartOptions<'line'> = {
-      ...getBaseChartOptions(theme),
+      ...getEnhancedChartOptions(theme, 'line'),
       plugins: {
-        ...getBaseChartOptions(theme).plugins,
+        ...getEnhancedChartOptions(theme, 'line').plugins,
+        legend: {
+          ...getEnhancedChartOptions(theme, 'line').plugins?.legend,
+          position: 'top' as const,
+          align: 'start' as const,
+          labels: {
+            ...getEnhancedChartOptions(theme, 'line').plugins?.legend?.labels,
+            padding: 16,
+            usePointStyle: true,
+            font: {
+              size: 11
+            }
+          },
+          maxHeight: 50
+        },
         tooltip: {
-          ...getBaseChartOptions(theme).plugins.tooltip,
+          ...getEnhancedChartOptions(theme, 'line').plugins?.tooltip,
           callbacks: {
             label: function(context) {
               const label = context.dataset.label || '';
@@ -133,37 +147,22 @@ export const IncomeExpenseTrendChart: React.FC<IncomeExpenseTrendChartProps> = (
         }
       },
       scales: {
-        ...getBaseChartOptions(theme).scales,
+        ...getEnhancedChartOptions(theme, 'line').scales,
         y: {
-          ...getBaseChartOptions(theme).scales.y,
+          ...getEnhancedChartOptions(theme, 'line').scales?.y,
           beginAtZero: true,
           ticks: {
-            ...getBaseChartOptions(theme).scales.y.ticks,
+            ...getEnhancedChartOptions(theme, 'line').scales?.y?.ticks,
             callback: function(value) {
               return formatCurrencyForChart(Number(value), 'TRY');
             }
           }
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'index'
-      },
-      elements: {
-        point: {
-          hoverRadius: 8,
-          radius: 4
-        },
-        line: {
-          borderWidth: 3,
-          hoverBorderWidth: 4
         }
       }
     };
 
     return (
       <Line
-        ref={chartRef}
         data={chartData}
         options={options}
         height={height}

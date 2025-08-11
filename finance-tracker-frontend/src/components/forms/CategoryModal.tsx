@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { X, Check } from 'lucide-react';
-import { Button, IconButton } from '@mui/material';
-import { Input } from '../ui';
+import { X, Check, Palette } from 'lucide-react';
+import {
+  Button,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Divider,
+  useTheme,
+  FormHelperText,
+  useMediaQuery
+} from '@mui/material';
 import type { CategoryDto, CreateCategoryDto, UpdateCategoryDto } from '../../types/api';
 
 interface CategoryModalProps {
@@ -39,6 +54,10 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
   category, 
   loading = false 
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallMobile = useMediaQuery('(max-width:430px)');
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const [formData, setFormData] = useState<CreateCategoryDto>({
     name: '',
     description: '',
@@ -111,185 +130,306 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
-        <div className="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75" onClick={onClose} />
-        
-        <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full">
-          <div className="flex items-center justify-between p-6 border-b">
-            <h3 className="text-lg font-semibold text-gray-900">
-              {category ? 'Kategori Düzenle' : 'Yeni Kategori Ekle'}
-            </h3>
-            <IconButton
-              onClick={onClose}
-              sx={{ 
-                color: 'text.secondary',
-                '&:hover': {
-                  backgroundColor: 'action.hover',
-                  transform: 'scale(1.1)'
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      maxWidth={isTablet ? "md" : "sm"}
+      fullWidth
+      fullScreen={isSmallMobile}
+      PaperProps={{
+        sx: {
+          borderRadius: isSmallMobile ? 0 : 2,
+          boxShadow: theme.palette.mode === 'dark' 
+            ? '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)'
+            : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          margin: isMobile && !isSmallMobile ? 2 : undefined,
+          width: isMobile && !isSmallMobile ? 'calc(100vw - 32px)' : undefined,
+          maxHeight: isMobile && !isSmallMobile ? 'calc(100vh - 32px)' : undefined,
+          minHeight: isSmallMobile ? '100vh' : 'auto',
+          // Enhanced touch scrolling for mobile
+          overflowY: isMobile ? 'auto' : 'visible',
+          WebkitOverflowScrolling: 'touch',
+        }
+      }}
+    >
+      <DialogTitle
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          pb: 1,
+          px: isMobile ? 2 : 3,
+          py: isMobile ? 1.5 : 2,
+          backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+          borderBottom: `1px solid ${theme.palette.divider}`
+        }}
+      >
+        <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
+          {category ? 'Kategori Düzenle' : 'Yeni Kategori Ekle'}
+        </Typography>
+        <IconButton
+          onClick={onClose}
+          size={isMobile ? "medium" : "small"}
+          sx={{ 
+            color: 'text.secondary',
+            minWidth: isMobile ? 44 : 'auto',
+            minHeight: isMobile ? 44 : 'auto',
+            '&:hover': {
+              backgroundColor: theme.palette.action.hover
+            }
+          }}
+        >
+          <X size={20} />
+        </IconButton>
+      </DialogTitle>
+
+      <form onSubmit={handleSubmit}>
+        <DialogContent sx={{ pb: 0, px: isMobile ? 2 : 3 }}>
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: isSmallMobile ? 2 : isMobile ? 2.5 : 3, 
+            pt: isSmallMobile ? 1 : isMobile ? 1.5 : 2 
+          }}>
+            {/* Category Name */}
+            <TextField
+              label="Kategori Adı *"
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              placeholder="Kategori adını girin"
+              fullWidth
+              error={!!errors.name}
+              helperText={errors.name}
+              variant="outlined"
+              inputProps={{ maxLength: 50 }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                  minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                  fontSize: isSmallMobile ? '1.1rem' : '1rem'
                 },
-                transition: 'all 0.3s'
+                '& .MuiInputLabel-root': {
+                  fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                },
+                '& .MuiFormHelperText-root': {
+                  fontSize: isSmallMobile ? '0.85rem' : '0.75rem'
+                }
               }}
-            >
-              <X size={20} />
-            </IconButton>
-          </div>
+            />
 
-          <form onSubmit={handleSubmit}>
-            <div className="p-6 space-y-4">
-              {/* Category Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Kategori Adı *
-                </label>
-                <Input
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  placeholder="Kategori adını girin"
-                  className={errors.name ? 'border-danger-300' : ''}
-                  maxLength={50}
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.name}</p>
-                )}
-              </div>
+            {/* Description */}
+            <TextField
+              label="Açıklama (İsteğe bağlı)"
+              value={formData.description}
+              onChange={(e) => handleInputChange('description', e.target.value)}
+              placeholder="Kategori açıklaması"
+              fullWidth
+              multiline
+              rows={3}
+              error={!!errors.description}
+              helperText={errors.description || `${formData.description?.length || 0}/200 karakter`}
+              variant="outlined"
+              inputProps={{ maxLength: 200 }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2
+                },
+                '& .MuiInputLabel-root': {
+                  fontSize: isMobile ? '1rem' : '0.875rem'
+                }
+              }}
+            />
 
-              {/* Description */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Açıklama (İsteğe bağlı)
-                </label>
-                <textarea
-                  value={formData.description}
-                  onChange={(e) => handleInputChange('description', e.target.value)}
-                  placeholder="Kategori açıklaması"
-                  rows={3}
-                  maxLength={200}
-                  className={`w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 ${
-                    errors.description ? 'border-danger-300' : ''
-                  }`}
-                />
-                <div className="mt-1 text-xs text-gray-500 text-right">
-                  {formData.description?.length || 0}/200
-                </div>
-                {errors.description && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.description}</p>
-                )}
-              </div>
-
-              {/* Color Selection */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Renk *
-                </label>
-                <div className="grid grid-cols-6 gap-2">
+            {/* Color Selection */}
+            <Box>
+              <Typography variant="body2" sx={{ mb: 1.5, fontWeight: 500 }}>
+                <Palette size={16} style={{ marginRight: 8, verticalAlign: 'text-bottom' }} />
+                Renk Seçimi *
+              </Typography>
+              
+              {/* Predefined Colors */}
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="caption" color="text.secondary" sx={{ mb: 1, display: 'block' }}>
+                  Önceden tanımlanmış renkler:
+                </Typography>
+                <Box sx={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(6, 1fr)', 
+                  gap: 1,
+                  '@media (max-width: 600px)': {
+                    gridTemplateColumns: 'repeat(4, 1fr)'
+                  }
+                }}>
                   {PREDEFINED_COLORS.map((color) => (
-                    <button
+                    <Box
                       key={color}
+                      component="button"
                       type="button"
                       onClick={() => handleInputChange('color', color)}
-                      className={`
-                        w-8 h-8 rounded-full border-2 transition-all duration-300 hover:scale-110
-                        ${formData.color === color
-                          ? 'border-gray-800 scale-110 shadow-lg'
-                          : 'border-gray-300 hover:border-gray-500 hover:shadow-md'
+                      sx={{
+                        width: isSmallMobile ? 40 : isMobile ? 36 : 32,
+                        height: isSmallMobile ? 40 : isMobile ? 36 : 32,
+                        borderRadius: '50%',
+                        border: formData.color === color 
+                          ? `3px solid ${theme.palette.primary.main}` 
+                          : `2px solid ${theme.palette.divider}`,
+                        backgroundColor: color,
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        transform: formData.color === color ? 'scale(1.1)' : 'scale(1)',
+                        boxShadow: formData.color === color ? 2 : 1,
+                        '&:hover': {
+                          transform: 'scale(1.1)',
+                          boxShadow: 2,
+                          borderColor: theme.palette.primary.main
                         }
-                      `}
-                      style={{ backgroundColor: color }}
+                      }}
                       title={color}
                     />
                   ))}
-                </div>
-                
-                {/* Custom Color Input */}
-                <div className="mt-3">
-                  <label className="block text-xs text-gray-500 mb-1">
-                    Özel renk seç:
-                  </label>
-                  <div className="flex items-center space-x-2">
-                    <input
-                      type="color"
-                      value={formData.color}
-                      onChange={(e) => handleInputChange('color', e.target.value)}
-                      className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer hover:border-gray-500 transition-all duration-300"
-                    />
-                    <Input
-                      value={formData.color.toUpperCase()}
-                      onChange={(e) => handleInputChange('color', e.target.value)}
-                      placeholder="#000000"
-                      pattern="^#[0-9A-Fa-f]{6}$"
-                      className="font-mono text-sm"
-                      maxLength={7}
-                    />
-                  </div>
-                </div>
-                {errors.color && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.color}</p>
-                )}
-              </div>
+                </Box>
+              </Box>
 
-              {/* Preview */}
-              {formData.name && (
-                <div className="mt-4 p-3 bg-gray-50 rounded-md">
-                  <div className="text-sm text-gray-700 mb-2">
-                    <strong>Önizleme:</strong>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div
-                      className="w-4 h-4 rounded-full"
-                      style={{ backgroundColor: formData.color }}
-                    />
-                    <span className="text-sm font-medium">{formData.name}</span>
-                  </div>
-                  {formData.description && (
-                    <p className="text-xs text-gray-500 mt-1 ml-6">
-                      {formData.description}
-                    </p>
-                  )}
-                </div>
+              {/* Custom Color */}
+              <Box>
+                <Typography variant="caption" color="text.secondary" sx={{ mb: 1, display: 'block' }}>
+                  Özel renk:
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
+                  <Box
+                    component="input"
+                    type="color"
+                    value={formData.color}
+                    onChange={(e: any) => handleInputChange('color', e.target.value)}
+                    sx={{
+                      width: isSmallMobile ? 56 : 48,
+                      height: isSmallMobile ? 56 : 48,
+                      borderRadius: '50%',
+                      border: `2px solid ${theme.palette.divider}`,
+                      cursor: 'pointer',
+                      '&:hover': {
+                        borderColor: theme.palette.primary.main
+                      }
+                    }}
+                  />
+                  <TextField
+                    value={formData.color.toUpperCase()}
+                    onChange={(e) => handleInputChange('color', e.target.value)}
+                    placeholder="#000000"
+                    size="small"
+                    inputProps={{ 
+                      pattern: '^#[0-9A-Fa-f]{6}$',
+                      maxLength: 7,
+                      style: { fontFamily: 'monospace' }
+                    }}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: 2,
+                        fontSize: '0.875rem'
+                      }
+                    }}
+                  />
+                </Box>
+              </Box>
+              
+              {errors.color && (
+                <FormHelperText error sx={{ mt: 1 }}>{errors.color}</FormHelperText>
               )}
-            </div>
+            </Box>
 
-            <div className="flex justify-end space-x-3 p-6 border-t bg-gray-50 rounded-b-lg">
-              <Button
-                type="button"
-                variant="outlined"
-                onClick={onClose}
-                disabled={loading}
+            {/* Preview */}
+            {formData.name && (
+              <Card 
+                variant="outlined" 
                 sx={{ 
-                  textTransform: 'none',
-                  borderRadius: '12px',
-                  transition: 'all 0.3s'
+                  backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+                  border: `1px solid ${theme.palette.divider}`,
+                  borderRadius: 2
                 }}
               >
-                İptal
-              </Button>
-              <Button
-                type="submit"
-                variant="contained"
-                disabled={loading}
-                startIcon={loading ? undefined : <Check size={16} />}
-                sx={{ 
-                  textTransform: 'none',
-                  borderRadius: '12px',
-                  boxShadow: 2,
-                  '&:hover': {
-                    boxShadow: 4,
-                    transform: 'scale(1.05)'
-                  },
-                  transition: 'all 0.3s'
-                }}
-              >
-                {loading ? 'Yükleniyor...' : (category ? 'Güncelle' : 'Ekle')}
-              </Button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+                <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, mb: 1.5 }}>
+                    Önizleme:
+                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                    <Box
+                      sx={{
+                        width: 16,
+                        height: 16,
+                        borderRadius: '50%',
+                        backgroundColor: formData.color,
+                        border: `1px solid ${theme.palette.divider}`
+                      }}
+                    />
+                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                      {formData.name}
+                    </Typography>
+                  </Box>
+                  {formData.description && (
+                    <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block', ml: 3 }}>
+                      {formData.description}
+                    </Typography>
+                  )}
+                </CardContent>
+              </Card>
+            )}
+          </Box>
+        </DialogContent>
+        
+        <Divider />
+        
+        <DialogActions 
+          sx={{ 
+            p: isSmallMobile ? 1.5 : isMobile ? 2 : 3, 
+            backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+            gap: isSmallMobile ? 1.5 : 1,
+            flexDirection: isMobile ? 'column-reverse' : 'row',
+            '& .MuiButton-root': {
+              minHeight: isSmallMobile ? 52 : isMobile ? 48 : 'auto',
+              fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem',
+              width: isMobile ? '100%' : 'auto',
+              fontWeight: 600,
+              // Enhanced touch feedback
+              '&:active': {
+                transform: 'scale(0.98)'
+              }
+            }
+          }}
+        >
+          <Button
+            type="button"
+            variant="outlined"
+            onClick={onClose}
+            disabled={loading}
+            sx={{ 
+              textTransform: 'none',
+              borderRadius: 2,
+              minWidth: isMobile ? 'auto' : 100
+            }}
+          >
+            İptal
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={loading}
+            startIcon={loading ? undefined : <Check size={16} />}
+            sx={{ 
+              textTransform: 'none',
+              borderRadius: 2,
+              minWidth: isMobile ? 'auto' : 100,
+              backgroundColor: theme.palette.primary.main,
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark
+              }
+            }}
+          >
+            {loading ? 'Yükleniyor...' : (category ? 'Güncelle' : 'Ekle')}
+          </Button>
+        </DialogActions>
+      </form>
+    </Dialog>
   );
 };
 

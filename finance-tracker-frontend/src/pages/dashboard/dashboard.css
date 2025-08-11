@@ -6,6 +6,18 @@
   margin-bottom: 3rem !important; /* Tüm kartlar için eşit mesafe */
 }
 
+/* Equal height for side-by-side dashboard cards - reduced height */
+.dashboard-side-by-side-grid .enhanced-dashboard-card {
+  height: 35rem !important; /* 480px - reduced from 640px for more compact layout */
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.dashboard-side-by-side-grid .enhanced-dashboard-card .enhanced-card-content {
+  flex: 1 !important;
+  overflow: hidden !important;
+}
+
 /* Son kart için alt boşluğu kaldırma */
 .dashboard-container .last-item {
   margin-bottom: 0 !important;
@@ -29,22 +41,106 @@
   margin-top: 2rem;
 }
 
+/* Chart header card - can keep enhanced styling */
 .charts-section .enhanced-dashboard-card {
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 12px;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* Keep enhanced styling for header card only */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
-:root.dark .charts-section .enhanced-dashboard-card {
-  background: #1F2937;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+/* Responsive padding for charts */
+@media (min-width: 640px) {
+  .charts-section .enhanced-dashboard-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .charts-section .enhanced-dashboard-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Override enhanced-dashboard-card styles for chart containers specifically */
+.charts-section .MuiPaper-root {
+  /* Reset any CSS custom property overrides for MUI Paper components */
+  background: unset !important;
+  border: unset !important;
+  box-shadow: unset !important;
+  /* Let MUI handle the theming completely */
+}
+
+/* Ensure chart Paper components are not affected by global enhanced-dashboard-card styles */
+.charts-section .grid .MuiPaper-root {
+  /* Remove any inherited background overrides */
+  background-image: none !important;
+  backdrop-filter: none !important;
+  border: none !important;
+}
+
+/* Enhanced chart container styling for better theme integration */
+.charts-section canvas {
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Chart title spacing improvements */
+.charts-section .MuiTypography-h6 {
+  margin-bottom: 0.75rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.4 !important;
+  word-break: break-word;
+}
+
+@media (min-width: 640px) {
+  .charts-section .MuiTypography-h6 {
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .charts-section .MuiTypography-h6 {
+    font-size: 1.125rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Smooth chart transitions during theme changes */
+.charts-section .chart-loading {
+  opacity: 0.6;
+}
+
+.charts-section .chart-loaded {
+  opacity: 1;
 }
 
 /* Chart container responsive design */
 .charts-section .grid {
   width: 100%;
+  gap: 1.5rem;
+}
+
+/* Ensure charts don't overflow their containers */
+.charts-section .MuiPaper-root {
+  overflow: hidden;
+  min-width: 0; /* Allow flex items to shrink */
+}
+
+/* Fix chart canvas responsive behavior */
+.charts-section .MuiBox-root {
+  min-width: 0;
+  width: 100%;
+}
+
+/* Prevent chart text from being cut off */
+.charts-section .chartjs-render-monitor {
+  min-width: 100% !important;
 }
 
 /* Ensure proper spacing between chart rows */
@@ -52,15 +148,37 @@
   margin-bottom: 2rem;
 }
 
-/* Chart card hover effects */
-.charts-section .enhanced-dashboard-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  transform: translateY(-1px);
+/* Fix legend text wrapping and spacing */
+.charts-section .MuiPaper-root canvas + div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-:root.dark .charts-section .enhanced-dashboard-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+/* Improve chart title line height for multi-line titles */
+.charts-section .MuiTypography-h6 {
+  line-height: 1.3 !important;
+  max-height: 3.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
+
+/* Chart card hover effects - let MUI theme handle shadows */
+@media (min-width: 769px) {
+  .charts-section .enhanced-dashboard-card:hover {
+    /* Remove shadow override - let MUI theme handle this */
+    /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); */
+    transform: translateY(-1px);
+  }
+  
+  /* Remove dark mode shadow override */
+  /* :root.dark .charts-section .enhanced-dashboard-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  } */
+}
+
 
 /* Mobile responsiveness for charts */
 @media (max-width: 768px) {
@@ -70,6 +188,43 @@
   }
   
   .charts-section .enhanced-dashboard-card {
-    padding: 1rem;
+    padding: 0.875rem;
+    min-height: 350px;
+  }
+  
+  /* Adjust chart heights on mobile for better fit */
+  .charts-section canvas {
+    max-height: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .charts-section .enhanced-dashboard-card {
+    padding: 0.75rem;
+    min-height: 320px;
+  }
+  
+  .charts-section canvas {
+    max-height: 250px !important;
+  }
+  
+  /* Smaller font sizes on very small screens */
+  .charts-section .MuiTypography-h6 {
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* Responsive height adjustments for dashboard cards */
+@media (max-width: 768px) {
+  /* On mobile, use smaller height to prevent excessive scrolling */
+  .dashboard-side-by-side-grid .enhanced-dashboard-card {
+    height: 24rem !important; /* 384px - reduced for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  /* On very small screens, use even smaller height */
+  .dashboard-side-by-side-grid .enhanced-dashboard-card {
+    height: 20rem !important; /* 320px - smallest responsive height */
   }
 }

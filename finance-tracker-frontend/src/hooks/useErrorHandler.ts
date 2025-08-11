@@ -62,17 +62,17 @@ export const useErrorHandler = () => {
 
       switch (toastType) {
         case 'error':
-          toast.error(message, toastOptions);
+          toast.error(message || 'An error occurred', toastOptions);
           break;
         case 'warning':
-          toast(message, { 
+          toast(message || 'Warning', { 
             ...toastOptions, 
             icon: '⚠️',
             style: { background: '#f59e0b', color: 'white' }
           });
           break;
         case 'info':
-          toast(message, {
+          toast(message || 'Information', {
             ...toastOptions,
             icon: 'ℹ️',
             style: { background: '#3b82f6', color: 'white' }

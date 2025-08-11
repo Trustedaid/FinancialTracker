@@ -14,7 +14,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js';
 import { BaseChart } from './BaseChart';
-import { getBaseChartOptions, formatCurrencyForChart, CATEGORY_COLORS } from '../../utils/chartConfig';
+import { getBaseChartOptions, formatCurrencyForChart, CATEGORY_COLORS, CATEGORY_COLORS_DARK } from '../../utils/chartConfig';
+import { useTheme } from '../../contexts';
 import { transactionService } from '../../services';
 import type { ChartOptions } from 'chart.js';
 import type { ChartThemeConfig } from '../../utils/chartConfig';
@@ -41,6 +42,7 @@ export const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const chartRef = useRef<ChartJS<'doughnut', any, any> | null>(null);
+  const { theme: themeMode } = useTheme();
 
   // Use current month/year if not provided
   const currentDate = new Date();
@@ -89,9 +91,10 @@ export const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
       );
     }
 
-    // Use category colors from database, fallback to predefined colors
+    // Use category colors from database, fallback to theme-appropriate predefined colors
+    const categoryColorSet = themeMode === 'dark' ? CATEGORY_COLORS_DARK : CATEGORY_COLORS;
     const backgroundColors = data.map((item, index) => 
-      item.categoryColor || CATEGORY_COLORS[index % CATEGORY_COLORS.length]
+      item.categoryColor || categoryColorSet[index % categoryColorSet.length]
     );
 
     // Create hover colors (slightly lighter)
@@ -122,10 +125,17 @@ export const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
         ...getBaseChartOptions(theme).plugins,
         legend: {
           ...getBaseChartOptions(theme).plugins.legend,
-          position: 'right',
-          align: 'center',
+          position: window.innerWidth < 768 ? ('bottom' as const) : ('right' as const),
+          align: 'start' as const,
+          maxWidth: window.innerWidth < 768 ? undefined : 200,
           labels: {
             ...getBaseChartOptions(theme).plugins.legend.labels,
+            padding: 12,
+            usePointStyle: true,
+            pointStyle: 'circle',
+            font: {
+              size: 11
+            },
             generateLabels: function(chart) {
               const data = chart.data;
               if (data.labels!.length && data.datasets.length) {
@@ -135,8 +145,13 @@ export const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
                   const totalValue = (data.datasets[0].data as number[]).reduce((a, b) => a + b, 0);
                   const percentage = ((value / totalValue) * 100).toFixed(1);
                   
+                  // Truncate long category names for better fit
+                  const truncatedLabel = typeof label === 'string' && label.length > 15 
+                    ? `${label.substring(0, 12)}...` 
+                    : label;
+                  
                   return {
-                    text: `${label} (${percentage}%)`,
+                    text: `${truncatedLabel} (${percentage}%)`,
                     fillStyle: (dataset.backgroundColor as string[])[i],
                     strokeStyle: dataset.borderColor as string,
                     lineWidth: dataset.borderWidth as number,

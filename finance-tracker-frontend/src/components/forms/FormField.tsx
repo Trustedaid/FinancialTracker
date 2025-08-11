@@ -2,7 +2,7 @@ import React, { forwardRef, useState, useEffect } from 'react';
 import { AlertCircle, CheckCircle, Eye, EyeOff } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
-export interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+export interface FormFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>, 'size'> {
   label?: string;
   error?: string | string[];
   success?: string;

@@ -172,7 +172,17 @@ export const BudgetProgressChart: React.FC<BudgetProgressChartProps> = ({
         },
         legend: {
           ...getBaseChartOptions(theme).plugins.legend,
-          position: 'top'
+          position: 'top' as const,
+          align: 'start' as const,
+          labels: {
+            ...getBaseChartOptions(theme).plugins.legend.labels,
+            padding: 12,
+            usePointStyle: true,
+            font: {
+              size: 11
+            }
+          },
+          maxHeight: 50
         }
       },
       scales: {
@@ -191,11 +201,20 @@ export const BudgetProgressChart: React.FC<BudgetProgressChartProps> = ({
           ticks: {
             ...getBaseChartOptions(theme).scales.y.ticks,
             maxRotation: 0,
+            font: {
+              size: 10
+            },
             callback: function(_value, index) {
               const label = labels[index];
-              // Truncate long category names
-              return label && label.length > 15 ? `${label.substring(0, 12)}...` : label;
+              // Truncate long category names based on screen size
+              const maxLength = window.innerWidth < 768 ? 10 : 15;
+              return label && label.length > maxLength ? `${label.substring(0, maxLength - 3)}...` : label;
             }
+          },
+          // Add more space for labels
+          grid: {
+            ...getBaseChartOptions(theme).scales.y.grid,
+            display: false
           }
         }
       },

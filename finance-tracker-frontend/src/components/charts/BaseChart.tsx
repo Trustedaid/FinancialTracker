@@ -24,7 +24,7 @@ interface BaseChartProps {
   loading?: boolean;
   error?: string | null;
   onRetry?: () => void;
-  children: (theme: ChartThemeConfig, canvasRef: React.RefObject<HTMLCanvasElement | null>) => React.ReactNode;
+  children: (theme: ChartThemeConfig, canvasRef: React.RefObject<HTMLCanvasElement | null>, chartRef?: React.RefObject<Chart | null>) => React.ReactNode;
   className?: string;
 }
 
@@ -60,6 +60,7 @@ export const BaseChart: React.FC<BaseChartProps> = ({
         ...chartRef.current.options,
         ...updatedOptions
       };
+      // Use 'none' mode for instant theme switching without animation
       chartRef.current.update('none');
     }
   }, [theme, chartTheme, loading, error]);
@@ -84,9 +85,13 @@ export const BaseChart: React.FC<BaseChartProps> = ({
           <Typography 
             variant="h6" 
             component="h3" 
-            className="mb-4 font-semibold"
+            className="mb-3 font-semibold"
+            sx={{ 
+              fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
+              marginBottom: { xs: '0.75rem', sm: '1rem' }
+            }}
           >
-            <Skeleton width={200} />
+            <Skeleton width="80%" height={28} />
           </Typography>
         )}
         <Box height={height}>
@@ -155,18 +160,33 @@ export const BaseChart: React.FC<BaseChartProps> = ({
   return (
     <Paper 
       elevation={1} 
-      className={`p-6 ${className}`}
+      className={className}
       sx={{ 
         backgroundColor: 'background.paper',
-        borderRadius: 2
+        borderRadius: 2,
+        padding: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
+        minHeight: height + (title ? 80 : 40),
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
       {title && (
         <Typography 
           variant="h6" 
           component="h3" 
-          className="mb-4 font-semibold"
+          className="mb-3 font-semibold"
           color="text.primary"
+          sx={{ 
+            fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
+            lineHeight: 1.4,
+            marginBottom: { xs: '0.75rem', sm: '1rem' },
+            wordBreak: 'break-word',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical'
+          }}
         >
           {title}
         </Typography>
@@ -175,10 +195,17 @@ export const BaseChart: React.FC<BaseChartProps> = ({
         height={height} 
         position="relative"
         sx={{
+          flex: 1,
+          minHeight: height,
           '& canvas': {
             maxHeight: height,
             width: '100% !important',
-            height: `${height}px !important`
+            height: 'auto !important',
+            maxWidth: '100%'
+          },
+          // Ensure proper spacing for chart content
+          '& > div': {
+            height: '100%'
           }
         }}
       >
@@ -191,7 +218,7 @@ export const BaseChart: React.FC<BaseChartProps> = ({
             height: `${height}px`
           }}
         />
-        {children(chartTheme, canvasRef)}
+        {children(chartTheme, canvasRef, chartRef)}
       </Box>
     </Paper>
   );

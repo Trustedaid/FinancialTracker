@@ -81,7 +81,7 @@ export const useOfflineQueue = () => {
       // Remove oldest low-priority request to make room
       setState(prev => ({
         ...prev,
-        queue: prev.queue.filter((req, index) => 
+        queue: prev.queue.filter((_, index) => 
           index !== prev.queue.findIndex(r => r.priority === 'low')
         ).slice(1), // Remove oldest if no low-priority found
       }));

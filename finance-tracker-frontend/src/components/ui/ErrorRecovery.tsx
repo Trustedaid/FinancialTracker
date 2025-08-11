@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RefreshCw, AlertCircle, Wifi, WifiOff, Home, ArrowLeft, Bug } from 'lucide-react';
+import { RefreshCw, AlertCircle, WifiOff, Home, ArrowLeft, Bug } from 'lucide-react';
 import { Button } from './Button';
 import { ErrorAlert } from './ErrorAlert';
 import { cn } from '../../utils/cn';

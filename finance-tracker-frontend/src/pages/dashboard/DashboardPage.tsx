@@ -330,30 +330,32 @@ const DashboardPage: React.FC = () => {
           {/* Recent Transactions and Categories Side by Side */}
           <div className="dashboard-side-by-side-grid w-full min-h-0">
             {/* Recent Transactions */}
-            <div className="enhanced-dashboard-card w-full h-80 overflow-hidden">
-              <div className="enhanced-card-header">
-                <div className="enhanced-card-title">
-                  <CreditCard size={20} className="text-primary-600" />
-                  {t('dashboard.recent_transactions')}
+            <div className="enhanced-dashboard-card w-full h-[30rem] sm:h-[30rem] md:h-[30rem] overflow-hidden flex flex-col">
+              <div className="enhanced-card-header flex-shrink-0">
+                <div className="enhanced-card-title flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <CreditCard size={20} className="text-primary-600" />
+                    {t('dashboard.recent_transactions')}
+                  </div>
+                  <Link to="/transactions">
+                    <Button 
+                      variant="text" 
+                      size="small"
+                      sx={{ textTransform: 'none' }}
+                    >
+                      {t('common.view_all')}
+                    </Button>
+                  </Link>
                 </div>
-                <Link to="/transactions">
-                  <Button 
-                    variant="text" 
-                    size="small"
-                    sx={{ textTransform: 'none' }}
-                  >
-                    {t('common.view_all')}
-                  </Button>
-                </Link>
               </div>
-              <div className="enhanced-card-content">
+              <div className="enhanced-card-content flex-1 overflow-hidden">
                 {recentTransactions.length === 0 ? (
-                  <div className="empty-state">
+                  <div className="empty-state h-full flex flex-col items-center justify-center">
                     <CreditCard size={40} className="empty-state-icon" />
                     <p className="empty-state-text">{t('dashboard.no_transactions')}</p>
                   </div>
                 ) : (
-                  <div className="space-y-3 max-h-64 overflow-y-auto">
+                  <div className="space-y-3 h-full overflow-y-auto">
                     {recentTransactions.map((transaction) => (
                       <div key={transaction.id} className="transaction-item p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                         <div className="flex items-center justify-between">

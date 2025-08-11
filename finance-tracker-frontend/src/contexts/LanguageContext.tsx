@@ -57,6 +57,7 @@ const translations = {
     'common.edit': 'Edit',
     'common.delete': 'Delete',
     'common.confirm': 'Confirm',
+    'common.switch_to': 'Switch to',
     
     // Homepage
     'homepage.hero.title': 'Take Control of Your',
@@ -241,6 +242,7 @@ const translations = {
     'common.edit': 'Düzenle',
     'common.delete': 'Sil',
     'common.confirm': 'Onayla',
+    'common.switch_to': 'Geçiş yap',
     
     // Homepage
     'homepage.hero.title': 'Finansal Geleceğinizi',

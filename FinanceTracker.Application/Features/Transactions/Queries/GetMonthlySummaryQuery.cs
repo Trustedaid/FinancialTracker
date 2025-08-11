@@ -23,12 +23,12 @@ public class GetMonthlySummaryQueryHandler : IRequestHandler<GetMonthlySummaryQu
         // Validate input parameters
         if (request.Month < 1 || request.Month > 12)
         {
-            throw new BusinessRuleViolationException("INVALID_MONTH", "Month must be between 1 and 12");
+            throw new ArgumentException("Month must be between 1 and 12", nameof(request.Month));
         }
 
         if (request.Year < 1900 || request.Year > DateTime.Now.Year + 10)
         {
-            throw new BusinessRuleViolationException("INVALID_YEAR", $"Year must be between 1900 and {DateTime.Now.Year + 10}");
+            throw new ArgumentException($"Year must be between 1900 and {DateTime.Now.Year + 10}", nameof(request.Year));
         }
 
         // Calculate start and end dates for the month

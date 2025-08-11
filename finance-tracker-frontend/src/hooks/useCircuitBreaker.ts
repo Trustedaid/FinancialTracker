@@ -1,11 +1,13 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { toast } from '../components/ui/Toast';
 
-export enum CircuitState {
-  CLOSED = 'closed',
-  OPEN = 'open',
-  HALF_OPEN = 'half-open'
-}
+export const CircuitState = {
+  CLOSED: 'closed',
+  OPEN: 'open',
+  HALF_OPEN: 'half-open'
+} as const;
+
+export type CircuitState = typeof CircuitState[keyof typeof CircuitState];
 
 export interface CircuitBreakerConfig {
   failureThreshold?: number;

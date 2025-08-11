@@ -1,5 +1,6 @@
 using System.Text;
 using FinanceTracker.API.Middleware;
+using FinanceTracker.Application.Common.Mappings;
 using FinanceTracker.Domain.Interfaces;
 using FinanceTracker.Infrastructure.Data;
 using FinanceTracker.Infrastructure.Services;
@@ -76,6 +77,9 @@ builder.Services.AddScoped<IApplicationDbContext>(provider =>
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(FinanceTracker.Application.Features.Auth.Commands.RegisterUserCommand).Assembly);
 });
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // FluentValidation
 builder.Services.AddValidatorsFromAssembly(typeof(FinanceTracker.Application.Features.Auth.Commands.RegisterUserCommand).Assembly);

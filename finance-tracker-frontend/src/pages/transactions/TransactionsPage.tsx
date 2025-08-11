@@ -7,18 +7,27 @@ import {
   TrendingUp, 
   TrendingDown,
   Calendar,
-  CreditCard
+  CreditCard,
+  ChevronUp,
+  ChevronDown
 } from 'lucide-react';
-import { Button } from '@mui/material';
 import { 
+  Button,
   Table,
-  TableHeader,
   TableBody,
-  TableRow,
-  TableHead,
   TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Chip,
+  IconButton,
+  Tooltip,
+  Typography,
+  Box
+} from '@mui/material';
+import { 
   Pagination,
-  Badge,
   FilterBar,
   type FilterConfig,
   type SortConfig
@@ -186,9 +195,6 @@ export const TransactionsPage: React.FC = () => {
     return type === 1 ? 'Gelir' : 'Gider';
   };
 
-  const getTransactionAmountClass = (type: TransactionType) => {
-    return type === 1 ? 'text-success-600' : 'text-danger-600';
-  };
 
   // Filter configuration for FilterBar
   const filterConfigs: FilterConfig[] = [
@@ -340,166 +346,329 @@ export const TransactionsPage: React.FC = () => {
             ) : (
               <>
                 {/* Desktop Table */}
-                <div className="hidden md:block overflow-hidden">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead 
-                          sortable 
-                          sortKey="date" 
-                          sortConfig={sortConfig} 
-                          onSort={handleSort}
-                        >
-                          <div className="flex items-center gap-2">
-                            <Calendar size={16} className="text-primary-600" />
-                            Tarih
-                          </div>
-                        </TableHead>
-                        <TableHead 
-                          sortable 
-                          sortKey="description" 
-                          sortConfig={sortConfig} 
-                          onSort={handleSort}
-                        >
-                          Açıklama
-                        </TableHead>
-                        <TableHead>Kategori</TableHead>
-                        <TableHead>Tür</TableHead>
-                        <TableHead 
-                          align="right"
-                          sortable 
-                          sortKey="amount" 
-                          sortConfig={sortConfig} 
-                          onSort={handleSort}
-                        >
-                          Tutar
-                        </TableHead>
-                        <TableHead align="right">İşlemler</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {transactions.map((transaction) => (
-                        <TableRow 
-                          key={transaction.id} 
-                          className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                        >
-                          <TableCell>
-                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                              {formatDate(transaction.date)}
-                            </div>
+                <div className="hidden md:block">
+                  <TableContainer 
+                    component={Paper} 
+                    elevation={0}
+                    sx={{
+                      borderRadius: 3,
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      overflow: 'hidden',
+                      '& .MuiTable-root': {
+                        minWidth: 750
+                      }
+                    }}
+                  >
+                    <Table size="medium" stickyHeader>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell 
+                            sx={{ 
+                              fontWeight: 600, 
+                              cursor: 'pointer',
+                              userSelect: 'none',
+                              '&:hover': {
+                                backgroundColor: 'action.hover'
+                              }
+                            }}
+                            onClick={() => handleSort('date')}
+                          >
+                            <Box display="flex" alignItems="center" gap={1}>
+                              <Calendar size={16} />
+                              <Typography variant="subtitle2" fontWeight={600}>
+                                Tarih
+                              </Typography>
+                              {sortConfig?.key === 'date' && (
+                                sortConfig.direction === 'asc' ? 
+                                <ChevronUp size={16} color="primary" /> : 
+                                <ChevronDown size={16} color="primary" />
+                              )}
+                            </Box>
                           </TableCell>
-                          <TableCell>
-                            <div className="max-w-xs truncate" title={transaction.description}>
-                              <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                                {transaction.description}
-                              </div>
-                            </div>
+                          <TableCell 
+                            sx={{ 
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              userSelect: 'none',
+                              '&:hover': {
+                                backgroundColor: 'action.hover'
+                              }
+                            }}
+                            onClick={() => handleSort('description')}
+                          >
+                            <Box display="flex" alignItems="center" gap={1}>
+                              <Typography variant="subtitle2" fontWeight={600}>
+                                Açıklama
+                              </Typography>
+                              {sortConfig?.key === 'description' && (
+                                sortConfig.direction === 'asc' ? 
+                                <ChevronUp size={16} color="primary" /> : 
+                                <ChevronDown size={16} color="primary" />
+                              )}
+                            </Box>
                           </TableCell>
-                          <TableCell>
-                            <div className="flex items-center space-x-2">
-                              <div
-                                className="w-4 h-4 rounded-full"
-                                style={{ backgroundColor: transaction.categoryColor }}
-                              />
-                              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                                {transaction.categoryName}
-                              </span>
-                            </div>
+                          <TableCell sx={{ fontWeight: 600 }}>
+                            <Typography variant="subtitle2" fontWeight={600}>
+                              Kategori
+                            </Typography>
                           </TableCell>
-                          <TableCell>
-                            <Badge 
-                              variant={transaction.type === 1 ? 'outline-success' : 'outline-danger'}
-                              icon={getTransactionTypeIcon(transaction.type)}
-                            >
-                              {getTransactionTypeText(transaction.type)}
-                            </Badge>
+                          <TableCell sx={{ fontWeight: 600 }}>
+                            <Typography variant="subtitle2" fontWeight={600}>
+                              Tür
+                            </Typography>
                           </TableCell>
-                          <TableCell align="right" variant="numeric">
-                            <div className={`text-sm font-bold ${getTransactionAmountClass(transaction.type)}`}>
-                              <CurrencyDisplay 
-                                amount={transaction.type === 1 ? transaction.amount : -transaction.amount} 
-                                fromCurrency={'TRY' as const} 
-                                size="sm"
-                                showPositiveSign={transaction.type === 1}
-                              />
-                            </div>
+                          <TableCell 
+                            align="right" 
+                            sx={{ 
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              userSelect: 'none',
+                              '&:hover': {
+                                backgroundColor: 'action.hover'
+                              }
+                            }}
+                            onClick={() => handleSort('amount')}
+                          >
+                            <Box display="flex" alignItems="center" justifyContent="flex-end" gap={1}>
+                              <Typography variant="subtitle2" fontWeight={600}>
+                                Tutar
+                              </Typography>
+                              {sortConfig?.key === 'amount' && (
+                                sortConfig.direction === 'asc' ? 
+                                <ChevronUp size={16} color="primary" /> : 
+                                <ChevronDown size={16} color="primary" />
+                              )}
+                            </Box>
                           </TableCell>
-                          <TableCell align="right" variant="action">
-                            <div className="flex justify-end space-x-2">
-                              <Button
-                                variant="outlined"
-                                size="small"
-                                onClick={() => handleEditTransaction(transaction)}
-                                startIcon={<Edit size={14} />}
-                                sx={{ textTransform: 'none' }}
-                              >
-                                Düzenle
-                              </Button>
-                              <Button
-                                variant="outlined"
-                                size="small"
-                                color="error"
-                                onClick={() => handleDeleteTransaction(transaction.id)}
-                                startIcon={<Trash2 size={14} />}
-                                sx={{ textTransform: 'none' }}
-                              >
-                                Sil
-                              </Button>
-                            </div>
+                          <TableCell align="right" sx={{ fontWeight: 600 }}>
+                            <Typography variant="subtitle2" fontWeight={600}>
+                              İşlemler
+                            </Typography>
                           </TableCell>
                         </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
+                      </TableHead>
+                      <TableBody>
+                        {transactions.map((transaction) => (
+                          <TableRow 
+                            key={transaction.id}
+                            hover
+                            sx={{
+                              '&:nth-of-type(odd)': {
+                                backgroundColor: 'action.hover'
+                              },
+                              '&:hover': {
+                                backgroundColor: 'action.selected',
+                                transform: 'scale(1.001)',
+                                transition: 'all 0.2s ease'
+                              },
+                              cursor: 'pointer'
+                            }}
+                          >
+                            <TableCell>
+                              <Box display="flex" alignItems="center" gap={1}>
+                                <Calendar size={14} color="gray" />
+                                <Typography variant="body2" fontWeight={500}>
+                                  {formatDate(transaction.date)}
+                                </Typography>
+                              </Box>
+                            </TableCell>
+                            <TableCell>
+                              <Tooltip title={transaction.description} arrow>
+                                <Typography 
+                                  variant="body2" 
+                                  fontWeight={500}
+                                  sx={{
+                                    maxWidth: 200,
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap'
+                                  }}
+                                >
+                                  {transaction.description}
+                                </Typography>
+                              </Tooltip>
+                            </TableCell>
+                            <TableCell>
+                              <Box display="flex" alignItems="center" gap={1}>
+                                <Box
+                                  sx={{
+                                    width: 12,
+                                    height: 12,
+                                    borderRadius: '50%',
+                                    backgroundColor: transaction.categoryColor
+                                  }}
+                                />
+                                <Typography variant="body2" fontWeight={500}>
+                                  {transaction.categoryName}
+                                </Typography>
+                              </Box>
+                            </TableCell>
+                            <TableCell>
+                              <Chip 
+                                size="small"
+                                icon={getTransactionTypeIcon(transaction.type)}
+                                label={getTransactionTypeText(transaction.type)}
+                                variant="outlined"
+                                color={transaction.type === 1 ? 'success' : 'error'}
+                                sx={{
+                                  fontWeight: 500,
+                                  borderWidth: 1.5,
+                                  '& .MuiChip-icon': {
+                                    marginLeft: '4px'
+                                  }
+                                }}
+                              />
+                            </TableCell>
+                            <TableCell align="right">
+                              <Typography 
+                                variant="body2" 
+                                fontWeight={600}
+                                sx={{
+                                  color: transaction.type === 1 ? 'success.main' : 'error.main'
+                                }}
+                              >
+                                <CurrencyDisplay 
+                                  amount={transaction.type === 1 ? transaction.amount : -transaction.amount} 
+                                  fromCurrency={'TRY' as const} 
+                                  size="sm"
+                                  showPositiveSign={transaction.type === 1}
+                                />
+                              </Typography>
+                            </TableCell>
+                            <TableCell align="right">
+                              <Box display="flex" justifyContent="flex-end" gap={1}>
+                                <Tooltip title="Düzenle" arrow>
+                                  <IconButton
+                                    size="small"
+                                    color="primary"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleEditTransaction(transaction);
+                                    }}
+                                    sx={{
+                                      '&:hover': {
+                                        backgroundColor: 'primary.light',
+                                        color: 'primary.contrastText'
+                                      }
+                                    }}
+                                  >
+                                    <Edit size={16} />
+                                  </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Sil" arrow>
+                                  <IconButton
+                                    size="small"
+                                    color="error"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleDeleteTransaction(transaction.id);
+                                    }}
+                                    sx={{
+                                      '&:hover': {
+                                        backgroundColor: 'error.light',
+                                        color: 'error.contrastText'
+                                      }
+                                    }}
+                                  >
+                                    <Trash2 size={16} />
+                                  </IconButton>
+                                </Tooltip>
+                              </Box>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </div>
 
                 {/* Mobile Cards */}
                 <div className="md:hidden space-y-4">
                   {transactions.map((transaction) => (
-                    <div 
+                    <Paper
                       key={transaction.id} 
-                      className="transaction-item p-4 bg-white rounded-lg border border-gray-200 shadow-sm"
+                      elevation={2}
+                      sx={{
+                        p: 3,
+                        borderRadius: 3,
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          elevation: 4,
+                          transform: 'translateY(-2px)'
+                        }
+                      }}
                     >
                       {/* Header with Type and Amount */}
-                      <div className="flex items-center justify-between mb-3">
-                        <Badge 
-                          variant={transaction.type === 1 ? 'outline-success' : 'outline-danger'}
+                      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+                        <Chip 
+                          size="small"
                           icon={getTransactionTypeIcon(transaction.type)}
+                          label={getTransactionTypeText(transaction.type)}
+                          variant="outlined"
+                          color={transaction.type === 1 ? 'success' : 'error'}
+                          sx={{
+                            fontWeight: 500,
+                            borderWidth: 1.5
+                          }}
+                        />
+                        <Typography 
+                          variant="h6" 
+                          fontWeight={600}
+                          sx={{
+                            color: transaction.type === 1 ? 'success.main' : 'error.main'
+                          }}
                         >
-                          {getTransactionTypeText(transaction.type)}
-                        </Badge>
-                        <div className={`font-semibold ${getTransactionAmountClass(transaction.type)}`}>
                           <CurrencyDisplay 
                             amount={transaction.amount} 
                             fromCurrency={'TRY' as const} 
                             size="sm"
                           />
-                        </div>
-                      </div>
+                        </Typography>
+                      </Box>
                       
                       {/* Description */}
-                      <div className="mb-3">
-                        <p className="text-sm text-gray-900 dark:text-gray-100 font-medium">
+                      <Box mb={2}>
+                        <Typography variant="body2" fontWeight={500} color="text.primary">
                           {transaction.description}
-                        </p>
-                      </div>
+                        </Typography>
+                      </Box>
                       
                       {/* Category and Date */}
-                      <div className="flex items-center justify-between text-sm mb-4">
-                        <div className="flex items-center space-x-2">
-                          <div
-                            className="w-3 h-3 rounded-full"
-                            style={{ backgroundColor: transaction.categoryColor }}
+                      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+                        <Box display="flex" alignItems="center" gap={1}>
+                          <Box
+                            sx={{
+                              width: 12,
+                              height: 12,
+                              borderRadius: '50%',
+                              backgroundColor: transaction.categoryColor
+                            }}
                           />
-                          <span className="text-gray-600 dark:text-gray-400">{transaction.categoryName}</span>
-                        </div>
-                        <div className="text-gray-500 dark:text-gray-400">
-                          {formatDate(transaction.date)}
-                        </div>
-                      </div>
+                          <Typography variant="body2" color="text.secondary">
+                            {transaction.categoryName}
+                          </Typography>
+                        </Box>
+                        <Box display="flex" alignItems="center" gap={0.5}>
+                          <Calendar size={12} />
+                          <Typography variant="body2" color="text.secondary">
+                            {formatDate(transaction.date)}
+                          </Typography>
+                        </Box>
+                      </Box>
                       
                       {/* Action Buttons */}
-                      <div className="flex justify-end space-x-2 pt-3 border-t border-gray-100">
+                      <Box 
+                        display="flex" 
+                        justifyContent="flex-end" 
+                        gap={1} 
+                        pt={2}
+                        sx={{
+                          borderTop: 1,
+                          borderColor: 'divider'
+                        }}
+                      >
                         <Button
                           variant="outlined"
                           size="small"
@@ -519,8 +688,8 @@ export const TransactionsPage: React.FC = () => {
                         >
                           Sil
                         </Button>
-                      </div>
-                    </div>
+                      </Box>
+                    </Paper>
                   ))}
                 </div>
 

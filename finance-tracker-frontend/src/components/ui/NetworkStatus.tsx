@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wifi, WifiOff, AlertTriangle, Zap } from 'lucide-react';
+import { Wifi, WifiOff, AlertTriangle } from 'lucide-react';
 import { useNetworkStatus } from '../../hooks/useNetworkStatus';
 import { cn } from '../../utils/cn';
 

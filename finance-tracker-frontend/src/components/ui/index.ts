@@ -9,4 +9,5 @@ export * from './Skeleton';
 export * from './Progress';
 export * from './Filter';
 export * from './ThemeToggle';
+export * from './LanguageToggle';
 export { CurrencyDisplay, CurrencyInput } from './CurrencyDisplay';

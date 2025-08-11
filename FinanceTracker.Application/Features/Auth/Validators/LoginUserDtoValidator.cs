@@ -9,8 +9,11 @@ public class LoginUserDtoValidator : AbstractValidator<LoginUserDto>
     public LoginUserDtoValidator()
     {
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("E-posta adresi gereklidir.")
-            .Must(EmailValidator.IsValidEmail).WithMessage("Geçerli bir e-posta adresi giriniz.");
+            .NotEmpty().WithMessage("E-posta adresi gereklidir.");
+
+        RuleFor(x => x.Email)
+            .Must(EmailValidator.IsValidEmail).WithMessage("Geçerli bir e-posta adresi giriniz.")
+            .When(x => !string.IsNullOrWhiteSpace(x.Email));
 
         RuleFor(x => x.Password)
             .NotEmpty().WithMessage("Şifre gereklidir.");

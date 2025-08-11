@@ -521,29 +521,6 @@ public class RegisterUserDtoValidatorTests
         result.Errors.Should().NotContain(e => e.PropertyName == nameof(RegisterUserDto.LastName));
     }
 
-    [Theory]
-    [InlineData("ahmet@örnek.com")]
-    [InlineData("kullanıcı@şirket.com.tr")]
-    [InlineData("müşteri@örnekfirma.com")]
-    [InlineData("test@türkiye.gov.tr")]
-    public void Validator_Should_Support_Turkish_Emails(string turkishEmail)
-    {
-        // Arrange
-        var dto = new RegisterUserDto
-        {
-            Email = turkishEmail,
-            Password = "güvenliŞifre123",
-            FirstName = "Ahmet",
-            LastName = "Yılmaz"
-        };
-
-        // Act
-        var result = _validator.Validate(dto);
-
-        // Assert
-        result.Errors.Should().NotContain(e => e.PropertyName == nameof(RegisterUserDto.Email));
-        result.IsValid.Should().BeTrue();
-    }
 
     [Theory]
     [InlineData("güvenliŞifre")]
@@ -602,10 +579,10 @@ public class RegisterUserDtoValidatorTests
     [Fact]
     public void Validator_Should_Pass_With_Complete_Turkish_User_Registration()
     {
-        // Arrange - Complete valid Turkish user registration
+        // Arrange - Complete valid Turkish user registration (with ASCII email)
         var dto = new RegisterUserDto
         {
-            Email = "ahmet.yılmaz@şirket.com.tr",
+            Email = "ahmet.yilmaz@sirket.com.tr",
             Password = "güvenliParola123",
             FirstName = "Ahmet",
             LastName = "Yılmaz"

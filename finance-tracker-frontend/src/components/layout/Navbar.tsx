@@ -14,7 +14,8 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth, useLanguage } from '../../contexts';
 import { UserMenu } from './UserMenu';
-import { Button, IconButton } from '@mui/material';
+import { ThemeToggle, LanguageToggle } from '../ui';
+import { Button, IconButton, Box } from '@mui/material';
 import { 
   TrendingUp, 
   Menu, 
@@ -143,6 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
 
             {/* User Actions */}
             <div className="navbar-actions desktop">
+              {/* Auth Actions */}
               {isAuthenticated ? (
                 <UserMenu />
               ) : (
@@ -155,14 +157,30 @@ export const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   </Link>
                 </div>
               )}
+
+              {/* Toggle Buttons - Positioned at far right */}
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: 1,
+                  ml: 2
+                }}
+              >
+                <ThemeToggle size="md" />
+                <LanguageToggle size="md" />
+              </Box>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Only visible on mobile */}
             <IconButton 
               className="navbar-mobile-toggle"
               onClick={handleMobileMenuToggle}
               aria-label={t('navbar.toggle_menu')}
-              sx={{ color: 'text.primary' }}
+              sx={{ 
+                color: 'text.primary',
+                display: { xs: 'block', md: 'none' } // Only show on mobile screens
+              }}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </IconButton>
@@ -213,6 +231,25 @@ export const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     </Link>
                   );
                 })}
+              </div>
+
+              {/* Mobile Toggle Buttons */}
+              <div className="navbar-mobile-toggles">
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    alignItems: 'center', 
+                    gap: 2,
+                    py: 2,
+                    borderTop: '1px solid',
+                    borderColor: 'divider',
+                    borderBottom: '1px solid'
+                  }}
+                >
+                  <ThemeToggle size="md" showLabel />
+                  <LanguageToggle size="md" showLabel />
+                </Box>
               </div>
 
               {/* Mobile User Actions */}

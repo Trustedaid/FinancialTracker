@@ -18,7 +18,7 @@ import { transactionService } from '../../services';
 import type { ChartOptions } from 'chart.js';
 import type { ChartThemeConfig } from '../../utils/chartConfig';
 import type { MonthlyTrendDto } from '../../types/api';
-import { Box, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Box, ToggleButton, ToggleButtonGroup } from '@mui/material';
 
 interface MonthlyComparisonChartProps {
   height?: number;
@@ -172,7 +172,7 @@ export const MonthlyComparisonChart: React.FC<MonthlyComparisonChartProps> = ({
         },
         legend: {
           ...getBaseChartOptions(theme).plugins.legend,
-          position: 'top'
+          position: 'top' as const
         }
       },
       scales: {
@@ -212,41 +212,59 @@ export const MonthlyComparisonChart: React.FC<MonthlyComparisonChartProps> = ({
   };
 
   return (
-    <Box>
-      {/* Period Selection */}
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <Typography variant="h6" component="h3" className="font-semibold">
-          {title}
-        </Typography>
-        <ToggleButtonGroup
-          value={comparisonPeriod}
-          exclusive
-          onChange={handlePeriodChange}
-          size="small"
-          aria-label="comparison period"
-        >
-          <ToggleButton value="1" aria-label="1 month comparison">
-            1M
-          </ToggleButton>
-          <ToggleButton value="3" aria-label="3 months comparison">
-            3M
-          </ToggleButton>
-          <ToggleButton value="6" aria-label="6 months comparison">
-            6M
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </Box>
-
-      <BaseChart
-        height={height}
-        loading={loading}
-        error={error}
-        onRetry={loadData}
-        className={className}
-      >
-        {renderChart}
-      </BaseChart>
-    </Box>
+    <BaseChart
+      title={title}
+      height={height}
+      loading={loading}
+      error={error}
+      onRetry={loadData}
+      className={className}
+    >
+      {(theme) => (
+        <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+          {/* Period Selection - Moved inside chart container */}
+          <Box 
+            display="flex" 
+            justifyContent="flex-end" 
+            alignItems="center" 
+            mb={2}
+            sx={{ 
+              minHeight: '32px',
+              flexShrink: 0
+            }}
+          >
+            <ToggleButtonGroup
+              value={comparisonPeriod}
+              exclusive
+              onChange={handlePeriodChange}
+              size="small"
+              aria-label="comparison period"
+              sx={{
+                '& .MuiToggleButton-root': {
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  padding: { xs: '4px 8px', sm: '6px 12px' }
+                }
+              }}
+            >
+              <ToggleButton value="1" aria-label="1 month comparison">
+                1M
+              </ToggleButton>
+              <ToggleButton value="3" aria-label="3 months comparison">
+                3M
+              </ToggleButton>
+              <ToggleButton value="6" aria-label="6 months comparison">
+                6M
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
+          
+          {/* Chart Content */}
+          <Box sx={{ flex: 1, minHeight: 0 }}>
+            {renderChart(theme)}
+          </Box>
+        </Box>
+      )}
+    </BaseChart>
   );
 };
 

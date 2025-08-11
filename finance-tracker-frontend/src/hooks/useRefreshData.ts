@@ -132,7 +132,7 @@ export const useRefreshData = <T = any>(
     config
   ]);
 
-  const silentRefresh = useCallback(() => {
+  const performSilentRefresh = useCallback(() => {
     return refresh({ silentRefresh: true, showToast: false });
   }, [refresh]);
 
@@ -146,7 +146,7 @@ export const useRefreshData = <T = any>(
   return {
     ...state,
     refresh,
-    silentRefresh,
+    silentRefresh: performSilentRefresh,
     forceRefresh,
     canRefresh,
   };

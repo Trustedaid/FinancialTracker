@@ -1,7 +1,7 @@
 import React from 'react';
 import { AlertCircle, X, RefreshCw, ChevronDown, ChevronUp } from 'lucide-react';
 import { cn } from '../../utils/cn';
-import { ApiError } from '../../hooks/useErrorHandler';
+import { type ApiError } from '../../hooks/useErrorHandler';
 
 export interface ErrorAlertProps {
   error: Error | ApiError | string;

@@ -1,7 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check, TrendingUp, TrendingDown } from 'lucide-react';
-import { Button, IconButton, ToggleButtonGroup, ToggleButton } from '@mui/material';
-import { Input } from '../ui';
+import {
+  Button,
+  IconButton,
+  ToggleButtonGroup,
+  ToggleButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Divider,
+  useTheme,
+  FormHelperText,
+  useMediaQuery
+} from '@mui/material';
 import type { TransactionDto, CreateTransactionDto, UpdateTransactionDto, CategoryDto, TransactionType } from '../../types/api';
 
 interface TransactionModalProps {
@@ -21,6 +42,10 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
   categories,
   loading = false 
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallMobile = useMediaQuery('(max-width:430px)');
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const [formData, setFormData] = useState<CreateTransactionDto>({
     amount: 0,
     description: '',
@@ -119,213 +144,362 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
-        <div className="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75" onClick={onClose} />
-        
-        <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full">
-          <div className="flex items-center justify-between p-6 border-b">
-            <h3 className="text-lg font-semibold text-gray-900">
-              {transaction ? 'İşlem Düzenle' : 'Yeni İşlem Ekle'}
-            </h3>
-            <IconButton
-              onClick={onClose}
-              sx={{ color: 'text.secondary' }}
-            >
-              <X size={20} />
-            </IconButton>
-          </div>
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      maxWidth={isTablet ? "md" : "sm"}
+      fullWidth
+      fullScreen={isSmallMobile}
+      PaperProps={{
+        sx: {
+          borderRadius: isSmallMobile ? 0 : 2,
+          boxShadow: theme.palette.mode === 'dark' 
+            ? '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)'
+            : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          margin: isMobile && !isSmallMobile ? 2 : undefined,
+          width: isMobile && !isSmallMobile ? 'calc(100vw - 32px)' : undefined,
+          maxHeight: isMobile && !isSmallMobile ? 'calc(100vh - 32px)' : undefined,
+          minHeight: isSmallMobile ? '100vh' : 'auto',
+          // Enhanced touch scrolling for mobile
+          overflowY: isMobile ? 'auto' : 'visible',
+          WebkitOverflowScrolling: 'touch',
+        }
+      }}
+    >
+      <DialogTitle
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          pb: 1,
+          px: isMobile ? 2 : 3,
+          py: isMobile ? 1.5 : 2,
+          backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+          borderBottom: `1px solid ${theme.palette.divider}`
+        }}
+      >
+        <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
+          {transaction ? 'İşlem Düzenle' : 'Yeni İşlem Ekle'}
+        </Typography>
+        <IconButton
+          onClick={onClose}
+          size={isMobile ? "medium" : "small"}
+          sx={{ 
+            color: 'text.secondary',
+            minWidth: isMobile ? 44 : 'auto',
+            minHeight: isMobile ? 44 : 'auto',
+            '&:hover': {
+              backgroundColor: theme.palette.action.hover
+            }
+          }}
+        >
+          <X size={20} />
+        </IconButton>
+      </DialogTitle>
 
-          <form onSubmit={handleSubmit}>
-            <div className="p-6 space-y-4">
-              {/* Transaction Type */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  İşlem Türü *
-                </label>
-                <ToggleButtonGroup
-                  value={formData.type}
-                  exclusive
-                  onChange={(_, value) => value && handleTypeChange(value)}
-                  fullWidth
-                  sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}
-                >
-                  <ToggleButton 
-                    value={1}
-                    sx={{ 
-                      textTransform: 'none',
-                      borderRadius: '8px',
-                      '&.Mui-selected': {
-                        backgroundColor: 'success.50',
-                        color: 'success.700',
-                        borderColor: 'success.300',
-                        '&:hover': {
-                          backgroundColor: 'success.100'
-                        }
+      <form onSubmit={handleSubmit}>
+        <DialogContent sx={{ pb: 0, px: isMobile ? 2 : 3 }}>
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: isSmallMobile ? 2 : isMobile ? 2.5 : 3, 
+            pt: isSmallMobile ? 1 : isMobile ? 1.5 : 2 
+          }}>
+            {/* Transaction Type */}
+            <Box>
+              <Typography variant="body2" sx={{ mb: 1, fontWeight: 500 }}>
+                İşlem Türü *
+              </Typography>
+              <ToggleButtonGroup
+                value={formData.type}
+                exclusive
+                onChange={(_, value) => value && handleTypeChange(value)}
+                fullWidth
+                sx={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: '1fr 1fr', 
+                  gap: 1,
+                  '& .MuiToggleButton-root': {
+                    border: `1px solid ${theme.palette.divider}`,
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    py: isSmallMobile ? 2.5 : isMobile ? 2 : 1.5,
+                    minHeight: isSmallMobile ? 52 : isMobile ? 48 : 'auto',
+                    fontSize: isSmallMobile ? '1rem' : isMobile ? '0.95rem' : '0.875rem',
+                    // Enhanced touch target
+                    '&:active': {
+                      transform: 'scale(0.98)'
+                    }
+                  }
+                }}
+              >
+                <ToggleButton 
+                  value={1}
+                  sx={{ 
+                    '&.Mui-selected': {
+                      backgroundColor: theme.palette.mode === 'dark' ? 'success.dark' : 'success.light',
+                      color: theme.palette.mode === 'dark' ? 'success.contrastText' : 'success.main',
+                      borderColor: 'success.main',
+                      '&:hover': {
+                        backgroundColor: theme.palette.mode === 'dark' ? 'success.dark' : 'success.light'
                       }
-                    }}
-                  >
-                    <TrendingUp size={16} style={{ marginRight: 8 }} />
-                    Gelir
-                  </ToggleButton>
-                  <ToggleButton 
-                    value={2}
-                    sx={{ 
-                      textTransform: 'none',
-                      borderRadius: '8px',
-                      '&.Mui-selected': {
-                        backgroundColor: 'error.50',
-                        color: 'error.700',
-                        borderColor: 'error.300',
-                        '&:hover': {
-                          backgroundColor: 'error.100'
-                        }
-                      }
-                    }}
-                  >
-                    <TrendingDown size={16} style={{ marginRight: 8 }} />
-                    Gider
-                  </ToggleButton>
-                </ToggleButtonGroup>
-              </div>
-
-              {/* Amount */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Tutar (₺) *
-                </label>
-                <Input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={formData.amount}
-                  onChange={(e) => handleInputChange('amount', Number(e.target.value))}
-                  placeholder="İşlem tutarını girin"
-                  className={errors.amount ? 'border-danger-300' : ''}
-                />
-                {errors.amount && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.amount}</p>
-                )}
-              </div>
-
-              {/* Description */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Açıklama *
-                </label>
-                <Input
-                  value={formData.description}
-                  onChange={(e) => handleInputChange('description', e.target.value)}
-                  placeholder="İşlem açıklaması"
-                  className={errors.description ? 'border-danger-300' : ''}
-                />
-                {errors.description && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.description}</p>
-                )}
-              </div>
-
-              {/* Date */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Tarih *
-                </label>
-                <Input
-                  type="date"
-                  value={formData.date}
-                  onChange={(e) => handleInputChange('date', e.target.value)}
-                  className={errors.date ? 'border-danger-300' : ''}
-                />
-                {errors.date && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.date}</p>
-                )}
-              </div>
-
-              {/* Category */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Kategori *
-                </label>
-                <select
-                  value={formData.categoryId}
-                  onChange={(e) => handleInputChange('categoryId', Number(e.target.value))}
-                  className={`w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 ${
-                    errors.categoryId ? 'border-danger-300' : ''
-                  }`}
+                    },
+                    '&:hover': {
+                      backgroundColor: theme.palette.action.hover
+                    }
+                  }}
                 >
-                  <option value={0}>Kategori seçiniz</option>
-                  {categories.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-                {errors.categoryId && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.categoryId}</p>
-                )}
-              </div>
+                  <TrendingUp size={16} style={{ marginRight: 8 }} />
+                  Gelir
+                </ToggleButton>
+                <ToggleButton 
+                  value={2}
+                  sx={{ 
+                    '&.Mui-selected': {
+                      backgroundColor: theme.palette.mode === 'dark' ? 'error.dark' : 'error.light',
+                      color: theme.palette.mode === 'dark' ? 'error.contrastText' : 'error.main',
+                      borderColor: 'error.main',
+                      '&:hover': {
+                        backgroundColor: theme.palette.mode === 'dark' ? 'error.dark' : 'error.light'
+                      }
+                    },
+                    '&:hover': {
+                      backgroundColor: theme.palette.action.hover
+                    }
+                  }}
+                >
+                  <TrendingDown size={16} style={{ marginRight: 8 }} />
+                  Gider
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
 
-              {/* Preview */}
-              {formData.amount > 0 && formData.description && (
-                <div className="mt-4 p-3 bg-gray-50 rounded-md">
-                  <div className="text-sm text-gray-700">
-                    <strong>Önizleme:</strong>
-                  </div>
-                  <div className="flex items-center justify-between mt-1">
-                    <div className="flex items-center">
+            {/* Amount */}
+            <TextField
+              label="Tutar (₺) *"
+              type="number"
+              inputProps={{
+                step: '0.01',
+                min: '0'
+              }}
+              value={formData.amount}
+              onChange={(e) => handleInputChange('amount', Number(e.target.value))}
+              placeholder="İşlem tutarını girin"
+              fullWidth
+              error={!!errors.amount}
+              helperText={errors.amount}
+              variant="outlined"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                  minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                  fontSize: isSmallMobile ? '1.1rem' : '1rem'
+                },
+                '& .MuiInputLabel-root': {
+                  fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                },
+                '& .MuiFormHelperText-root': {
+                  fontSize: isSmallMobile ? '0.85rem' : '0.75rem'
+                }
+              }}
+            />
+
+            {/* Description */}
+            <TextField
+              label="Açıklama *"
+              value={formData.description}
+              onChange={(e) => handleInputChange('description', e.target.value)}
+              placeholder="İşlem açıklaması"
+              fullWidth
+              error={!!errors.description}
+              helperText={errors.description}
+              variant="outlined"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                  minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                  fontSize: isSmallMobile ? '1.1rem' : '1rem'
+                },
+                '& .MuiInputLabel-root': {
+                  fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                },
+                '& .MuiFormHelperText-root': {
+                  fontSize: isSmallMobile ? '0.85rem' : '0.75rem'
+                }
+              }}
+            />
+
+            {/* Date */}
+            <TextField
+              label="Tarih *"
+              type="date"
+              value={formData.date}
+              onChange={(e) => handleInputChange('date', e.target.value)}
+              fullWidth
+              error={!!errors.date}
+              helperText={errors.date}
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                  minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                  fontSize: isSmallMobile ? '1.1rem' : '1rem'
+                },
+                '& .MuiInputLabel-root': {
+                  fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                },
+                '& .MuiFormHelperText-root': {
+                  fontSize: isSmallMobile ? '0.85rem' : '0.75rem'
+                }
+              }}
+            />
+
+            {/* Category */}
+            <FormControl fullWidth error={!!errors.categoryId}>
+              <InputLabel id="category-select-label">Kategori *</InputLabel>
+              <Select
+                labelId="category-select-label"
+                value={formData.categoryId}
+                onChange={(e) => handleInputChange('categoryId', Number(e.target.value))}
+                label="Kategori *"
+                sx={{
+                  borderRadius: 2,
+                  minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                  fontSize: isSmallMobile ? '1.1rem' : '1rem',
+                  '& .MuiInputLabel-root': {
+                    fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                  }
+                }}
+              >
+                <MenuItem value={0}>
+                  <Typography color="text.disabled">Kategori seçiniz</Typography>
+                </MenuItem>
+                {categories.map(category => (
+                  <MenuItem key={category.id} value={category.id}>
+                    {category.name}
+                  </MenuItem>
+                ))}
+              </Select>
+              {errors.categoryId && (
+                <FormHelperText>{errors.categoryId}</FormHelperText>
+              )}
+            </FormControl>
+
+            {/* Preview */}
+            {formData.amount > 0 && formData.description && (
+              <Card 
+                variant="outlined" 
+                sx={{ 
+                  backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+                  border: `1px solid ${theme.palette.divider}`,
+                  borderRadius: 2
+                }}
+              >
+                <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
+                    Önizleme:
+                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       {formData.type === 1 ? (
-                        <TrendingUp className="w-4 h-4 text-success-600 mr-2" />
+                        <TrendingUp 
+                          size={16} 
+                          color={theme.palette.success.main} 
+                          style={{ marginRight: 8 }} 
+                        />
                       ) : (
-                        <TrendingDown className="w-4 h-4 text-danger-600 mr-2" />
+                        <TrendingDown 
+                          size={16} 
+                          color={theme.palette.error.main} 
+                          style={{ marginRight: 8 }} 
+                        />
                       )}
-                      <span className="text-sm font-medium">
+                      <Typography variant="body2" sx={{ fontWeight: 500 }}>
                         {formData.description}
-                      </span>
-                    </div>
-                    <span className={`text-sm font-semibold ${
-                      formData.type === 1 ? 'text-success-600' : 'text-danger-600'
-                    }`}>
+                      </Typography>
+                    </Box>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        fontWeight: 600,
+                        color: formData.type === 1 ? 'success.main' : 'error.main'
+                      }}
+                    >
                       {new Intl.NumberFormat('tr-TR', {
                         style: 'currency',
                         currency: 'TRY'
                       }).format(formData.amount)}
-                    </span>
-                  </div>
+                    </Typography>
+                  </Box>
                   {formData.date && (
-                    <div className="text-xs text-gray-500 mt-1">
+                    <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
                       {new Date(formData.date).toLocaleDateString('tr-TR')}
-                    </div>
+                    </Typography>
                   )}
-                </div>
-              )}
-            </div>
-
-            <div className="flex justify-end space-x-3 p-6 border-t bg-gray-50 rounded-b-lg">
-              <Button
-                type="button"
-                variant="outlined"
-                onClick={onClose}
-                disabled={loading}
-                sx={{ textTransform: 'none' }}
-              >
-                İptal
-              </Button>
-              <Button
-                type="submit"
-                variant="contained"
-                disabled={loading}
-                startIcon={loading ? undefined : <Check size={16} />}
-                sx={{ textTransform: 'none' }}
-              >
-                {loading ? 'Yükleniyor...' : (transaction ? 'Güncelle' : 'Ekle')}
-              </Button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+                </CardContent>
+              </Card>
+            )}
+          </Box>
+        </DialogContent>
+        
+        <Divider />
+        
+        <DialogActions 
+          sx={{ 
+            p: isSmallMobile ? 1.5 : isMobile ? 2 : 3, 
+            backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+            gap: isSmallMobile ? 1.5 : 1,
+            flexDirection: isMobile ? 'column-reverse' : 'row',
+            '& .MuiButton-root': {
+              minHeight: isSmallMobile ? 52 : isMobile ? 48 : 'auto',
+              fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem',
+              width: isMobile ? '100%' : 'auto',
+              fontWeight: 600,
+              // Enhanced touch feedback
+              '&:active': {
+                transform: 'scale(0.98)'
+              }
+            }
+          }}
+        >
+          <Button
+            type="button"
+            variant="outlined"
+            onClick={onClose}
+            disabled={loading}
+            sx={{ 
+              textTransform: 'none',
+              borderRadius: 2,
+              minWidth: isMobile ? 'auto' : 100
+            }}
+          >
+            İptal
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={loading}
+            startIcon={loading ? undefined : <Check size={16} />}
+            sx={{ 
+              textTransform: 'none',
+              borderRadius: 2,
+              minWidth: isMobile ? 'auto' : 100,
+              backgroundColor: theme.palette.primary.main,
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark
+              }
+            }}
+          >
+            {loading ? 'Yükleniyor...' : (transaction ? 'Güncelle' : 'Ekle')}
+          </Button>
+        </DialogActions>
+      </form>
+    </Dialog>
   );
 };
 

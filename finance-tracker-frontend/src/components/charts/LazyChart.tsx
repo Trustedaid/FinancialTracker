@@ -23,7 +23,16 @@ interface LazyChartProps {
 
 // Chart loading skeleton component
 const ChartLoadingSkeleton: React.FC<{ height: number }> = ({ height }) => (
-  <Box p={3} sx={{ backgroundColor: 'background.paper', borderRadius: 2 }}>
+  <Box 
+    p={3} 
+    sx={{ 
+      backgroundColor: 'background.paper', 
+      borderRadius: 2,
+      border: '1px solid',
+      borderColor: 'divider',
+      minHeight: height + 80
+    }}
+  >
     <Skeleton width={200} height={24} sx={{ mb: 2 }} />
     <Skeleton variant="rectangular" width="100%" height={height} sx={{ borderRadius: 1 }} />
   </Box>
@@ -113,7 +122,10 @@ export const LazyChart: React.FC<LazyChartProps> = ({
       sx={{ 
         backgroundColor: 'background.paper', 
         borderRadius: 2,
-        color: 'text.secondary'
+        color: 'text.secondary',
+        border: '1px solid',
+        borderColor: 'divider',
+        minHeight: (fallbackHeight || height) + 80
       }}
     >
       <AlertCircle size={48} />

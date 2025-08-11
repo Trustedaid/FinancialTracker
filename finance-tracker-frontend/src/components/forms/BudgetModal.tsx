@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check, Target, Calendar } from 'lucide-react';
-import { Button, IconButton } from '@mui/material';
-import { Input } from '../ui';
+import {
+  Button,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Divider,
+  useTheme,
+  FormHelperText,
+  useMediaQuery
+} from '@mui/material';
 import type { BudgetDto, CreateBudgetDto, UpdateBudgetDto, CategoryDto } from '../../types/api';
 
 interface BudgetModalProps {
@@ -36,6 +55,11 @@ export const BudgetModal: React.FC<BudgetModalProps> = ({
   categories,
   loading = false 
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallMobile = useMediaQuery('(max-width:430px)');
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
   const currentYear = currentDate.getFullYear();
@@ -135,180 +159,322 @@ export const BudgetModal: React.FC<BudgetModalProps> = ({
     }).format(amount);
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
-        <div className="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75" onClick={onClose} />
-        
-        <div className="relative bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full">
-          <div className="flex items-center justify-between p-6 border-b">
-            <h3 className="text-lg font-semibold text-gray-900">
-              {budget ? 'Bütçe Düzenle' : 'Yeni Bütçe Oluştur'}
-            </h3>
-            <IconButton
-              onClick={onClose}
-              sx={{ color: 'text.secondary' }}
-            >
-              <X size={20} />
-            </IconButton>
-          </div>
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      maxWidth={isTablet ? "md" : "sm"}
+      fullWidth
+      fullScreen={isSmallMobile}
+      PaperProps={{
+        sx: {
+          borderRadius: isSmallMobile ? 0 : 2,
+          boxShadow: theme.palette.mode === 'dark' 
+            ? '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)'
+            : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          margin: isMobile && !isSmallMobile ? 2 : undefined,
+          width: isMobile && !isSmallMobile ? 'calc(100vw - 32px)' : undefined,
+          maxHeight: isMobile && !isSmallMobile ? 'calc(100vh - 32px)' : undefined,
+          minHeight: isSmallMobile ? '100vh' : 'auto',
+          // Enhanced touch scrolling for mobile
+          overflowY: isMobile ? 'auto' : 'visible',
+          WebkitOverflowScrolling: 'touch',
+        }
+      }}
+    >
+      <DialogTitle
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          pb: 1,
+          px: isMobile ? 2 : 3,
+          py: isMobile ? 1.5 : 2,
+          backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+          borderBottom: `1px solid ${theme.palette.divider}`
+        }}
+      >
+        <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
+          {budget ? 'Bütçe Düzenle' : 'Yeni Bütçe Oluştur'}
+        </Typography>
+        <IconButton
+          onClick={onClose}
+          size={isMobile ? "medium" : "small"}
+          sx={{ 
+            color: 'text.secondary',
+            minWidth: isMobile ? 44 : 'auto',
+            minHeight: isMobile ? 44 : 'auto',
+            '&:hover': {
+              backgroundColor: theme.palette.action.hover
+            }
+          }}
+        >
+          <X size={20} />
+        </IconButton>
+      </DialogTitle>
 
-          <form onSubmit={handleSubmit}>
-            <div className="p-6 space-y-4">
-              {/* Category */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Kategori *
-                </label>
-                <select
-                  value={formData.categoryId}
-                  onChange={(e) => handleInputChange('categoryId', Number(e.target.value))}
-                  className={`w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 ${
-                    errors.categoryId ? 'border-danger-300' : ''
-                  }`}
-                >
-                  <option value={0}>Kategori seçiniz</option>
-                  {categories.map(category => (
-                    <option key={category.id} value={category.id}>
+      <form onSubmit={handleSubmit}>
+        <DialogContent sx={{ pb: 0, px: isMobile ? 2 : 3 }}>
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: isSmallMobile ? 2 : isMobile ? 2.5 : 3, 
+            pt: isSmallMobile ? 1 : isMobile ? 1.5 : 2 
+          }}>
+            {/* Category */}
+            <FormControl fullWidth error={!!errors.categoryId}>
+              <InputLabel id="budget-category-select-label">Kategori *</InputLabel>
+              <Select
+                labelId="budget-category-select-label"
+                value={formData.categoryId}
+                onChange={(e) => handleInputChange('categoryId', Number(e.target.value))}
+                label="Kategori *"
+                sx={{
+                  borderRadius: 2,
+                  minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                  fontSize: isSmallMobile ? '1.1rem' : '1rem',
+                  '& .MuiInputLabel-root': {
+                    fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                  }
+                }}
+              >
+                <MenuItem value={0}>
+                  <Typography color="text.disabled">Kategori seçiniz</Typography>
+                </MenuItem>
+                {categories.map(category => (
+                  <MenuItem key={category.id} value={category.id}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Box
+                        sx={{
+                          width: 12,
+                          height: 12,
+                          borderRadius: '50%',
+                          backgroundColor: category.color,
+                          border: `1px solid ${theme.palette.divider}`
+                        }}
+                      />
                       {category.name}
-                    </option>
-                  ))}
-                </select>
-                {errors.categoryId && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.categoryId}</p>
-                )}
-              </div>
+                    </Box>
+                  </MenuItem>
+                ))}
+              </Select>
+              {errors.categoryId && (
+                <FormHelperText>{errors.categoryId}</FormHelperText>
+              )}
+            </FormControl>
 
-              {/* Amount */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Bütçe Tutarı (₺) *
-                </label>
-                <Input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  max="10000000"
-                  value={formData.amount}
-                  onChange={(e) => handleInputChange('amount', Number(e.target.value))}
-                  placeholder="Bütçe tutarını girin"
-                  className={errors.amount ? 'border-danger-300' : ''}
-                />
-                {errors.amount && (
-                  <p className="mt-1 text-sm text-danger-600">{errors.amount}</p>
-                )}
-              </div>
+            {/* Amount */}
+            <TextField
+              label="Bütçe Tutarı (₺) *"
+              type="number"
+              inputProps={{
+                step: '0.01',
+                min: '0',
+                max: '10000000'
+              }}
+              value={formData.amount}
+              onChange={(e) => handleInputChange('amount', Number(e.target.value))}
+              placeholder="Bütçe tutarını girin"
+              fullWidth
+              error={!!errors.amount}
+              helperText={errors.amount}
+              variant="outlined"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                  minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                  fontSize: isSmallMobile ? '1.1rem' : '1rem'
+                },
+                '& .MuiInputLabel-root': {
+                  fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                },
+                '& .MuiFormHelperText-root': {
+                  fontSize: isSmallMobile ? '0.85rem' : '0.75rem'
+                }
+              }}
+            />
 
-              {/* Month and Year */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Ay *
-                  </label>
-                  <select
+            {/* Month and Year */}
+            <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
+              <Box sx={{ flex: 1 }}>
+                <FormControl fullWidth error={!!errors.month}>
+                  <InputLabel id="budget-month-select-label">Ay *</InputLabel>
+                  <Select
+                    labelId="budget-month-select-label"
                     value={formData.month}
                     onChange={(e) => handleInputChange('month', Number(e.target.value))}
-                    className={`w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 ${
-                      errors.month ? 'border-danger-300' : ''
-                    }`}
+                    label="Ay *"
+                    sx={{
+                      borderRadius: 2,
+                      minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                      fontSize: isSmallMobile ? '1.1rem' : '1rem',
+                      '& .MuiInputLabel-root': {
+                        fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                      }
+                    }}
                   >
                     {MONTHS.map(month => (
-                      <option key={month.value} value={month.value}>
-                        {month.label}
-                      </option>
+                      <MenuItem key={month.value} value={month.value}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <Calendar size={16} />
+                          {month.label}
+                        </Box>
+                      </MenuItem>
                     ))}
-                  </select>
+                  </Select>
                   {errors.month && (
-                    <p className="mt-1 text-sm text-danger-600">{errors.month}</p>
+                    <FormHelperText>{errors.month}</FormHelperText>
                   )}
-                </div>
+                </FormControl>
+              </Box>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Yıl *
-                  </label>
-                  <select
+              <Box sx={{ flex: 1 }}>
+                <FormControl fullWidth error={!!errors.year}>
+                  <InputLabel id="budget-year-select-label">Yıl *</InputLabel>
+                  <Select
+                    labelId="budget-year-select-label"
                     value={formData.year}
                     onChange={(e) => handleInputChange('year', Number(e.target.value))}
-                    className={`w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 ${
-                      errors.year ? 'border-danger-300' : ''
-                    }`}
+                    label="Yıl *"
+                    sx={{
+                      borderRadius: 2,
+                      minHeight: isSmallMobile ? 60 : isMobile ? 56 : 'auto',
+                      fontSize: isSmallMobile ? '1.1rem' : '1rem',
+                      '& .MuiInputLabel-root': {
+                        fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem'
+                      }
+                    }}
                   >
                     {generateYearOptions().map(year => (
-                      <option key={year} value={year}>
+                      <MenuItem key={year} value={year}>
                         {year}
-                      </option>
+                      </MenuItem>
                     ))}
-                  </select>
+                  </Select>
                   {errors.year && (
-                    <p className="mt-1 text-sm text-danger-600">{errors.year}</p>
+                    <FormHelperText>{errors.year}</FormHelperText>
                   )}
-                </div>
-              </div>
+                </FormControl>
+              </Box>
+            </Box>
 
-              {/* Preview */}
-              {formData.amount > 0 && formData.categoryId > 0 && (
-                <div className="mt-4 p-3 bg-gray-50 rounded-md">
-                  <div className="text-sm text-gray-700 mb-2">
-                    <strong>Önizleme:</strong>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <Target className="w-4 h-4 text-primary-600" />
-                      <div>
+            {/* Preview */}
+            {formData.amount > 0 && formData.categoryId > 0 && (
+              <Card 
+                variant="outlined" 
+                sx={{ 
+                  backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+                  border: `1px solid ${theme.palette.divider}`,
+                  borderRadius: 2
+                }}
+              >
+                <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, mb: 1.5 }}>
+                    Önizleme:
+                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                      <Target 
+                        size={16} 
+                        color={theme.palette.primary.main} 
+                        style={{ flexShrink: 0 }} 
+                      />
+                      <Box>
                         {getSelectedCategory() && (
-                          <div className="flex items-center space-x-2">
-                            <div
-                              className="w-3 h-3 rounded-full"
-                              style={{ backgroundColor: getSelectedCategory()?.color }}
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
+                            <Box
+                              sx={{
+                                width: 12,
+                                height: 12,
+                                borderRadius: '50%',
+                                backgroundColor: getSelectedCategory()?.color,
+                                border: `1px solid ${theme.palette.divider}`,
+                                flexShrink: 0
+                              }}
                             />
-                            <span className="text-sm font-medium">
+                            <Typography variant="body2" sx={{ fontWeight: 500 }}>
                               {getSelectedCategory()?.name}
-                            </span>
-                          </div>
+                            </Typography>
+                          </Box>
                         )}
-                        <div className="flex items-center space-x-1 text-xs text-gray-500">
-                          <Calendar size={12} />
-                          <span>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                          <Calendar size={12} color={theme.palette.text.secondary} />
+                          <Typography variant="caption" color="text.secondary">
                             {MONTHS.find(m => m.value === formData.month)?.label} {formData.year}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <span className="text-sm font-semibold text-primary-600">
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        fontWeight: 600,
+                        color: 'primary.main'
+                      }}
+                    >
                       {formatCurrency(formData.amount)}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
+                    </Typography>
+                  </Box>
+                </CardContent>
+              </Card>
+            )}
+          </Box>
+        </DialogContent>
 
-            <div className="flex justify-end space-x-3 p-6 border-t bg-gray-50 rounded-b-lg">
-              <Button
-                type="button"
-                variant="outlined"
-                onClick={onClose}
-                disabled={loading}
-                sx={{ textTransform: 'none' }}
-              >
-                İptal
-              </Button>
-              <Button
-                type="submit"
-                variant="contained"
-                disabled={loading}
-                startIcon={loading ? undefined : <Check size={16} />}
-                sx={{ textTransform: 'none' }}
-              >
-                {loading ? 'Yükleniyor...' : (budget ? 'Güncelle' : 'Oluştur')}
-              </Button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+        
+        <Divider />
+        
+        <DialogActions 
+          sx={{ 
+            p: isSmallMobile ? 1.5 : isMobile ? 2 : 3, 
+            backgroundColor: theme.palette.mode === 'dark' ? 'grey.800' : 'grey.50',
+            gap: isSmallMobile ? 1.5 : 1,
+            flexDirection: isMobile ? 'column-reverse' : 'row',
+            '& .MuiButton-root': {
+              minHeight: isSmallMobile ? 52 : isMobile ? 48 : 'auto',
+              fontSize: isSmallMobile ? '1.1rem' : isMobile ? '1rem' : '0.875rem',
+              width: isMobile ? '100%' : 'auto',
+              fontWeight: 600,
+              // Enhanced touch feedback
+              '&:active': {
+                transform: 'scale(0.98)'
+              }
+            }
+          }}
+        >
+          <Button
+            type="button"
+            variant="outlined"
+            onClick={onClose}
+            disabled={loading}
+            sx={{ 
+              textTransform: 'none',
+              borderRadius: 2,
+              minWidth: isMobile ? 'auto' : 100
+            }}
+          >
+            İptal
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={loading}
+            startIcon={loading ? undefined : <Check size={16} />}
+            sx={{ 
+              textTransform: 'none',
+              borderRadius: 2,
+              minWidth: isMobile ? 'auto' : 100,
+              backgroundColor: theme.palette.primary.main,
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark
+              }
+            }}
+          >
+            {loading ? 'Yükleniyor...' : (budget ? 'Güncelle' : 'Oluştur')}
+          </Button>
+        </DialogActions>
+      </form>
+    </Dialog>
   );
 };
 

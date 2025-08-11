@@ -1,5 +1,15 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse, AxiosError } from 'axios';
 import { toast } from 'react-hot-toast';
+
+// Extend Axios interfaces to include custom properties
+declare module 'axios' {
+  export interface InternalAxiosRequestConfig {
+    metadata?: {
+      startTime: Date;
+    };
+    _retryConfig?: RetryConfig;
+  }
+}
 
 export interface ApiErrorResponse {
   type: string;
@@ -212,7 +222,7 @@ class ApiClient {
     return Promise.reject(error);
   }
 
-  private async refreshAccessToken(): Promise<string | null> {
+  private async refreshAccessToken(): Promise<string> {
     if (this.refreshPromise) {
       return this.refreshPromise;
     }
@@ -227,12 +237,12 @@ class ApiClient {
     }
   }
 
-  private async performTokenRefresh(): Promise<string | null> {
+  private async performTokenRefresh(): Promise<string> {
     try {
       const refreshToken = localStorage.getItem('refresh_token');
       
       if (!refreshToken) {
-        return null;
+        throw new Error('No refresh token available');
       }
 
       const response = await axios.post(`${this.client.defaults.baseURL}/auth/refresh`, {
@@ -247,7 +257,7 @@ class ApiClient {
       return accessToken;
     } catch (error) {
       console.error('Token refresh error:', error);
-      return null;
+      throw error; // Let the caller handle the error
     }
   }
 
@@ -335,15 +345,15 @@ class ApiClient {
   public withRetry(config: Partial<RetryConfig>) {
     return {
       get: <T = any>(url: string, requestConfig?: AxiosRequestConfig) =>
-        this.get<T>(url, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } }),
+        this.get<T>(url, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } } as any),
       post: <T = any>(url: string, data?: any, requestConfig?: AxiosRequestConfig) =>
-        this.post<T>(url, data, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } }),
+        this.post<T>(url, data, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } } as any),
       put: <T = any>(url: string, data?: any, requestConfig?: AxiosRequestConfig) =>
-        this.put<T>(url, data, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } }),
+        this.put<T>(url, data, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } } as any),
       patch: <T = any>(url: string, data?: any, requestConfig?: AxiosRequestConfig) =>
-        this.patch<T>(url, data, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } }),
+        this.patch<T>(url, data, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } } as any),
       delete: <T = any>(url: string, requestConfig?: AxiosRequestConfig) =>
-        this.delete<T>(url, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } })
+        this.delete<T>(url, { ...requestConfig, _retryConfig: { ...this.baseRetryConfig, ...config } } as any)
     };
   }
 }

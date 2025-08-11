@@ -1,4 +1,3 @@
-import React from 'react';
 import { Toaster, ToastBar, toast as hotToast } from 'react-hot-toast';
 import { X, CheckCircle, AlertCircle, AlertTriangle, Info, Wifi, WifiOff } from 'lucide-react';
 import { cn } from '../../utils/cn';

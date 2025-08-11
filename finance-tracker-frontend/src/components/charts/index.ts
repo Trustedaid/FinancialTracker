@@ -16,7 +16,10 @@ export { MonthlyComparisonChart } from './MonthlyComparisonChart';
 export { 
   getChartTheme, 
   getBaseChartOptions, 
+  getEnhancedChartOptions,
+  getThemedColor,
   formatCurrencyForChart,
+  createGradient,
   CHART_COLORS,
   CATEGORY_COLORS 
 } from '../../utils/chartConfig';
