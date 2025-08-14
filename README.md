@@ -346,7 +346,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need help getting started:
 
-- 📧 Email: erenoguz.developer@egmail.com
+- 📧 Email: erenoguz.developer@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/Trustedaid/FinancialTracker/issues)
 - 📖 Documentation: [Wiki](https://github.com/trustedaid/FinancialTracker/wiki)
 
